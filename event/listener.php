@@ -13,6 +13,11 @@ namespace modelbrouwers\mbstyles\event;
 */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+* @ignore
+*/
+use modelbrouwers\mbstyles\staticfiles\StaticCache;
+
 
 class listener implements EventSubscriberInterface
 {
@@ -37,6 +42,11 @@ class listener implements EventSubscriberInterface
      */
     protected $php_ext;
 
+    /**
+     * Memcached instance
+     *
+     * @var \modelbrouwers\mbstyles\staticfiles\StaticCache
+     */
 
     public function __construct(
         \phpbb\template\twig\twig $template,
@@ -46,20 +56,24 @@ class listener implements EventSubscriberInterface
         $this->template = $template;
         $this->user = $user;
         $this->php_ext = $php_ext;
+        $this->cache = new StaticCache('dummy-key');
     }
 
     static public function getSubscribedEvents()
     {
         return array(
-            // 'core.page_footer'          => 'core_page_footer',
+            'core.page_footer'          => 'core_page_footer',
         );
     }
 
     public function core_page_footer($event)
     {
 
-        $this->template->assign_vars(array(
-        ));
+        var_dump($this->cache);
+
+
+        // $this->template->assign_vars(array(
+        // ));
 
     }
 }
