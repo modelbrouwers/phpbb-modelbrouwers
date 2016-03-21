@@ -1,0 +1,27 @@
+{
+	"name": "modelbrouwers/mbstyles",
+	"type": "phpbb-extension",
+	"description": "Enables specific integrations for Modelbrouwers.nl",
+	"homepage": "https://github.com/modelbrouwers/phpbb-ext-modelbrouwers-styles",
+	"version": "1.0.0-dev",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Sergei Maertens",
+			"homepage": "https://regex-it.nl",
+			"role": "Lead Developer"
+		}
+	],
+	"require": {
+		"php": ">=5.4",
+		"tedivm/jshrink": "^1.1",
+		"symfony/console": "^3.0",
+		"raven/raven": "^0.13.0"
+	},
+	"extra": {
+		"display-name": "Modelbrouwers integrations",
+		"soft-require": {
+			"phpbb/phpbb": "3.1.*"
+		}
+	}
+}
