@@ -3,6 +3,7 @@ services:
         class: modelbrouwers\mbstyles\event\listener
         arguments:
             - @config
+            - @request
             - @template
             - @user
             - %core.php_ext%

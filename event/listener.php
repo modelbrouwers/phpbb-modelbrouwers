@@ -29,6 +29,13 @@ class listener implements EventSubscriberInterface
     protected $config;
 
     /**
+     * phpBB request object
+     *
+     * @var \phpbb\request\request
+     */
+    protected $request;
+
+    /**
      * phpBB template object
      *
      * @var \phpbb\template\twig\twig
@@ -57,17 +64,32 @@ class listener implements EventSubscriberInterface
 
     public function __construct(
         \phpbb\config\config $config,
+        \phpbb\request\request $request,
         \phpbb\template\twig\twig $template,
         \phpbb\user $user,
         $php_ext
     ) {
         $this->config = $config;
+        $this->request = $request;
+        // set up Raven asap
+        // $this->registerErrorhandler();
+
         $this->template = $template;
         $this->user = $user;
         $this->php_ext = $php_ext;
 
         $this->user->add_lang_ext('modelbrouwers/mbstyles', 'acp');
         $this->cache = new StaticCache($this->config['staticfiles_cache_prefix']);
+    }
+
+    private function registerErrorhandler() {
+        $this->request->enable_super_globals();  // needed for Raven
+        $client = new \Raven_Client($this->config['raven_dsn']);
+        $error_handler = new \Raven_ErrorHandler($client);
+        $error_handler->registerExceptionHandler();
+        $error_handler->registerErrorHandler();
+        $error_handler->registerShutdownFunction();
+        // $this->request->disable_super_globals();
     }
 
     static public function getSubscribedEvents()
