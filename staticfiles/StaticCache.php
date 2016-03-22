@@ -22,7 +22,7 @@ class StaticCache extends \Memcached {
         }
     }
 
-    function set($key, $value, $expiration=null) {
+    function set($key, $value, $expiration=null, $udf_flags=null) {
         if(!$expiration) {
             $expiration = $this->TIMEOUT;
         }

@@ -2,6 +2,7 @@ services:
     modelbrouwers.authdjango.listener:
         class: modelbrouwers\mbstyles\event\listener
         arguments:
+            - @config
             - @template
             - @user
             - %core.php_ext%
