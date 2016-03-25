@@ -1,5 +1,5 @@
 services:
-    modelbrouwers.authdjango.listener:
+    modelbrouwers.mbstyles.listener:
         class: modelbrouwers\mbstyles\event\listener
         arguments:
             - @config
@@ -9,3 +9,11 @@ services:
             - %core.php_ext%
         tags:
             - { name: event.listener }
+    modelbrouwers.mbstyles.systemjs:
+        class: modelbrouwers\mbstyles\command\systemjs
+        arguments:
+            - @user
+            - %core.root_path%
+            - %core.php_ext%
+        tags:
+            - { name: console.command }

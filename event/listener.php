@@ -102,7 +102,7 @@ class listener implements EventSubscriberInterface
 
     public function core_page_footer($event)
     {
-
+        $storage = new StaticFilesStorage($this->config);
         // var_dump($this->cache);
 
 
