@@ -7,7 +7,6 @@
 *
 */
 namespace modelbrouwers\mbstyles\event;
-use modelbrouwers\mbstyles\staticfiles\storages\StaticFilesStorage;
 
 /**
 * @ignore
@@ -18,6 +17,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 * @ignore
 */
 use modelbrouwers\mbstyles\staticfiles\StaticCache;
+use modelbrouwers\mbstyles\staticfiles\storages\ManifestStaticFilesStorage;
 
 
 class listener implements EventSubscriberInterface
@@ -103,9 +103,7 @@ class listener implements EventSubscriberInterface
 
     public function core_page_footer($event)
     {
-        $storage = new StaticFilesStorage($this->config);
-        // var_dump($this->cache);
-
+        $storage = new ManifestStaticFilesStorage($this->config, $this->cache);
 
         $this->template->assign_vars(array(
             'static' => $storage

@@ -17,9 +17,12 @@ class ManifestStaticFilesStorage extends StaticFilesStorage
     protected $hashed_files = null;
     protected $cache = null;
 
-    public function __construct() {
-        parent::__construct();
-        $this->cache = new StaticCache();
+    public function __construct(
+        \phpbb\config\config $config,
+        \modelbrouwers\mbstyles\staticfiles\StaticCache $cache
+    ) {
+        parent::__construct($config);
+        $this->cache = $cache;
         $this->cache_key_prefix = 'php:staticfiles:';
 
         // reduce disk IO by caching stuffs
@@ -41,7 +44,7 @@ class ManifestStaticFilesStorage extends StaticFilesStorage
         if ($version == '1.0') {
             return $stored['paths'] ?: array();
         }
-        throw new Exception("Couldn't load manifest - unknown version {$version}");
+        throw new \Exception("Couldn't load manifest - unknown version {$version}");
     }
 
     protected function readManifest() {
