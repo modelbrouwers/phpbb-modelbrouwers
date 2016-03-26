@@ -46,7 +46,8 @@ class StaticFilesStorage
 
         $this->config = $config;
 
-        $this->base_url = $config['staticfiles_static_root'];
+        $this->location = $config['staticfiles_static_root'];
+        $this->base_url = $config['staticfiles_static_url'];
         $this->systemjs_output_dir = $config['systemjs_output_dir'];
     }
 

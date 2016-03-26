@@ -7,6 +7,7 @@
 *
 */
 namespace modelbrouwers\mbstyles\event;
+use modelbrouwers\mbstyles\staticfiles\storages\StaticFilesStorage;
 
 /**
 * @ignore
@@ -106,8 +107,9 @@ class listener implements EventSubscriberInterface
         // var_dump($this->cache);
 
 
-        // $this->template->assign_vars(array(
-        // ));
+        $this->template->assign_vars(array(
+            'static' => $storage
+        ));
 
     }
 
