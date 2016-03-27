@@ -14,12 +14,14 @@ class CombinedManifestStaticFilesStorage extends ManifestStaticFilesStorage
 {
     protected $cache_key_prefix;
 
-    public function __construct() {
-        parent::__construct();
+    public function __construct(
+        \phpbb\config\config $config,
+        \modelbrouwers\mbstyles\staticfiles\StaticCache $cache
+    ) {
+        parent::__construct($config, $cache);
         $this->hash_utility = new HashUtility($this);
         $this->compressor = new Compressor($this);
-        $this->cache = new StaticCache();
-        $this->cache_key_prefix = 'php:staticfiles:';
+        $this->DEBUG = false;
     }
 
     public function url($files, $ext='js') {

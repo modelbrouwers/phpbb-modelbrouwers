@@ -16,7 +16,7 @@ class Compressor {
 
     protected $storage;
 
-    public function __construct($storage) {
+    public function __construct(StaticFilesStorage $storage) {
         $this->storage = $storage;
     }
 
@@ -40,6 +40,7 @@ class Compressor {
 
     protected function get_cache_dir() {
         $dirname = $this->storage->get_location() . DIRECTORY_SEPARATOR . $this->CACHE_DIR;
+        var_dump($dirname);
         if (!is_dir($dirname)) {
             mkdir($dirname);
             chmod($dirname, 0755);

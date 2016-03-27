@@ -40,7 +40,6 @@ class StaticFilesStorage
 
     protected $systemjs_output_dir;
 
-    // Use dependency injection?
     public function __construct(\phpbb\config\config $config) {
         $this->DEBUG = (bool) getenv('DEBUG') || defined('DEBUG');
 
@@ -49,6 +48,13 @@ class StaticFilesStorage
         $this->location = $config['staticfiles_static_root'];
         $this->base_url = $config['staticfiles_static_url'];
         $this->systemjs_output_dir = $config['systemjs_output_dir'];
+    }
+
+    /**
+     * Shortcut for later Twig function
+     */
+    public function __invoke($path) {
+        return $this->url($path);
     }
 
     /**

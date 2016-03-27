@@ -1,0 +1,6 @@
+<script src="{{ static.url('scripts/jquery-ui-1.10.2.custom.min.js') }}"></script>
+<script src="{{ static.url('scripts/q.min.js') }}"></script>
+<script src="{{ static.url('jspm_packages/system.js') }}"></script>
+
+{% set base_js=['config.js', 'scripts/forum/chat.js'] %}
+<script src="{{ combined_static.url(base_js) }}"></script>
