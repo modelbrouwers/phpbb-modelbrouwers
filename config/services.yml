@@ -13,7 +13,10 @@ services:
         class: modelbrouwers\mbstyles\command\systemjs
         arguments:
             - @user
+            - @ext.manager
+            - @config
+            - @path_helper
+            - @template_context
             - %core.root_path%
-            - %core.php_ext%
         tags:
             - { name: console.command }
