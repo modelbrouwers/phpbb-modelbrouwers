@@ -1,6 +1,35 @@
+<div id="popup"></div>
+<div id="chat-window"></div>
+
+
+{# GA Code
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-385491-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+#}
+
+
+{# Custom scripts #}
 <script src="{{ static.url('scripts/jquery-ui-1.10.2.custom.min.js') }}"></script>
 <script src="{{ static.url('scripts/q.min.js') }}"></script>
 <script src="{{ static.url('jspm_packages/system.js') }}"></script>
 
 {% set base_js=['config.js', 'scripts/forum/chat.js'] %}
 <script src="{{ combined_static.url(base_js) }}"></script>
+
+{% set systemjs_apps=[
+    'forum_tools/js/forum/app.js',
+    'albums/js/forum/app.js',
+    'groupbuilds/js/forum/app.js',
+] %}
+<script src="{{ combined_static.url(systemjs_apps) }}"></script>
+
+{% if U_MCP or U_ACP %}
+    <script src="{{ static.url('scripts/mods.js') }}"></script>
+{% endif %}
