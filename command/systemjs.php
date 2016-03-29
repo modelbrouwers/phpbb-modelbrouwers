@@ -88,36 +88,74 @@ class systemjs extends \phpbb\console\command\command
         $lexer = new \phpbb\template\twig\lexer($twig);
         $twig->setLexer($lexer);
 
+        // it's a non-default feature, so we only look in extension styles
+        // $styles_dir = realpath($this->phpbb_root_path . DIRECTORY_SEPARATOR . 'styles');
+        $ext_dir = realpath($this->phpbb_root_path . DIRECTORY_SEPARATOR . 'ext');
+        $output->writeln('<info>Looking for styles in extension styles \'' . $ext_dir . '\'</info>');
 
-        return;
+        $extensions = array();
+        $iterator = new \RecursiveIteratorIterator(
+            new \phpbb\recursive_dot_prefix_filter_iterator(
+                new \RecursiveDirectoryIterator(
+                    $ext_dir,
+                    \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS
+                )
+            ),
+            \RecursiveIteratorIterator::SELF_FIRST
+        );
+        $iterator->setMaxDepth(2);
 
-        // TODO: loop over all styles templates *and* extension style templates
-
-
-        // this is the token that will be sought after in the template to find all SystemJS apps
-        $TOKEN = '// JSPM:SYSTEMJSAPP';
-        $REGEX = "@(['\"])(?P<app>.*)['\"][\s,]*{$TOKEN}@";
-
-        $pathBits = array($settings->PROJECT_DIR, 'phpBB3', 'styles');
-        $styles = realpath(implode(DIRECTORY_SEPARATOR, $pathBits));
-        $output->writeln('<info>Looking for styles in \'' . $styles . '\'</info>');
-
-        $directory = new \RecursiveDirectoryIterator($styles);
-        $iterator = new \RecursiveIteratorIterator($directory);
-        $templates = new \RegexIterator($iterator, '/^.+\.html$/i', \RecursiveRegexIterator::GET_MATCH);
+        foreach ($iterator as $file_info)
+        {
+            if ($file_info->getFilename() !== 'styles' || $iterator->getDepth() !== 2 ) {
+                continue;
+            }
+            $ext_name = substr($file_info->getPathName(), strlen($ext_dir));
+            $output->writeln('<info>Adding \'' . $ext_name . '\' to template search path');
+            $extensions[] = $file_info->getPathName();
+        }
 
         $output->writeln('<info>Parsing templates for bundle markers...</info>');
         $appsFound = array();
-        foreach ($templates as $name => $fileObj) {
-            $handle = fopen($name, 'r');
-            while (($line = fgets($handle)) !== false) {
-                if (strpos($line, $TOKEN) !== false) {
-                    if (preg_match($REGEX, $line, $m)) {
-                        $appsFound[$name][] = $m['app'];
+        foreach ($extensions as $styles_dir) {
+            $directory = new \RecursiveDirectoryIterator($styles_dir);
+            $iterator = new \RecursiveIteratorIterator($directory);
+            $templates = new \RegexIterator($iterator, '/^.+\.html$/i', \RecursiveRegexIterator::GET_MATCH);
+
+            foreach ($templates as $name => $fileObj) {
+                $output->writeln('<info>Checking ' . $name . '</info>');
+                $source = file_get_contents($name);
+                $stream = $twig->tokenize($source, $name);
+                $nodes = $twig->parse($stream);
+
+                $flattened = array();
+                $body = $nodes->getNode('body');
+                foreach ($body as $node) {
+                    $this->getNodes($node, $flattened);
+                }
+
+                // now loop over the nodes, and if a Expression_AssignName is found, group the following nodes
+                $assignments = array();
+                $lastAssign = null;
+                foreach ($flattened as $node) {
+                    if (is_a($node, '\Twig_Node_Expression_AssignName')) {
+                        $lastAssign = $node->getAttribute('name');
+                        $assignments[$lastAssign] = array();
+                    } elseif (is_a($node, '\Twig_Node_Expression_Constant') && $lastAssign) {
+                        if (is_string($node->getAttribute('value'))) {
+                            $assignments[$lastAssign][] = $node->getAttribute('value');
+                        }
+                    } else {
+                        $lastAssign = null;
                     }
                 }
+
+                // we only accept the variable name 'systemjs_apps' as second best option
+                if (!isset($assignments['systemjs_apps'])) {
+                    continue;
+                }
+                $appsFound[$name] = $assignments['systemjs_apps'];
             }
-            fclose($handle);
         }
 
         $apps = array_reduce($appsFound, function($reduced, $_apps) {
@@ -130,11 +168,15 @@ class systemjs extends \phpbb\console\command\command
 
         $jspm = $input->getOption('jspm-executable');
         $cmdTpl = "{$jspm} bundle %s %s 2> /dev/null";
-        $systemjsDir = $settings->STATIC_ROOT . DIRECTORY_SEPARATOR . $settings->SYSTEMJS_OUTPUT_DIR;
+        $systemjsDir = $this->config['staticfiles_static_root'] .
+                       DIRECTORY_SEPARATOR . $this->config['systemjs_output_dir'];
         if (!is_dir($systemjsDir)) {
             mkdir($systemjsDir);
         }
         $systemjsDir = realpath($systemjsDir);
+
+        var_dump($apps);
+        return;
 
         foreach ($apps as $app) {
             $file = $systemjsDir . DIRECTORY_SEPARATOR . $app;
@@ -167,6 +209,17 @@ class systemjs extends \phpbb\console\command\command
                 $output->writeln("<info>Post-processed file \"{$relative}\"</info>");
             } else {
                 $output->writeln("<info>Skipped post-processing: link exists</info>");
+            }
+        }
+    }
+
+    // flatten the nodes
+    protected function getNodes($parentNode, &$flattened) {
+        foreach ($parentNode as $node) {
+            if (count($node) > 0) {
+                $this->getNodes($node, $flattened);
+            } else {
+                $flattened[] = $node;
             }
         }
     }
