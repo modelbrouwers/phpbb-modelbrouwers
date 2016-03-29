@@ -167,7 +167,7 @@ class systemjs extends \phpbb\console\command\command
         $output->writeln("<info>Found {$numApps} apps in {$numTemplates} templates</info>");
 
         $jspm = $input->getOption('jspm-executable');
-        $cmdTpl = "{$jspm} bundle %s %s 2> /dev/null";
+        $cmdTpl = "{$jspm} bundle %s %s --log err 2>&1";
         $systemjsDir = $this->config['staticfiles_static_root'] .
                        DIRECTORY_SEPARATOR . $this->config['systemjs_output_dir'];
         if (!is_dir($systemjsDir)) {
@@ -175,16 +175,20 @@ class systemjs extends \phpbb\console\command\command
         }
         $systemjsDir = realpath($systemjsDir);
 
-        var_dump($apps);
-        return;
-
+        chdir($this->config['staticfiles_static_root']);
         foreach ($apps as $app) {
+            $source = $this->config['staticfiles_static_root'] .DIRECTORY_SEPARATOR . $app;
             $file = $systemjsDir . DIRECTORY_SEPARATOR . $app;
             $dest = $file;
-            $cmd = sprintf($cmdTpl, $app, $dest);
+            $cmd = sprintf($cmdTpl, $source, $dest);
             $output->writeln("<comment>Bundling \"{$app}\" ...</comment>");
             $output->writeln($cmd);
             $_output = exec($cmd, $out, $exitCode);
+            if ($_output || $exitCode != 0) {
+                $output->writeln("<error>Bundle for \"$app\" failed with: {$_output}</error>");
+                continue;
+            }
+            return;
 
             // add the System.import statement
             // TODO: extract the last line (sourcemapping) and paste it at the end
