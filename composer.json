@@ -1,8 +1,8 @@
 {
-	"name": "modelbrouwers/mbstyles",
+	"name": "modelbrouwers/brouwers",
 	"type": "phpbb-extension",
 	"description": "Enables specific integrations for Modelbrouwers.nl",
-	"homepage": "https://github.com/modelbrouwers/phpbb-ext-modelbrouwers-styles",
+	"homepage": "https://github.com/modelbrouwers/phpbb-modelbrouwers",
 	"version": "1.0.0-dev",
 	"license": "MIT",
 	"authors": [
