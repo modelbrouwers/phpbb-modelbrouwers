@@ -14,6 +14,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+use modelbrouwers\mbstyles\staticfiles\StaticCache;
+use modelbrouwers\mbstyles\staticfiles\storages\ManifestStaticFilesStorage;
+use modelbrouwers\mbstyles\staticfiles\storages\CombinedManifestStaticFilesStorage;
+
 
 class systemjs extends \phpbb\console\command\command
 {
@@ -175,6 +179,7 @@ class systemjs extends \phpbb\console\command\command
         }
         $systemjsDir = realpath($systemjsDir);
 
+        // we need to be in the jspm package.json search path
         chdir($this->config['staticfiles_static_root']);
         foreach ($apps as $app) {
             $source = $this->config['staticfiles_static_root'] .DIRECTORY_SEPARATOR . $app;
@@ -188,17 +193,16 @@ class systemjs extends \phpbb\console\command\command
                 $output->writeln("<error>Bundle for \"$app\" failed with: {$_output}</error>");
                 continue;
             }
-            return;
 
             // add the System.import statement
-            // TODO: extract the last line (sourcemapping) and paste it at the end
-            $js = file_get_contents($dest);
-            $js .= "\nSystem.import('{$app}');\n";
-            file_put_contents($dest, $js);
+            $js = "\nSystem.import('{$app}');\n";
+            $retval = file_put_contents($dest, $js, FILE_APPEND | LOCK_EX);
 
-            if ($exitCode != 0 || !is_file($dest)) {
+            if (!is_file($dest)) {
                 $output->writeln("<error>Bundle for \"$app\" failed...</error>");
+                continue;
             }
+            return;
 
             // post process
             $hash = md5_file($dest);
