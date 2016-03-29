@@ -107,9 +107,6 @@ class listener implements EventSubscriberInterface
         $storage = new ManifestStaticFilesStorage($this->config, $this->cache);
         $combined_storage = new CombinedManifestStaticFilesStorage($this->config, $this->cache);
 
-
-        var_dump($this->template->twig);
-
         $this->template->assign_vars(array(
             'static' => $storage,
             'combined_static' => $combined_storage

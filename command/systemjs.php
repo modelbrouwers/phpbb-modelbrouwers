@@ -16,7 +16,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use modelbrouwers\mbstyles\staticfiles\StaticCache;
 use modelbrouwers\mbstyles\staticfiles\storages\ManifestStaticFilesStorage;
-use modelbrouwers\mbstyles\staticfiles\storages\CombinedManifestStaticFilesStorage;
 
 
 class systemjs extends \phpbb\console\command\command
@@ -50,6 +49,7 @@ class systemjs extends \phpbb\console\command\command
         $this->path_helper = $path_helper;
         $this->context = $context;
         $this->phpbb_root_path = $phpbb_root_path;
+        $this->cache = new StaticCache($this->config['staticfiles_cache_prefix']);
         parent::__construct($user);
     }
 
@@ -180,11 +180,11 @@ class systemjs extends \phpbb\console\command\command
         $systemjsDir = realpath($systemjsDir);
 
         // we need to be in the jspm package.json search path
+        $storage = new ManifestStaticFilesStorage($this->config, $this->cache);
         chdir($this->config['staticfiles_static_root']);
         foreach ($apps as $app) {
             $source = $this->config['staticfiles_static_root'] .DIRECTORY_SEPARATOR . $app;
-            $file = $systemjsDir . DIRECTORY_SEPARATOR . $app;
-            $dest = $file;
+            $dest = $systemjsDir . DIRECTORY_SEPARATOR . $app;
             $cmd = sprintf($cmdTpl, $source, $dest);
             $output->writeln("<comment>Bundling \"{$app}\" ...</comment>");
             $output->writeln($cmd);
@@ -202,23 +202,24 @@ class systemjs extends \phpbb\console\command\command
                 $output->writeln("<error>Bundle for \"$app\" failed...</error>");
                 continue;
             }
-            return;
 
             // post process
-            $hash = md5_file($dest);
-            $hash = substr($hash, 0, 12);
+            // $hash = md5_file($dest);
+            // $hash = substr($hash, 0, 12);
 
-            $info = pathinfo($file);
+            // $info = pathinfo($file);
 
-            $link = $info['dirname'] . DIRECTORY_SEPARATOR . $info['filename'] . '.' . $hash . '.' . $info['extension'];
-            if (!is_file($link)) {
-                symlink($dest, $link);
-                $relative = substr($link, strlen($settings->STATIC_ROOT) + 1);
-                $output->writeln("<info>Post-processed file \"{$relative}\"</info>");
-            } else {
-                $output->writeln("<info>Skipped post-processing: link exists</info>");
-            }
+            // $link = $info['dirname'] . DIRECTORY_SEPARATOR . $info['filename'] . '.' . $hash . '.' . $info['extension'];
+            // if (!is_file($link)) {
+            //     symlink($dest, $link);
+            //     $relative = substr($link, strlen($settings->STATIC_ROOT) + 1);
+            //     $output->writeln("<info>Post-processed file \"{$relative}\"</info>");
+            // } else {
+            //     $output->writeln("<info>Skipped post-processing: link exists</info>");
+            // }
         }
+
+        $storage->postProcess($apps);
     }
 
     // flatten the nodes
