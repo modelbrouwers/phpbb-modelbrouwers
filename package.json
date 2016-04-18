@@ -1,0 +1,31 @@
+{
+  "name": "phpbb-styles-modelbrouwers",
+  "version": "1.0.0",
+  "description": "phpBB styles for Modelbrouwers.nl",
+  "main": null,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modelbrouwers/phpbb-modelbrouwers.git"
+  },
+  "keywords": [
+    "phpBB",
+    "sass",
+    "modelbrouwers"
+  ],
+  "author": "Sergei Maertens <sergei@modelbrouwers.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modelbrouwers/phpbb-modelbrouwers/issues"
+  },
+  "homepage": "https://github.com/modelbrouwers/phpbb-modelbrouwers#readme",
+  "devDependencies": {
+    "bourbon": "^4.2.7",
+    "bourbon-neat": "^1.7.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.2.0"
+  }
+}
