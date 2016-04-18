@@ -7,8 +7,7 @@ var neat = require('bourbon-neat');
 var autoprefixer = require('gulp-autoprefixer');
 
 
-var sass_src = 'styles/*/sass/*.scss';
-
+var sass_src = 'sass/**/*.scss';
 
 gulp.task('sass', function() {
     gulp.src(sass_src)
@@ -21,10 +20,8 @@ gulp.task('sass', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('../theme/'));
+        .pipe(gulp.dest('./styles'));
 });
-
-
 
 
 // watch task
