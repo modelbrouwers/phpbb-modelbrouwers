@@ -1,0 +1,11 @@
+div.time {
+  @include outer-container(100%);
+  margin-top: 5px;
+
+  > div {
+    @include span-columns(6);
+    &:last-child {
+      text-align: right;
+    }
+  }
+}

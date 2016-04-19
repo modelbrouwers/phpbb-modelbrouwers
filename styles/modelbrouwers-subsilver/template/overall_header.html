@@ -16,13 +16,13 @@
 {% endif %}
 
 {% if S_ENABLE_FEEDS %}
-	{% if S_ENABLE_FEEDS_OVERALL %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ SITENAME }}" href="{{ U_FEED }}">{% endif %}
-	{% if S_ENABLE_FEEDS_NEWS %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ L_FEED_NEWS }}" href="{{ U_FEED }}?mode=news">{% endif %}
-	{% if S_ENABLE_FEEDS_FORUMS %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ L_ALL_FORUMS }}" href="{{ U_FEED }}?mode=forums">{% endif %}
-	{% if S_ENABLE_FEEDS_TOPICS %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ L_FEED_TOPICS_NEW }}" href="{{ U_FEED }}?mode=topics">{% endif %}
-	{% if S_ENABLE_FEEDS_TOPICS_ACTIVE %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ L_FEED_TOPICS_ACTIVE }}" href="{{ U_FEED }}?mode=topics_active">{% endif %}
-	{% if S_ENABLE_FEEDS_FORUM and S_FORUM_ID %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ L_FORUM }} - {{ FORUM_NAME }}" href="{{ U_FEED }}?f={{ S_FORUM_ID }}">{% endif %}
-	{% if S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID %}<link rel="alternate" type="application/atom+xml" title="{{ L_FEED }} - {{ L_TOPIC }} - {{ TOPIC_TITLE }}" href="{{ U_FEED }}?f={{ S_FORUM_ID }}&amp;t={{ S_TOPIC_ID }}">{% endif %}
+	{% if S_ENABLE_FEEDS_OVERALL %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ SITENAME }}" href="{{ U_FEED }}">{% endif %}
+	{% if S_ENABLE_FEEDS_NEWS %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FEED_NEWS') }}" href="{{ U_FEED }}?mode=news">{% endif %}
+	{% if S_ENABLE_FEEDS_FORUMS %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('ALL_FORUMS') }}" href="{{ U_FEED }}?mode=forums">{% endif %}
+	{% if S_ENABLE_FEEDS_TOPICS %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FEED_TOPICS_NEW') }}" href="{{ U_FEED }}?mode=topics">{% endif %}
+	{% if S_ENABLE_FEEDS_TOPICS_ACTIVE %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FEED_TOPICS_ACTIVE') }}" href="{{ U_FEED }}?mode=topics_active">{% endif %}
+	{% if S_ENABLE_FEEDS_FORUM and S_FORUM_ID %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('FORUM') }} - {{ FORUM_NAME }}" href="{{ U_FEED }}?f={{ S_FORUM_ID }}">{% endif %}
+	{% if S_ENABLE_FEEDS_TOPIC and S_TOPIC_ID %}<link rel="alternate" type="application/atom+xml" title="{{ lang('FEED') }} - {{ lang('TOPIC') }} - {{ TOPIC_TITLE }}" href="{{ U_FEED }}?f={{ S_FORUM_ID }}&amp;t={{ S_TOPIC_ID }}">{% endif %}
 	<!-- EVENT overall_header_feeds -->
 {% endif %}
 
@@ -80,10 +80,10 @@ Based on style:   Allan Style - SUBSILVER -->
 			<div class="inner">
 
 			<div id="site-description">
-				<a id="logo" class="logo" href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ L_SITE_HOME }}{% else %}{{ L_INDEX }}{% endif %}">{{ SITE_LOGO_IMG }}</a>
+				<a id="logo" class="logo" href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ lang('SITE_HOME') }}{% else %}{{ lang('INDEX') }}{% endif %}">{{ SITE_LOGO_IMG }}</a>
 				<h1>{{ SITENAME }}</h1>
 				<p>{{ SITE_DESCRIPTION }}</p>
-				<p class="skiplink"><a href="#start_here">{{ L_SKIP }}</a></p>
+				<p class="skiplink"><a href="#start_here">{{ lang('SKIP') }}</a></p>
 			</div>
 
 			<!-- EVENT overall_header_searchbox_before -->
@@ -91,9 +91,9 @@ Based on style:   Allan Style - SUBSILVER -->
 			<div id="search-box" class="search-box search-header" role="search">
 				<form action="{{ U_SEARCH }}" method="get" id="search">
 				<fieldset>
-					<input name="keywords" id="keywords" type="search" maxlength="128" title="{{ L_SEARCH_KEYWORDS }}" class="inputbox search tiny" size="20" value="{{ SEARCH_WORDS }}" placeholder="{{ L_SEARCH_MINI }}" />
-					<button class="button icon-button search-icon" type="submit" title="{{ L_SEARCH }}">{{ L_SEARCH }}</button>
-					<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ L_SEARCH_ADV }}">{{ L_SEARCH_ADV }}</a>
+					<input name="keywords" id="keywords" type="search" maxlength="128" title="{{ lang('SEARCH_KEYWORDS') }}" class="inputbox search tiny" size="20" value="{{ SEARCH_WORDS }}" placeholder="{{ lang('SEARCH_MINI') }}" />
+					<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">{{ lang('SEARCH') }}</button>
+					<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">{{ lang('SEARCH_ADV') }}</a>
 					{{ S_SEARCH_HIDDEN_FIELDS }}
 				</fieldset>
 				</form>
@@ -117,7 +117,7 @@ Based on style:   Allan Style - SUBSILVER -->
 		{% if S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) %}
 		<div id="information" class="rules">
 			<div class="inner">
-				<strong>{{ L_INFORMATION }}{{ L_COLON }}</strong> {{ L_BOARD_DISABLED }}
+				<strong>{{ lang('INFORMATION') }}{{ lang('COLON') }}</strong> {{ lang('BOARD_DISABLED') }}
 			</div>
 		</div>
 		{% endif %}

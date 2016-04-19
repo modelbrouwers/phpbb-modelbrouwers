@@ -5694,6 +5694,34 @@ span.imageset {
   padding-top: 58px;
 }
 
+div.time {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+div.time::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+div.time > div {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+}
+
+div.time > div:last-child {
+  margin-right: 0;
+}
+
+div.time > div:last-child {
+  text-align: right;
+}
+
 .forums-header {
   max-width: 100%;
   margin-left: auto;
