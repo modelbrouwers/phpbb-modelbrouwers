@@ -1,3 +1,9 @@
+<div class="forums-header">
+	<div class="forums">{L_FORUM}</div>
+	<div class="topics">{L_TOPICS}</div>
+	<div class="posts">{L_POSTS}</div>
+	<div class="lastpost"><span>{L_LAST_POST}</span></div>
+</div>
 
 <!-- BEGIN forumrow -->
 	<!-- IF (forumrow.S_IS_CAT and not forumrow.S_FIRST_ROW) or forumrow.S_NO_CAT  -->
@@ -16,9 +22,6 @@
 					<!-- EVENT forumlist_body_category_header_row_prepend -->
 					<dl class="icon">
 						<dt><div class="list-inner"><!-- IF forumrow.S_IS_CAT --><a href="{forumrow.U_VIEWFORUM}">{forumrow.FORUM_NAME}</a><!-- ELSE -->{L_FORUM}<!-- ENDIF --></div></dt>
-						<dd class="topics">{L_TOPICS}</dd>
-						<dd class="posts">{L_POSTS}</dd>
-						<dd class="lastpost"><span>{L_LAST_POST}</span></dd>
 					</dl>
 					<!-- EVENT forumlist_body_category_header_row_append -->
 				</li>

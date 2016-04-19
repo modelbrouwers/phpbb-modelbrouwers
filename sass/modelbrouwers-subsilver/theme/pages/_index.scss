@@ -1,0 +1,29 @@
+.forums-header {
+
+  @include outer-container(100%);
+  @include background-image(linear-gradient(to bottom, #00679B, #3A95C2));
+  border-top: solid 3px #3E88AE;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  > div {
+    text-align: center;
+    color: #FFA34F;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  > .forums {
+    @include span-columns(8);
+  }
+
+  > .topics,
+  > .posts {
+    @include span-columns(1);
+
+  }
+  > .lastpost {
+    @include span-columns(2);
+    @include omega;
+  }
+}
