@@ -40,10 +40,10 @@
 		</li>
 
 		<!-- EVENT overall_header_navigation_prepend -->
-		<li class="small-icon icon-faq" <!-- IF not S_USER_LOGGED_IN -->data-skip-responsive="true"<!-- ELSE -->data-last-responsive="true"<!-- ENDIF -->><a href="{{ U_FAQ }}" rel="help" title="{{ lang('FAQ_EXPLAIN') }}" role="menuitem">{{ L_FAQ }}</a></li>
+		<li class="small-icon icon-faq" <!-- IF not S_USER_LOGGED_IN -->data-skip-responsive="true"<!-- ELSE -->data-last-responsive="true"<!-- ENDIF -->><a href="{{ U_FAQ }}" rel="help" title="{{ lang('FAQ_EXPLAIN') }}" role="menuitem">{{ lang('FAQ') }}</a></li>
 		<!-- EVENT overall_header_navigation_append -->
-		<!-- IF U_ACP --><li class="small-icon icon-acp" data-last-responsive="true"><a href="{{ U_ACP }}" title="{{ lang('ACP') }}" role="menuitem">{{ L_ACP_SHORT }}</a></li><!-- ENDIF -->
-		<!-- IF U_MCP --><li class="small-icon icon-mcp" data-last-responsive="true"><a href="{{ U_MCP }}" title="{{ lang('MCP') }}" role="menuitem">{{ L_MCP_SHORT }}</a></li><!-- ENDIF -->
+		<!-- IF U_ACP --><li class="small-icon icon-acp" data-last-responsive="true"><a href="{{ U_ACP }}" title="{{ lang('ACP') }}" role="menuitem">{{ lang('ACP_SHORT') }}</a></li><!-- ENDIF -->
+		<!-- IF U_MCP --><li class="small-icon icon-mcp" data-last-responsive="true"><a href="{{ U_MCP }}" title="{{ lang('MCP') }}" role="menuitem">{{ lang('MCP_SHORT') }}</a></li><!-- ENDIF -->
 
 	<!-- IF S_REGISTERED_USER -->
 		<!-- EVENT navbar_header_user_profile_prepend -->
@@ -58,13 +58,13 @@
 
 						<!-- EVENT navbar_header_profile_list_before -->
 
-						<li class="small-icon icon-ucp"><a href="{{ U_PROFILE }}" title="{{ lang('PROFILE') }}" role="menuitem">{{ L_PROFILE }}</a></li>
-						<li class="small-icon icon-profile"><a href="{{ U_USER_PROFILE }}" title="{{ lang('READ_PROFILE') }}" role="menuitem">{{ L_READ_PROFILE }}</a></li>
+						<li class="small-icon icon-ucp"><a href="{{ U_PROFILE }}" title="{{ lang('PROFILE') }}" role="menuitem">{{ lang('PROFILE') }}</a></li>
+						<li class="small-icon icon-profile"><a href="{{ U_USER_PROFILE }}" title="{{ lang('READ_PROFILE') }}" role="menuitem">{{ lang('READ_PROFILE') }}</a></li>
 
 						<!-- EVENT navbar_header_profile_list_after -->
 
 						<li class="separator"></li>
-						<li class="small-icon icon-logout"><a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}" accesskey="x" role="menuitem">{{ L_LOGIN_LOGOUT }}</a></li>
+						<li class="small-icon icon-logout"><a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}" accesskey="x" role="menuitem">{{ lang('LOGIN_LOGOUT') }}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -83,7 +83,7 @@
 		<!-- ENDIF -->
 		<!-- EVENT navbar_header_user_profile_append -->
 	<!-- ELSE -->
-		<li class="small-icon icon-logout rightside"  data-skip-responsive="true"><a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}" accesskey="x" role="menuitem">{{ L_LOGIN_LOGOUT }}</a></li>
+		<li class="small-icon icon-logout rightside"  data-skip-responsive="true"><a href="{{ U_LOGIN_LOGOUT }}" title="{{ lang('LOGIN_LOGOUT') }}" accesskey="x" role="menuitem">{{ lang('LOGIN_LOGOUT') }}</a></li>
 		<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
 			<li class="small-icon icon-register rightside" data-skip-responsive="true"><a href="{{ U_REGISTER }}" role="menuitem">{{ lang('REGISTER') }}</a></li>
 		<!-- ENDIF -->
@@ -134,7 +134,7 @@
 		<!-- EVENT overall_header_breadcrumbs_after -->
 
 		<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
-			<li class="rightside responsive-search" style="display: none;"><a href="{{ U_SEARCH }}" title="{{ lang('SEARCH_ADV_EXPLAIN') }}" role="menuitem">{{ L_SEARCH }}</a></li>
+			<li class="rightside responsive-search" style="display: none;"><a href="{{ U_SEARCH }}" title="{{ lang('SEARCH_ADV_EXPLAIN') }}" role="menuitem">{{ lang('SEARCH') }}</a></li>
 		<!-- ENDIF -->
 	</ul>
 

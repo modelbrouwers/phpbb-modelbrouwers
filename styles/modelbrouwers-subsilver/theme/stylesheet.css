@@ -5694,6 +5694,10 @@ span.imageset {
   padding-top: 58px;
 }
 
+body {
+  color: #323D4F;
+}
+
 div.time {
   max-width: 100%;
   margin-left: auto;
