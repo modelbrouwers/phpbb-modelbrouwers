@@ -312,28 +312,30 @@ ol ol ul, ol ul ul, ul ol ul, ul ul ul {
 /* Horizontal lists
 ----------------------------------------*/
 .navbar ul.linklist {
-	padding: 2px 0;
+	padding: 0;
 }
 
 ul.linklist {
 	display: block;
 	margin: 0;
+
+	> li {
+		float: left;
+		line-height: 2em;
+		list-style-type: none;
+		margin-right: 7px;
+		width: auto;
+	}
 }
 
 #cp-main .panel {
 	padding: 5px 10px;
 }
 
-ul.linklist > li {
-	float: left;
-	font-size: 1.1em;
-	line-height: 2.2em;
-	list-style-type: none;
-	margin-right: 7px;
-	width: auto;
-}
 
-ul.linklist > li.rightside, p.rightside, a.rightside {
+ul.linklist > li.rightside,
+p.rightside,
+a.rightside {
 	float: right;
 	margin-right: 0;
 	margin-left: 7px;
