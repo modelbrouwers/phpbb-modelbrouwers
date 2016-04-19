@@ -2,33 +2,39 @@
 $dark-blue: #00679B;
 $light-blue: #3A95C2;
 
-.forums-header {
-  @include outer-container(100%);
-  @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
-  border-top: solid 3px #3E88AE;
-  border-bottom: solid 1px #A9B8C2;
-  padding-top: 5px;
-  padding-bottom: 5px;
+@include display-context(table) {
+  .forums-header {
+    @include outer-container(100%);
+    @include fill-parent;
+    @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
+    display: table;
 
-  > div {
-    text-align: center;
-    color: #FFA34F;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
+    border-top: solid 3px #3E88AE;
+    border-bottom: solid 1px #A9B8C2;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
-  > .forums {
-    @include span-columns(8);
-  }
 
-  > .topics,
-  > .posts {
-    @include span-columns(1);
+    > div {
+      text-align: center;
+      color: #FFA34F;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
 
-  }
-  > .lastpost {
-    @include span-columns(2);
-    @include omega;
+    > .forums {
+      @include span-columns(8);
+    }
+
+    > .topics,
+    > .posts {
+      @include span-columns(1);
+
+    }
+    > .lastpost {
+      @include span-columns(2);
+      @include omega;
+    }
   }
 }
 
@@ -43,6 +49,37 @@ $light-blue: #3A95C2;
     h4 {
       font-size: 1.1em;
       font-family: inherit;
+    }
+  }
+}
+
+@include display-context(table) {
+  .topiclist.forums {
+    .row {
+      @include outer-container(100%);
+      @include fill-parent;
+      display: table;
+    }
+
+    .icon {
+      @include span-columns(1);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .description {
+      @include span-columns(7);
+    }
+
+    .topics,
+    .posts {
+      @include span-columns(1);
+      text-align: center;
+    }
+
+    .lastpost {
+      @include span-columns(2);
+      @include omega;
     }
   }
 }
