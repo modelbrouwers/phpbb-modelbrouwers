@@ -300,7 +300,6 @@ ol ol ul, ol ul ul, ul ol ul, ul ul ul {
 
 .forabg {
   background: transparent none repeat-x 0 0;
-  margin-bottom: 4px;
   padding: 0;
   clear: both;
 }
@@ -3858,7 +3857,6 @@ hr {
 
 .forabg {
   background-color: #ececec;
-  background-image: url("./images/bg_list.gif");
   border: 1px solid #a9b8c2;
 }
 
@@ -5732,6 +5730,7 @@ div.time > div:last-child {
   margin-right: auto;
   background-image: linear-gradient(to bottom, #00679B, #3A95C2);
   border-top: solid 3px #3E88AE;
+  border-bottom: solid 1px #A9B8C2;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -5783,6 +5782,26 @@ div.time > div:last-child {
 
 .forums-header > .lastpost:last-child {
   margin-right: 0;
+}
+
+.forabg > .forums {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right bottom, #C8D0D5, #E0E5E9);
+  padding: 5px;
+  font-weight: bold;
+}
+
+.forabg > .forums::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.forabg > .forums h4 {
+  font-size: 1.1em;
+  font-family: inherit;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

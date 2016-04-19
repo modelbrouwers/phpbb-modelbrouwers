@@ -11,7 +11,6 @@
 	{% if (forumrow.S_IS_CAT and not forumrow.S_FIRST_ROW) or forumrow.S_NO_CAT  %}
 			</ul>
 
-			</div>
 		</div>
 	{% endif %}
 
@@ -19,22 +18,17 @@
 
 	{% if forumrow.S_IS_CAT or forumrow.S_FIRST_ROW  or forumrow.S_NO_CAT %}
 		<div class="forabg">
-			<div class="inner">
-			<ul class="topiclist">
-				<li class="header">
-					<!-- EVENT forumlist_body_category_header_row_prepend -->
-					<dl class="icon">
-						<dt><div class="list-inner">
-							{% if forumrow.S_IS_CAT %}
-								<a href="{forumrow.U_VIEWFORUM}">{{ forumrow.FORUM_NAME }}</a>
-							{% else %}
-								{{ lang('FORUM') }}
-							{% endif %}
-						</div></dt>
-					</dl>
-					<!-- EVENT forumlist_body_category_header_row_append -->
-				</li>
-			</ul>
+			<!-- EVENT forumlist_body_category_header_row_prepend -->
+			<div class="forums">
+				<h4>
+				{% if forumrow.S_IS_CAT %}
+					<a href="{forumrow.U_VIEWFORUM}">{{ forumrow.FORUM_NAME }}</a>
+				{% else %}
+					{{ lang('FORUM') }}
+				{% endif %}
+				</h4>
+			</div>
+			<!-- EVENT forumlist_body_category_header_row_append -->
 			<ul class="topiclist forums">
 	{% endif %}
 

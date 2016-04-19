@@ -1,8 +1,12 @@
-.forums-header {
+// dark-blue gradient
+$dark-blue: #00679B;
+$light-blue: #3A95C2;
 
+.forums-header {
   @include outer-container(100%);
-  @include background-image(linear-gradient(to bottom, #00679B, #3A95C2));
+  @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
   border-top: solid 3px #3E88AE;
+  border-bottom: solid 1px #A9B8C2;
   padding-top: 5px;
   padding-bottom: 5px;
 
@@ -25,5 +29,20 @@
   > .lastpost {
     @include span-columns(2);
     @include omega;
+  }
+}
+
+.forabg {
+
+  > .forums {
+    @include outer-container(100%);
+    @include background-image(linear-gradient(to right bottom, #C8D0D5, #E0E5E9));
+    padding: 5px;
+    font-weight: bold;
+
+    h4 {
+      font-size: 1.1em;
+      font-family: inherit;
+    }
   }
 }
