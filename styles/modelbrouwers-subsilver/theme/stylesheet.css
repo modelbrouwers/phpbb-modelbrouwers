@@ -5830,14 +5830,14 @@ div.time > div:last-child {
 
 .topiclist.forums .icon {
   display: table-cell;
-  width: 8.33333%;
+  width: 4.16667%;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 .topiclist.forums .description {
   display: table-cell;
-  width: 58.33333%;
+  width: 62.5%;
 }
 
 .topiclist.forums .topics,

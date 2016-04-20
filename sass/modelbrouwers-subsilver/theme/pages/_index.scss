@@ -92,23 +92,23 @@ $cell-border: solid 1px #a9b8c2;
     }
 
     .icon {
-      @include span-columns(1);
+      @include span-columns(1 of 24);
       background-repeat: no-repeat;
       background-position: center center;
     }
 
     .description {
-      @include span-columns(7);
+      @include span-columns(15 of 24);
     }
 
     .topics,
     .posts {
-      @include span-columns(1);
+      @include span-columns(2 of 24);
       text-align: center;
     }
 
     .lastpost {
-      @include span-columns(2);
+      @include span-columns(4 of 24);
       @include omega;
       text-align: center;
     }

@@ -61,20 +61,20 @@
 					</p>
 				{% endif %}
 
+				{% if forumrow.subforum and forumrow.S_LIST_SUBFORUMS %}
+					<!-- EVENT forumlist_body_subforums_before -->
+					<p>
+						<strong>{{ forumrow.L_SUBFORUM_STR }}{{ lang('COLON') }}</strong>
+						{% for subforum in forumrow.subforum %}
+							<a href="{{ subforum.U_SUBFORUM }}" class="subforum {{ subforum.S_UNREAD ? 'unread' : 'read' }}"
+								title="{{ subforum.S_UNREAD ? lang('UNREAD_POSTS') : lang('NO_UNREAD_POSTS') }}">
+								{{ LAST_POST_IMG }} {{ subforum.SUBFORUM_NAME }}</a>{% if not subforum.S_LAST_ROW %}{{ lang('COMMA_SEPARATOR') }}{% endif %}
+						{% endfor %}
+						<!-- EVENT forumlist_body_subforums_after -->
+					</p>
+				{% endif %}
 
 				{#
-				<!-- IF forumrow.S_UNREAD_FORUM --><a href="{forumrow.U_VIEWFORUM}" class="icon-link"></a><!-- ENDIF -->
-
-
-				<!-- IF .forumrow.subforum and forumrow.S_LIST_SUBFORUMS -->
-					<!-- EVENT forumlist_body_subforums_before -->
-					<br /><strong>{forumrow.L_SUBFORUM_STR}{{ lang('COLON') }}</strong>
-					<!-- BEGIN subforum -->
-						<a href="{forumrow.subforum.U_SUBFORUM}" class="subforum<!-- IF forumrow.subforum.S_UNREAD --> unread<!-- ELSE --> read<!-- ENDIF -->" title="<!-- IF forumrow.subforum.S_UNREAD -->{{ lang('UNREAD_POSTS') }}<!-- ELSE -->{{ lang('NO_UNREAD_POSTS') }}<!-- ENDIF -->">{forumrow.subforum.SUBFORUM_NAME}</a><!-- IF not forumrow.subforum.S_LAST_ROW -->{{ lang('COMMA_SEPARATOR') }}<!-- ENDIF -->
-					<!-- END subforum -->
-					<!-- EVENT forumlist_body_subforums_after -->
-				<!-- ENDIF -->
-
 
 				<!-- IF not S_IS_BOT -->
 				<div class="responsive-show" style="display: none;">
@@ -104,14 +104,14 @@
 					{% endif %}
 
 					{% if forumrow.LAST_POST_TIME %}
-						{#
+						{#-
 						{% if forumrow.S_DISPLAY_SUBJECT %}
 							<!-- EVENT forumlist_body_last_post_title_prepend -->
 							<a href="{{ forumrow.U_LAST_POST }}" title="{{ forumrow.LAST_POST_SUBJECT }}" class="lastsubject">
 								{{ forumrow.LAST_POST_SUBJECT_TRUNCATED }}
 							</a> <br />
 						{% endif %}
-						#}
+						-#}
 						<p class="details">{{ forumrow.LAST_POST_TIME }}</p>
 						<p class="details">
 							{{ forumrow.LAST_POSTER_FULL }}
