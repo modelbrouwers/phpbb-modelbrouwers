@@ -3804,7 +3804,6 @@ input.search {
 Colours and backgrounds for common.css
 -------------------------------------------------------------- */
 html, body {
-  color: black;
   background-color: #FFFFFF;
 }
 
@@ -3857,7 +3856,6 @@ hr {
 
 .forabg {
   background-color: #ececec;
-  border: 1px solid #a9b8c2;
 }
 
 .forumbg {
@@ -5729,10 +5727,10 @@ div.time > div:last-child {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  background-image: linear-gradient(to bottom, #00679B, #3A95C2);
+  background-image: linear-gradient(to bottom, #00679b, #3a95c2);
   display: table;
   border-top: solid 3px #3E88AE;
-  border-bottom: solid 1px #A9B8C2;
+  border-bottom: solid 1px #a9b8c2;
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -5767,6 +5765,18 @@ div.time > div:last-child {
   margin-right: 0;
 }
 
+.forabg {
+  border: solid 1px #a9b8c2;
+}
+
+.forabg:first-child {
+  border-top: solid 1px #a9b8c2;
+}
+
+.forabg > .category {
+  border-bottom: solid 3px #C7D0D6;
+}
+
 .forabg > .forums {
   max-width: 100%;
   margin-left: auto;
@@ -5793,12 +5803,24 @@ div.time > div:last-child {
   margin-right: auto;
   width: 100%;
   display: table;
+  min-height: 40px;
+  border-top: solid 1px #a9b8c2;
 }
 
 .topiclist.forums .row::after {
   clear: both;
   content: "";
   display: table;
+}
+
+.topiclist.forums .row > div {
+  padding: 4px;
+  vertical-align: middle;
+  border-right: solid 1px #a9b8c2;
+}
+
+.topiclist.forums .row > div:last-child {
+  border-right: none;
 }
 
 .topiclist.forums .icon {
@@ -5811,6 +5833,11 @@ div.time > div:last-child {
 .topiclist.forums .description {
   display: table-cell;
   width: 58.33333%;
+}
+
+.topiclist.forums .description p {
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 
 .topiclist.forums .topics,
