@@ -83,6 +83,11 @@ $cell-border: solid 1px #a9b8c2;
         &:last-child {
           border-right: none;
         }
+
+        p {
+          margin-top: 0;
+          margin-bottom: 4px;
+        }
       }
     }
 
@@ -94,10 +99,6 @@ $cell-border: solid 1px #a9b8c2;
 
     .description {
       @include span-columns(7);
-      p {
-        margin-top: 0;
-        margin-bottom: 4px;
-      }
     }
 
     .topics,
@@ -109,6 +110,7 @@ $cell-border: solid 1px #a9b8c2;
     .lastpost {
       @include span-columns(2);
       @include omega;
+      text-align: center;
     }
   }
 }

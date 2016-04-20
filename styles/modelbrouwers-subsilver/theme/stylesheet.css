@@ -5823,6 +5823,11 @@ div.time > div:last-child {
   border-right: none;
 }
 
+.topiclist.forums .row > div p {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
 .topiclist.forums .icon {
   display: table-cell;
   width: 8.33333%;
@@ -5833,11 +5838,6 @@ div.time > div:last-child {
 .topiclist.forums .description {
   display: table-cell;
   width: 58.33333%;
-}
-
-.topiclist.forums .description p {
-  margin-top: 0;
-  margin-bottom: 4px;
 }
 
 .topiclist.forums .topics,
@@ -5851,6 +5851,7 @@ div.time > div:last-child {
   display: table-cell;
   width: 16.66667%;
   margin-right: 0;
+  text-align: center;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

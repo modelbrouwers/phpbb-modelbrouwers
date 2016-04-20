@@ -97,29 +97,31 @@
 				<div class="topics">{{ forumrow.TOPICS }}</div>
 				<div class="posts">{{ forumrow.POSTS }}</div>
 				<div class="lastpost">
-					{#
 					{% if forumrow.U_UNAPPROVED_TOPICS %}
-						<a href="{forumrow.U_UNAPPROVED_TOPICS}">{{ UNAPPROVED_IMG }}</a>
+						<a href="{{ forumrow.U_UNAPPROVED_TOPICS }}">{{ UNAPPROVED_IMG }}</a>
 					{% elseif forumrow.U_UNAPPROVED_POSTS %}
-						<a href="{forumrow.U_UNAPPROVED_POSTS}">{{ UNAPPROVED_POST_IMG }}</a>
+						<a href="{{ forumrow.U_UNAPPROVED_POSTS }}">{{ UNAPPROVED_POST_IMG }}</a>
 					{% endif %}
-					{% if forumrow.LAST_POST_TIME %} {{ lang('LAST_POST') }}
+
+					{% if forumrow.LAST_POST_TIME %}
+						{#
 						{% if forumrow.S_DISPLAY_SUBJECT %}
 							<!-- EVENT forumlist_body_last_post_title_prepend -->
 							<a href="{{ forumrow.U_LAST_POST }}" title="{{ forumrow.LAST_POST_SUBJECT }}" class="lastsubject">
 								{{ forumrow.LAST_POST_SUBJECT_TRUNCATED }}
 							</a> <br />
 						{% endif %}
-						{{ lang('POST_BY_AUTHOR') }} {{ forumrow.LAST_POSTER_FULL }}
-						{% if not S_IS_BOT %}
-							<a href="{forumrow.U_LAST_POST}">{{ LAST_POST_IMG }}</a>
-						{% endif %}
-						{{ forumrow.LAST_POST_TIME }}
+						#}
+						<p class="details">{{ forumrow.LAST_POST_TIME }}</p>
+						<p class="details">
+							{{ forumrow.LAST_POSTER_FULL }}
+							{% if not S_IS_BOT %}
+								<a href="{{ forumrow.U_LAST_POST }}">{{ LAST_POST_IMG }}</a>
+							{% endif %}
+						</p>
 					{% else %}
-						{{ lang('NO_POSTS') }}
-						<br />&nbsp;
+						<p class="details">{{ lang('NO_POSTS') }}</p>
 					{% endif %}
-					#}
 				</div>
 			{% else %}
 				<div>&nbsp;</div>
