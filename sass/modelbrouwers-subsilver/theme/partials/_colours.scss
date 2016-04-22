@@ -259,10 +259,6 @@ p.post-notice.reported:before, p.post-notice.error:before {
 --------------------------------------------------------------
 Colours and backgrounds for links.css
 -------------------------------------------------------------- */
-
-a { color: #105289; text-shadow: 0 0 1px white, 0 0 1px #5f95bf; }
-a:hover	{ color: #004768; }
-.username, .username-coloured { text-shadow: 0 0 3px white, 0 0 1px; }
 a.exlinks { color: #105289 !important; }
 
 /* Links on gradient backgrounds */

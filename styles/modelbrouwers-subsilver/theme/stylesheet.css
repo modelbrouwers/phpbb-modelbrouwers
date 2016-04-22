@@ -1460,6 +1460,14 @@ ul.linklist:after,
 
 /* Link Styles
 ---------------------------------------- */
+a {
+  color: #006597;
+}
+
+a:hover {
+  color: #D46400;
+}
+
 a, a.forumtitle,
 a.topictitle, a.lastsubject, .postprofile a,
 .postprofile dt.author a, .search .postprofile a,
@@ -1526,6 +1534,7 @@ a.topictitle {
   font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
   font-size: 1.2em;
   font-weight: bold;
+  color: #069;
 }
 
 a.lastsubject {
@@ -1536,10 +1545,6 @@ a.lastsubject {
 .postlink {
   text-decoration: none;
   padding-bottom: 0;
-}
-
-.postlink:hover {
-  text-decoration: none;
 }
 
 .signature a {
@@ -1656,19 +1661,6 @@ a.feed-icon-forum {
 
 a.anchor {
   display: block;
-}
-
-/* Post body links */
-.postlink {
-  color: #105289;
-}
-
-.postlink:hover {
-  color: #004768;
-}
-
-.postlink:visited {
-  color: #005075;
 }
 
 /* Content Styles
@@ -4069,19 +4061,6 @@ p.post-notice.reported:before, p.post-notice.error:before {
 --------------------------------------------------------------
 Colours and backgrounds for links.css
 -------------------------------------------------------------- */
-a {
-  color: #105289;
-  text-shadow: 0 0 1px white, 0 0 1px #5f95bf;
-}
-
-a:hover {
-  color: #004768;
-}
-
-.username, .username-coloured {
-  text-shadow: 0 0 3px white, 0 0 1px;
-}
-
 a.exlinks {
   color: #105289 !important;
 }
@@ -5690,8 +5669,31 @@ body {
   color: #323D4F;
 }
 
+body > .link-list {
+  margin-top: 25px;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1152px;
+}
+
 .subforum.unread .imageset.icon_topic_latest {
   background-image: url("./images/icon_topic_newest.gif");
+}
+
+#wrap {
+  margin-top: 25px;
+}
+
+#announcement {
+  text-align: center;
+  margin-top: 25px;
+}
+
+#announcement:empty {
+  margin-top: 0;
 }
 
 div.time {

@@ -1,7 +1,30 @@
 body {
   color: #323D4F;
+
+  > .link-list {
+    margin-top: 25px;
+  }
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1152px;
 }
 
 .subforum.unread .imageset.icon_topic_latest {
-    background-image: url("./images/icon_topic_newest.gif");
+  background-image: url("./images/icon_topic_newest.gif");
+}
+
+#wrap {
+  margin-top: 25px;
+}
+
+#announcement {
+  text-align: center;
+  margin-top: 25px;
+
+  &:empty {
+    margin-top: 0;
+  }
 }
