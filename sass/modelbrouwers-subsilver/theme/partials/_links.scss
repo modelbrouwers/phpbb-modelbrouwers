@@ -80,7 +80,6 @@ a.lastsubject {
 /* Post body links */
 .postlink {
 	text-decoration: none;
-	border-bottom: 1px solid transparent;
 	padding-bottom: 0;
 
 	&:hover {
@@ -206,4 +205,16 @@ a.feed-icon-forum {
 
 a.anchor {
 	display: block;
+}
+
+/* Post body links */
+.postlink {
+	color: #105289;
+
+	&:hover {
+		color: #004768;
+	}
+	&:visited {
+		color: #005075;
+	}
 }

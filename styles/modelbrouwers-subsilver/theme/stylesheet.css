@@ -1535,7 +1535,6 @@ a.lastsubject {
 /* Post body links */
 .postlink {
   text-decoration: none;
-  border-bottom: 1px solid transparent;
   padding-bottom: 0;
 }
 
@@ -1657,6 +1656,19 @@ a.feed-icon-forum {
 
 a.anchor {
   display: block;
+}
+
+/* Post body links */
+.postlink {
+  color: #105289;
+}
+
+.postlink:hover {
+  color: #004768;
+}
+
+.postlink:visited {
+  color: #005075;
 }
 
 /* Content Styles
@@ -4086,22 +4098,6 @@ a.exlinks {
 /* Notification mark read link */
 .dropdown-extended a.mark_read {
   background-color: #FFFFFF;
-}
-
-/* Post body links */
-.postlink {
-  border-bottom-color: #105289;
-  color: #105289;
-}
-
-.postlink:visited {
-  border-bottom-color: #005075;
-  color: #005075;
-}
-
-.postlink:hover {
-  background-color: #CED7DB;
-  color: #004768;
 }
 
 .signature a, .signature a:hover {

@@ -279,22 +279,6 @@ a.exlinks { color: #105289 !important; }
 	background-color: #FFFFFF;
 }
 
-/* Post body links */
-.postlink {
-	border-bottom-color: #105289;
-	color: #105289;
-}
-
-.postlink:visited {
-	border-bottom-color: #005075;
-	color: #005075;
-}
-
-.postlink:hover {
-	background-color: #CED7DB;
-	color: #004768;
-}
-
 .signature a, .signature a:hover {
 	background-color: transparent;
 }
