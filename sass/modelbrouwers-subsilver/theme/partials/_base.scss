@@ -1,3 +1,7 @@
 body {
   color: #323D4F;
 }
+
+.subforum.unread .imageset.icon_topic_latest {
+    background-image: url("./images/icon_topic_newest.gif");
+}
