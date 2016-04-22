@@ -67,7 +67,7 @@
 						<strong>{{ forumrow.L_SUBFORUM_STR }}{{ lang('COLON') }}</strong>
 						{% for subforum in forumrow.subforum %}
 							<a href="{{ subforum.U_SUBFORUM }}" class="subforum {{ subforum.S_UNREAD ? 'unread' : 'read' }}"
-								title="{{ subforum.S_UNREAD ? lang('UNREAD_POSTS') : lang('NO_UNREAD_POSTS') }}">
+								title="{{ subforum.S_UNREAD ? lang('UNREAD_POSTS') : lang('NO_UNREAD_POSTS') }}" data-id="{{ subforum.ID }}">
 								{{ LAST_POST_IMG }} {{ subforum.SUBFORUM_NAME }}</a>{% if not subforum.S_LAST_ROW %}{{ lang('COMMA_SEPARATOR') }}{% endif %}
 						{% endfor %}
 						<!-- EVENT forumlist_body_subforums_after -->

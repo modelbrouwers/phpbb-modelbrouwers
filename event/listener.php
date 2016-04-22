@@ -99,6 +99,8 @@ class listener implements EventSubscriberInterface
         return array(
             'core.page_footer'                  => 'core_page_footer',
             'core.acp_board_config_edit_add'    => 'core_config',
+            // 'core.display_forums_modify_forum_rows' => 'core_display_forums_modify_forum_rows',
+            'core.display_forums_modify_template_vars'   => 'core_display_forums_modify_template_vars',
         );
     }
 
@@ -165,5 +167,28 @@ class listener implements EventSubscriberInterface
                 array_slice($display_vars['vars'], $position)
             );
         $event['display_vars'] = $display_vars;
+    }
+
+    public function core_display_forums_modify_template_vars($event) {
+        $subforums_row = $event['subforums_row'];
+        foreach ($subforums_row as $i => &$subforum) {
+            $querystring = parse_url($subforum['U_SUBFORUM'], PHP_URL_QUERY);
+            parse_str($querystring, $query);
+            $subforum['ID'] = $query['f'];
+        }
+        unset($subforum);
+        $event['subforums_row'] = $subforums_row;
+    }
+
+    public function core_display_forums_modify_forum_rows($event) {
+        $subforums = $event['subforums'];
+        foreach ($subforums as &$forums) {
+            foreach ($forums as $id => &$subforum) {
+                $subforum['id'] = $id;
+            }
+            unset($subforum);
+        }
+        unset($forums);
+        $event['subforums'] = $subforums;
     }
 }
