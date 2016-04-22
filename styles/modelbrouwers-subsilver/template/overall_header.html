@@ -75,33 +75,19 @@ Based on style:   Allan Style - SUBSILVER -->
 <!-- EVENT overall_header_body_before -->
 
 <div id="header-subsilver">
-	<a id="top" class="anchor" accesskey="t"></a>
-		<div class="headerbar" role="banner">
-			<div class="inner">
-
-			<div id="site-description">
-				<a id="logo" class="logo" href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ lang('SITE_HOME') }}{% else %}{{ lang('INDEX') }}{% endif %}">{{ SITE_LOGO_IMG }}</a>
-				<h1>{{ SITENAME }}</h1>
-				<p>{{ SITE_DESCRIPTION }}</p>
-				<p class="skiplink"><a href="#start_here">{{ lang('SKIP') }}</a></p>
-			</div>
-
-			<!-- EVENT overall_header_searchbox_before -->
-			{% if S_DISPLAY_SEARCH and not S_IN_SEARCH %}
-			<div id="search-box" class="search-box search-header" role="search">
-				<form action="{{ U_SEARCH }}" method="get" id="search">
-				<fieldset>
-					<input name="keywords" id="keywords" type="search" maxlength="128" title="{{ lang('SEARCH_KEYWORDS') }}" class="inputbox search tiny" size="20" value="{{ SEARCH_WORDS }}" placeholder="{{ lang('SEARCH_MINI') }}" />
-					<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">{{ lang('SEARCH') }}</button>
-					<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">{{ lang('SEARCH_ADV') }}</a>
-					{{ S_SEARCH_HIDDEN_FIELDS }}
-				</fieldset>
-				</form>
-			</div>
-			{% endif %}
-
-			</div>
-		</div>
+	<!-- EVENT overall_header_searchbox_before -->
+	{% if S_DISPLAY_SEARCH and not S_IN_SEARCH %}
+	<div id="search-box" class="search-box search-header" role="search">
+		<form action="{{ U_SEARCH }}" method="get" id="search">
+		<fieldset>
+			<input name="keywords" id="keywords" type="search" maxlength="128" title="{{ lang('SEARCH_KEYWORDS') }}" class="inputbox search tiny" size="20" value="{{ SEARCH_WORDS }}" placeholder="{{ lang('SEARCH_MINI') }}" />
+			<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">{{ lang('SEARCH') }}</button>
+			<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">{{ lang('SEARCH_ADV') }}</a>
+			{{ S_SEARCH_HIDDEN_FIELDS }}
+		</fieldset>
+		</form>
+	</div>
+	{% endif %}
 </div>
 
 <div id="wrap">

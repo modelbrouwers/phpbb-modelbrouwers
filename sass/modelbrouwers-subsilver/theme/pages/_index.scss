@@ -4,6 +4,10 @@ $light-blue: #3a95c2;
 
 $cell-border: solid 1px #a9b8c2;
 
+#header-subsilver {
+  display: none;
+}
+
 @include display-context(table) {
   .forums-header {
     @include outer-container(100%);

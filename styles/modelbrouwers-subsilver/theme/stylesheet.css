@@ -5722,6 +5722,10 @@ div.time > div:last-child {
   text-align: right;
 }
 
+#header-subsilver {
+  display: none;
+}
+
 .forums-header {
   max-width: 100%;
   margin-left: auto;
