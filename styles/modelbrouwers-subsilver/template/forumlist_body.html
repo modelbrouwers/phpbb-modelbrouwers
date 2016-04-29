@@ -21,15 +21,11 @@
 	{% if forumrow.S_IS_CAT or forumrow.S_FIRST_ROW  or forumrow.S_NO_CAT %}
 		<div class="forabg">
 			<!-- EVENT forumlist_body_category_header_row_prepend -->
-			<div class="forums category">
-				<h4>
-				{% if forumrow.S_IS_CAT %}
-					<a href="{forumrow.U_VIEWFORUM}">{{ forumrow.FORUM_NAME }}</a>
-				{% else %}
-					{{ lang('FORUM') }}
-				{% endif %}
-				</h4>
-			</div>
+			{% if forumrow.S_IS_CAT %}
+				<div class="forums category">
+					<h4><a href="{forumrow.U_VIEWFORUM}">{{ forumrow.FORUM_NAME }}</a></h4>
+				</div>
+			{% endif %}
 			<!-- EVENT forumlist_body_category_header_row_append -->
 			<div class="topiclist forums">
 	{% endif %}
