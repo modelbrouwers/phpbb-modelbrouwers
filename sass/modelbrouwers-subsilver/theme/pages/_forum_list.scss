@@ -56,16 +56,16 @@ $cell-border: solid 1px #a9b8c2;
     }
 
     > .forums {
-      @include span-columns(8);
+      @include span-columns(18 of 24);
     }
 
     > .topics,
     > .posts {
-      @include span-columns(1);
+      @include span-columns(1 of 24);
 
     }
     > .lastpost {
-      @include span-columns(2);
+      @include span-columns(4 of 24);
       @include omega;
     }
 
@@ -127,12 +127,12 @@ $cell-border: solid 1px #a9b8c2;
     }
 
     .description {
-      @include span-columns(15 of 24);
+      @include span-columns(17 of 24);
     }
 
     .topics,
     .posts {
-      @include span-columns(2 of 24);
+      @include span-columns(1 of 24);
       text-align: center;
     }
 
