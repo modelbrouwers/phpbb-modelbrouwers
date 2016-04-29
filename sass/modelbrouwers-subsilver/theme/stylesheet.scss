@@ -12,7 +12,7 @@
 */
 
 @import 'bourbon';
-$visual-grid: true;
+@import 'partials/grid-settings';
 @import 'neat';
 
 @import 'partials/all';

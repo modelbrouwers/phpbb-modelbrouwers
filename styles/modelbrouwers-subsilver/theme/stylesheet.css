@@ -18,22 +18,6 @@ html {
   box-sizing: inherit;
 }
 
-body:before {
-  background-image: linear-gradient(to left, transparent 0, #eee 0, #eee 6.17215%, transparent 6.17215%, transparent 8.5298%, #eee 8.5298%, #eee 14.70196%, transparent 14.70196%, transparent 17.05961%, #eee 17.05961%, #eee 23.23176%, transparent 23.23176%, transparent 25.58941%, #eee 25.58941%, #eee 31.76157%, transparent 31.76157%, transparent 34.11922%, #eee 34.11922%, #eee 40.29137%, transparent 40.29137%, transparent 42.64902%, #eee 42.64902%, #eee 48.82117%, transparent 48.82117%, transparent 51.17883%, #eee 51.17883%, #eee 57.35098%, transparent 57.35098%, transparent 59.70863%, #eee 59.70863%, #eee 65.88078%, transparent 65.88078%, transparent 68.23843%, #eee 68.23843%, #eee 74.41059%, transparent 74.41059%, transparent 76.76824%, #eee 76.76824%, #eee 82.94039%, transparent 82.94039%, transparent 85.29804%, #eee 85.29804%, #eee 91.4702%, transparent 91.4702%, transparent 93.82785%, #eee 93.82785%, #eee 100%, transparent 100%);
-  content: "";
-  display: inline-block;
-  height: 100%;
-  left: 0;
-  margin: 0 auto;
-  max-width: 1200px;
-  opacity: 0.4;
-  pointer-events: none;
-  position: fixed;
-  right: 0;
-  width: 100%;
-  z-index: -1;
-}
-
 /* CSS Reset http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
 ---------------------------------------- */
 html, body, div, span, applet, object, iframe,
@@ -5815,6 +5799,36 @@ div.time > div:last-child {
   margin-right: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .forums-header .forums {
+    display: table-cell;
+    width: 79.16667%;
+  }
+  .forums-header > .topics,
+  .forums-header > .posts {
+    display: none;
+  }
+  .forums-header .lastpost {
+    display: table-cell;
+    width: 20.83333%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .forums-header .forums {
+    display: table-cell;
+    width: 83.33333%;
+  }
+  .forums-header > .topics,
+  .forums-header > .posts {
+    display: none;
+  }
+  .forums-header .lastpost {
+    display: table-cell;
+    width: 16.66667%;
+  }
+}
+
 .topiclist.forums .row {
   max-width: 100%;
   margin-left: auto;
@@ -5870,6 +5884,44 @@ div.time > div:last-child {
   width: 16.66667%;
   margin-right: 0;
   text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .topiclist.forums .icon {
+    display: table-cell;
+    width: 12.5%;
+  }
+  .topiclist.forums .description {
+    display: table-cell;
+    width: 66.66667%;
+  }
+  .topiclist.forums .topics,
+  .topiclist.forums .posts {
+    display: none;
+  }
+  .topiclist.forums .lastpost {
+    display: table-cell;
+    width: 20.83333%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .topiclist.forums .icon {
+    display: table-cell;
+    width: 8.33333%;
+  }
+  .topiclist.forums .description {
+    display: table-cell;
+    width: 75%;
+  }
+  .topiclist.forums .topics,
+  .topiclist.forums .posts {
+    display: none;
+  }
+  .topiclist.forums .lastpost {
+    display: table-cell;
+    width: 16.66667%;
+  }
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

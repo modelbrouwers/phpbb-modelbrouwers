@@ -68,6 +68,32 @@ $cell-border: solid 1px #a9b8c2;
       @include span-columns(2);
       @include omega;
     }
+
+    @include media($mobile) {
+      .forums {
+        @include span-columns(19 of 24);
+      }
+      > .topics,
+      > .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(5 of 24);
+      }
+    }
+
+    @include media($tablet) {
+      .forums {
+        @include span-columns(20 of 24);
+      }
+      > .topics,
+      > .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(4 of 24);
+      }
+    }
   }
 
   .topiclist.forums {
@@ -114,6 +140,38 @@ $cell-border: solid 1px #a9b8c2;
       @include span-columns(4 of 24);
       @include omega;
       text-align: center;
+    }
+
+    @include media($mobile) {
+      .icon {
+        @include span-columns(3 of 24);
+      }
+      .description {
+        @include span-columns(16 of 24);
+      }
+      .topics,
+      .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(5 of 24);
+      }
+    }
+
+    @include media($tablet) {
+      .icon {
+        @include span-columns(2 of 24);
+      }
+      .description {
+        @include span-columns(18 of 24);
+      }
+      .topics,
+      .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(4 of 24);
+      }
     }
   }
 }
