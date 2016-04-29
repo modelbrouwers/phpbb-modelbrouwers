@@ -12,6 +12,10 @@ body {
   max-width: 1152px;
 }
 
+#header-subsilver {
+  display: none;
+}
+
 .subforum.unread .imageset.icon_topic_latest {
   background-image: url("./images/icon_topic_newest.gif");
 }
@@ -26,5 +30,13 @@ body {
 
   &:empty {
     margin-top: 0;
+  }
+}
+
+#page-footer {
+  margin-top: 15px;
+
+  .copyright {
+    margin-top: 10px;
   }
 }
