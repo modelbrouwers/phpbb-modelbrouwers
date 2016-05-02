@@ -34,67 +34,68 @@
 {% endif %}
 
 
+{% if S_FORUM_RULES %}
+<div class="rules {{ U_FORUM_RULES ? 'rules-links' : '' }}">
+	{% if U_FORUM_RULES %}
+		<a href="{{ U_FORUM_RULES }}">{{ lang('FORUM_RULES') }}</a>
+	{% else %}
+		<strong>{{ lang('FORUM_RULES') }}</strong><br>
+		{{ FORUM_RULES }}
+	{% endif %}
+</div>
+{% endif %}
 
 
-
-
-
-
-<!-- IF S_FORUM_RULES -->
-	<div class="rules<!-- IF U_FORUM_RULES --> rules-link<!-- ENDIF -->">
-		<div class="inner">
-
-		<!-- IF U_FORUM_RULES -->
-			<a href="{U_FORUM_RULES}">{L_FORUM_RULES}</a>
-		<!-- ELSE -->
-			<strong>{L_FORUM_RULES}</strong><br />
-			{FORUM_RULES}
-		<!-- ENDIF -->
-
-		</div>
-	</div>
-<!-- ENDIF -->
-
-<!-- IF S_DISPLAY_POST_INFO or .pagination or TOTAL_POSTS or TOTAL_TOPICS -->
-	<div class="action-bar top">
-
-	<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
+{% if S_DISPLAY_POST_INFO or loops.pagination or TOTAL_POSTS or TOTAL_TOPICS %}
+<div class="action-bar top">
+	{% if not S_IS_BOT and S_DISPLAY_POST_INFO %}
 		<div class="buttons">
 			<!-- EVENT viewforum_buttons_top_before -->
-
-			<a href="{U_POST_NEW_TOPIC}" class="button icon-button <!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->post-icon<!-- ENDIF -->" title="<!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF -->">
-				<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->
-			</a>
-
-			<!-- EVENT viewforum_buttons_top_after -->
+			<a href="{{ U_POST_NEW_TOPIC }}"
+			   class="button icon-button {{ S_IS_LOCKED ? 'locked-icon' : 'post-icon' }}"
+			   title="{{ S_IS_LOCKED ? lang('FORUM_LOCKED') : lang('POST_TOPIC') }}">
+			   	{{ S_IS_LOCKED ? lang('BUTTON_FORUM_LOCKED') : lang('BUTTON_NEW_TOPIC') }}
+		    </a>
+		    <!-- EVENT viewforum_buttons_top_after -->
 		</div>
-	<!-- ENDIF -->
+	{% endif %}
 
-	<!-- IF S_DISPLAY_SEARCHBOX -->
+	{% if S_DISPLAY_SEARCHBOX %}
 		<div class="search-box" role="search">
-			<form method="get" id="forum-search" action="{S_SEARCHBOX_ACTION}">
+			<form method="get" id="forum-search" action="{{ S_SEARCHBOX_ACTION }}">
 			<fieldset>
-				<input class="inputbox search tiny" type="search" name="keywords" id="search_keywords" size="20" placeholder="{L_SEARCH_FORUM}" />
-				<button class="button icon-button search-icon" type="submit" title="{L_SEARCH}">{L_SEARCH}</button>
-				<a href="{U_SEARCH}" class="button icon-button search-adv-icon" title="{L_SEARCH_ADV}">{L_SEARCH_ADV}</a>
-				{S_SEARCH_LOCAL_HIDDEN_FIELDS}
+				<input class="inputbox search tiny" type="search" name="keywords" id="search_keywords" size="20" placeholder="{{ lang('SEARCH_FORUM') }}" />
+				<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">{{ lang('SEARCH') }}</button>
+				<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">{{ lang('SEARCH_ADV') }}</a>
+				{{ S_SEARCH_LOCAL_HIDDEN_FIELDS }}
 			</fieldset>
 			</form>
 		</div>
-	<!-- ENDIF -->
+	{% endif %}
 
 	<div class="pagination">
-		<!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --><a href="{U_MARK_TOPICS}" class="mark" accesskey="m" data-ajax="mark_topics_read">{L_MARK_TOPICS_READ}</a> &bull; <!-- ENDIF -->
-		{TOTAL_TOPICS}
-		<!-- IF .pagination -->
-			<!-- INCLUDE pagination.html -->
-		<!-- ELSE -->
-			&bull; {PAGE_NUMBER}
-		<!-- ENDIF -->
+		{% if not S_IS_BOT and U_MARK_TOPICS and loops.topicrow %}
+			<a href="{{ U_MARK_TOPICS }}" class="mark" accesskey="m" data-ajax="mark_topics_read">
+				{{ lang('MARK_TOPICS_READ') }}
+			</a> &bull;
+		{% endif %}
+
+		{{ TOTAL_TOPICS }}
+		{% if loops.pagination %}
+			{% include "pagination.html" %}
+		{% else %}
+			&bull; {{ PAGE_NUMBER }}
+		{% endif %}
 	</div>
 
-	</div>
-<!-- ENDIF -->
+</div>
+{% endif %}
+
+
+
+
+
+
 
 <!-- IF S_NO_READ_ACCESS -->
 

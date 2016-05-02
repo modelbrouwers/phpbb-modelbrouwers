@@ -5926,8 +5926,51 @@ div.time > div:last-child {
   }
 }
 
+body.section-viewforum .forum-title + div {
+  display: block;
+}
+
+body.section-viewforum .forum-title + div::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+body.section-viewforum p.forum-desc {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+  display: none;
+}
+
+body.section-viewforum p.forum-desc:last-child {
+  margin-right: 0;
+}
+
 body.section-viewforum p.forum-moderators {
   margin-top: 0;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%;
+}
+
+body.section-viewforum p.forum-moderators:last-child {
+  margin-right: 0;
+}
+
+body.section-viewforum p.forum-mcp {
+  margin-top: 0;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  text-align: right;
+}
+
+body.section-viewforum p.forum-mcp:last-child {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
