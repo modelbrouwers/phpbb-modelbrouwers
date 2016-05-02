@@ -60,6 +60,9 @@
 		</div>
 	{% endif %}
 
+	<span class="current-page">{{ PAGE_NUMBER }}</span>
+	<span class="total-topics">[ {{ TOTAL_TOPICS }} ]</span>
+
 	{% if S_DISPLAY_SEARCHBOX %}
 		<div class="search-box" role="search">
 			<form method="get" id="forum-search" action="{{ S_SEARCHBOX_ACTION }}">
@@ -80,11 +83,8 @@
 			</a> &bull;
 		{% endif %}
 
-		{{ TOTAL_TOPICS }}
 		{% if loops.pagination %}
 			{% include "pagination.html" %}
-		{% else %}
-			&bull; {{ PAGE_NUMBER }}
 		{% endif %}
 	</div>
 
