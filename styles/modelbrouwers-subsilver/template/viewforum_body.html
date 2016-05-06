@@ -48,20 +48,24 @@
 
 {% if S_DISPLAY_POST_INFO or loops.pagination or TOTAL_POSTS or TOTAL_TOPICS %}
 <div class="action-bar top">
-	{% if not S_IS_BOT and S_DISPLAY_POST_INFO %}
-		<div class="buttons">
-			<!-- EVENT viewforum_buttons_top_before -->
-			<a href="{{ U_POST_NEW_TOPIC }}"
-			   class="button icon-button {{ S_IS_LOCKED ? 'locked-icon' : 'post-icon' }}"
-			   title="{{ S_IS_LOCKED ? lang('FORUM_LOCKED') : lang('POST_TOPIC') }}">
-			   	{{ S_IS_LOCKED ? lang('BUTTON_FORUM_LOCKED') : lang('BUTTON_NEW_TOPIC') }}
-		    </a>
-		    <!-- EVENT viewforum_buttons_top_after -->
-		</div>
-	{% endif %}
+	<div class="action-buttons">
+		{% if not S_IS_BOT and S_DISPLAY_POST_INFO %}
+			<div class="buttons">
+				<!-- EVENT viewforum_buttons_top_before -->
+				<a href="{{ U_POST_NEW_TOPIC }}"
+				   class="button icon-button {{ S_IS_LOCKED ? 'locked-icon' : 'post-icon' }}"
+				   title="{{ S_IS_LOCKED ? lang('FORUM_LOCKED') : lang('POST_TOPIC') }}">
+				   	{{ S_IS_LOCKED ? lang('BUTTON_FORUM_LOCKED') : lang('BUTTON_NEW_TOPIC') }}
+			    </a>
+			    <!-- EVENT viewforum_buttons_top_after -->
+			</div>
+		{% endif %}
 
-	<span class="current-page">{{ PAGE_NUMBER }}</span>
-	<span class="total-topics">[ {{ TOTAL_TOPICS }} ]</span>
+		<div class="page-info">
+			<span class="current-page">{{ PAGE_NUMBER }}</span>
+			<span class="total-topics">[ {{ TOTAL_TOPICS }} ]</span>
+		</div>
+	</div>
 
 	{% if S_DISPLAY_SEARCHBOX %}
 		<div class="search-box" role="search">

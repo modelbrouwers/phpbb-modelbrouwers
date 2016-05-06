@@ -24,5 +24,53 @@ body.section-viewforum {
 
 
 .action-bar {
+  // reset floats
+  .buttons,
+  .buttons .button,
+  .search-box,
+  .pagination {
+    float: none;
+  }
 
+  @include row;
+
+  .action-buttons {
+    @include span-columns(4);
+
+    > * {
+      float: left;
+    }
+
+    .buttons {
+      margin-right: 5px;
+
+      .button {
+        border: solid 2px #006597;
+        border-radius: 13px;
+        height: 26px;
+      }
+    }
+
+    .page-info {
+      line-height: 26px;
+    }
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .pagination {
+    @include span-columns(3);
+    @include shift(5);
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 26px;
+
+    li.next a {
+      height: auto;
+      width: 14px;
+      background-position: -52px 2px;
+    }
+  }
 }

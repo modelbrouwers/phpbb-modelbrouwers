@@ -5973,4 +5973,75 @@ body.section-viewforum p.forum-mcp:last-child {
   margin-right: 0;
 }
 
+.action-bar {
+  display: block;
+}
+
+.action-bar .buttons,
+.action-bar .buttons .button,
+.action-bar .search-box,
+.action-bar .pagination {
+  float: none;
+}
+
+.action-bar::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.action-bar .action-buttons {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 31.76157%;
+}
+
+.action-bar .action-buttons:last-child {
+  margin-right: 0;
+}
+
+.action-bar .action-buttons > * {
+  float: left;
+}
+
+.action-bar .action-buttons .buttons {
+  margin-right: 5px;
+}
+
+.action-bar .action-buttons .buttons .button {
+  border: solid 2px #006597;
+  border-radius: 13px;
+  height: 26px;
+}
+
+.action-bar .action-buttons .page-info {
+  line-height: 26px;
+}
+
+.action-bar .search-box {
+  display: none;
+}
+
+.action-bar .pagination {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  margin-left: 42.64902%;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 26px;
+}
+
+.action-bar .pagination:last-child {
+  margin-right: 0;
+}
+
+.action-bar .pagination li.next a {
+  height: auto;
+  width: 14px;
+  background-position: -52px 2px;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */
