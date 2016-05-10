@@ -1517,10 +1517,17 @@ li.breadcrumbs span:first-child > a {
 /* Links for forum/topic lists */
 a.forumtitle,
 a.topictitle {
-  font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
   font-size: 1.2em;
   font-weight: bold;
+}
+
+a.forumtitle {
+  font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
   color: #069;
+}
+
+a.topictitle {
+  font-family: "Lucida Grande", Helvetica, Arial, Sans-serif;
 }
 
 a.lastsubject {

@@ -74,10 +74,15 @@ li.breadcrumbs span:first-child > a {
 a.forumtitle,
 a.topictitle {
 	@extend %link;
-	font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
 	font-size: 1.2em;
 	font-weight: bold;
+}
+a.forumtitle {
+	font-family: "Trebuchet MS", Helvetica, Arial, Sans-serif;
 	color: #069;
+}
+a.topictitle {
+	font-family: "Lucida Grande", Helvetica, Arial, Sans-serif;
 }
 
 a.lastsubject {
