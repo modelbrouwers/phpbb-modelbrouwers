@@ -32,18 +32,6 @@ body.section-viewforum {
       border-bottom: solid 3px #C7D0D6;
     }
 
-    > .topics {
-      @include outer-container(100%);
-      @include background-image(linear-gradient(to right bottom, #C8D0D5, #E0E5E9));
-      padding: 5px;
-      font-weight: bold;
-
-      h4 {
-        font-size: 1.1em;
-        font-family: inherit;
-      }
-    }
-
     & + .body-blok {
       margin-top: 15px;
     }
@@ -80,7 +68,7 @@ body.section-viewforum {
       @include span-columns(4 of 24)
     }
 
-    > .replies,
+    > .posts,
     > .views {
       @include span-columns(1 of 24);
 
@@ -119,7 +107,7 @@ body.section-viewforum {
     */
   }
 
-  .topiclist.forums {
+  .topiclist.topics {
     .row {
       @include outer-container(100%);
       @include fill-parent;
@@ -150,11 +138,16 @@ body.section-viewforum {
     }
 
     .description {
-      @include span-columns(17 of 24);
+      @include span-columns(13 of 24);
     }
 
-    .topics,
-    .posts {
+    .author {
+      @include span-columns(3 of 24);
+      text-align: center;
+    }
+
+    .posts,
+    .views {
       @include span-columns(1 of 24);
       text-align: center;
     }
@@ -165,6 +158,7 @@ body.section-viewforum {
       text-align: center;
     }
 
+    /*
     @include media($mobile) {
       .icon {
         @include span-columns(3 of 24);
@@ -196,6 +190,7 @@ body.section-viewforum {
         @include span-columns(4 of 24);
       }
     }
+    */
   }
 }
 

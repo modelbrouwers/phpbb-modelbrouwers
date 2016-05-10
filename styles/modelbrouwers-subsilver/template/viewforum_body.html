@@ -115,7 +115,7 @@
 <div class="topics-header">
 	<div class="topics">{{ lang('TOPICS') }}</div>
 	<div class="author">{{ lang('AUTHOR') }}</div>
-	<div class="replies">{{ lang('REPLIES') }}</div>
+	<div class="posts">{{ lang('REPLIES') }}</div>
 	<div class="views">{{ lang('VIEWS') }}</div>
 	<div class="lastpost"><span>{{ lang('LAST_POST') }}</span></div>
 </div>
@@ -132,7 +132,7 @@
 		<div class="forumbg {{ announcement ? 'announcement' : '' }}">
 			{% if topicrow.S_TOPIC_TYPE_SWITCH > -1 %}
 			<div class="topics category">
-				<h4>{{ announcement ? lang('ANNOUNCEMENTS') : lang('TOPICS') }}</h4>
+				<strong>{{ announcement ? lang('ANNOUNCEMENTS') : lang('TOPICS') }}</strong>
 			</div>
 			{% endif %}
 			<div class="topiclist topics">
@@ -147,9 +147,38 @@
 				{{- topicrow.S_POST_ANNOUNCE ? ' announce' : '' -}}
 				{{- topicrow.S_POST_STICKY ? ' sticky' : '' -}}
 				{{- topicrow.S_TOPIC_REPORTED ? ' reported' : '' -}}"
-		 data-id="{{ topicrow.TOPIC_ID }}">
+		 data-id="{{ topicrow.TOPIC_ID }}"
+		 title="{{ topicrow.TOPIC_FOLDER_IMG_ALT }}">
 		<!-- EVENT viewforum_body_topic_row_prepend -->
-		{{ topicrow }}
+
+		<div class="icon read-status {{ topicrow.TOPIC_IMG_STYLE }}">
+			&nbsp;
+		</div>
+
+		<div class="icon"
+			{%- if topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS -%}
+				style="background-image: url({{ T_ICONS_PATH }}{{ topicrow.TOPIC_ICON_IMG }}); background-repeat: no-repeat;"
+			{%- endif -%}>&nbsp;
+		</div>
+
+		<div class="description">
+			<!-- EVENT topiclist_row_prepend -->
+			{% if topicrow.S_UNREAD_TOPIC and not S_IS_BOT %}<a href="{{ topicrow.U_NEWEST_POST }}" class="icon-link">foo</a>{% endif %}
+		</div>
+
+		<div class="author">{{ topicrow.TOPIC_AUTHOR_FULL }}</div>
+		<div class="posts">{{ topicrow.REPLIES }}</div>
+		<div class="views">{{ topicrow.VIEWS }}</div>
+		<div class="lastpost">
+			<p class="details">{{ topicrow.LAST_POST_TIME }}</p>
+			<p class="details">
+				{{ topicrow.LAST_POST_AUTHOR_FULL }}
+				{% if not S_IS_BOT %}
+					<a href="{{ topicrow.U_LAST_POST }}">{{ LAST_POST_IMG }}</a>
+				{% endif %}
+			</p>
+		</div>
+
 	</div>
 
 
@@ -168,10 +197,10 @@
 		<li class="row<!-- IF topicrow.S_ROW_COUNT is even --> bg1<!-- ELSE --> bg2<!-- ENDIF --><!-- IF topicrow.S_POST_GLOBAL --> global-announce<!-- ENDIF --><!-- IF topicrow.S_POST_ANNOUNCE --> announce<!-- ENDIF --><!-- IF topicrow.S_POST_STICKY --> sticky<!-- ENDIF --><!-- IF topicrow.S_TOPIC_REPORTED --> reported<!-- ENDIF -->">
 			<!-- EVENT viewforum_body_topic_row_prepend -->
 			<dl class="icon {topicrow.TOPIC_IMG_STYLE}">
-				<dt<!-- IF topicrow.TOPIC_ICON_IMG and S_TOPIC_ICONS --> style="background-image: url({T_ICONS_PATH}{topicrow.TOPIC_ICON_IMG}); background-repeat: no-repeat;"<!-- ENDIF --> title="{topicrow.TOPIC_FOLDER_IMG_ALT}">
-					<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}" class="icon-link"></a><!-- ENDIF -->
+				<dt title="">
+
 					<div class="list-inner">
-						<!-- EVENT topiclist_row_prepend -->
+
 						<!-- IF topicrow.S_UNREAD_TOPIC and not S_IS_BOT --><a href="{topicrow.U_NEWEST_POST}">{NEWEST_POST_IMG}</a> <!-- ENDIF --><a href="{topicrow.U_VIEW_TOPIC}" class="topictitle">{topicrow.TOPIC_TITLE}</a>
 						<!-- IF topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED --><a href="{topicrow.U_MCP_QUEUE}">{topicrow.UNAPPROVED_IMG}</a> <!-- ENDIF -->
 						<!-- IF topicrow.S_TOPIC_DELETED --><a href="{topicrow.U_MCP_QUEUE}">{DELETED_IMG}</a> <!-- ENDIF -->
@@ -210,8 +239,6 @@
 						<!-- EVENT topiclist_row_append -->
 					</div>
 				</dt>
-				<dd class="posts">{topicrow.REPLIES} <dfn>{L_REPLIES}</dfn></dd>
-				<dd class="views">{topicrow.VIEWS} <dfn>{L_VIEWS}</dfn></dd>
 				<dd class="lastpost"><span><dfn>{L_LAST_POST} </dfn>{L_POST_BY_AUTHOR} {topicrow.LAST_POST_AUTHOR_FULL}
 					<!-- IF not S_IS_BOT --><a href="{topicrow.U_LAST_POST}" title="{L_GOTO_LAST_POST}">{LAST_POST_IMG}</a> <!-- ENDIF -->{topicrow.LAST_POST_TIME}</span>
 				</dd>
