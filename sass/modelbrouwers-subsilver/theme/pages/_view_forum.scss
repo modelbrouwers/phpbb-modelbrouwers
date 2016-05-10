@@ -20,7 +20,185 @@ body.section-viewforum {
     text-align: right;
   }
 
+  .forumbg {
+
+    border: $cell-border;
+
+    &:first-child {
+      border-top: $cell-border;
+    }
+
+    > .category {
+      border-bottom: solid 3px #C7D0D6;
+    }
+
+    > .topics {
+      @include outer-container(100%);
+      @include background-image(linear-gradient(to right bottom, #C8D0D5, #E0E5E9));
+      padding: 5px;
+      font-weight: bold;
+
+      h4 {
+        font-size: 1.1em;
+        font-family: inherit;
+      }
+    }
+
+    & + .body-blok {
+      margin-top: 15px;
+    }
+  }
+
 }
+
+
+@include display-context(table) {
+  .topics-header {
+    @include outer-container(100%);
+    @include fill-parent;
+    @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
+    display: table;
+
+    border-top: solid 3px #3E88AE;
+    border-bottom: $cell-border;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+
+    > div {
+      text-align: center;
+      color: #FFA34F;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    > .topics {
+      @include span-columns(15 of 24);
+    }
+
+    > .author {
+      @include span-columns(4 of 24)
+    }
+
+    > .replies,
+    > .views {
+      @include span-columns(1 of 24);
+
+    }
+    > .lastpost {
+      @include span-columns(3 of 24);
+      @include omega;
+    }
+
+    /*
+    @include media($mobile) {
+      .forums {
+        @include span-columns(19 of 24);
+      }
+      > .topics,
+      > .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(5 of 24);
+      }
+    }
+
+    @include media($tablet) {
+      .forums {
+        @include span-columns(20 of 24);
+      }
+      > .topics,
+      > .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(4 of 24);
+      }
+    }
+    */
+  }
+
+  .topiclist.forums {
+    .row {
+      @include outer-container(100%);
+      @include fill-parent;
+      display: table;
+      min-height: 40px;
+      border-top: $cell-border;
+
+      > div {
+        padding: 4px;
+        vertical-align: middle;
+        border-right: $cell-border;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        p {
+          margin-top: 0;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .icon {
+      @include span-columns(1 of 24);
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .description {
+      @include span-columns(17 of 24);
+    }
+
+    .topics,
+    .posts {
+      @include span-columns(1 of 24);
+      text-align: center;
+    }
+
+    .lastpost {
+      @include span-columns(4 of 24);
+      @include omega;
+      text-align: center;
+    }
+
+    @include media($mobile) {
+      .icon {
+        @include span-columns(3 of 24);
+      }
+      .description {
+        @include span-columns(16 of 24);
+      }
+      .topics,
+      .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(5 of 24);
+      }
+    }
+
+    @include media($tablet) {
+      .icon {
+        @include span-columns(2 of 24);
+      }
+      .description {
+        @include span-columns(18 of 24);
+      }
+      .topics,
+      .posts {
+        display: none;
+      }
+      .lastpost {
+        @include span-columns(4 of 24);
+      }
+    }
+  }
+}
+
 
 
 .action-bar {
