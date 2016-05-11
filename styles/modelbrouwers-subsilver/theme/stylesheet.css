@@ -292,9 +292,13 @@ ol ol ul, ol ul ul, ul ol ul, ul ul ul {
 
 .forumbg {
   background: transparent none repeat-x 0 0;
-  margin-bottom: 4px;
   padding: 0;
   clear: both;
+  margin-top: -1px;
+}
+
+.forumbg:first-child {
+  margin-top: 0;
 }
 
 .forumbg .header a, .forabg .header a, th a {
@@ -3856,8 +3860,6 @@ hr {
 }
 
 .forumbg {
-  background-color: #ececec;
-  background-image: url("./images/bg_list.gif");
   border: 1px solid #a9b8c2;
 }
 
@@ -5989,7 +5991,8 @@ body.section-viewforum .forumbg:first-child {
 }
 
 body.section-viewforum .forumbg > .category {
-  border-bottom: solid 3px #C7D0D6;
+  background-color: #C0C8D0;
+  padding: 5px;
 }
 
 body.section-viewforum .forumbg + .body-blok {
@@ -6051,23 +6054,23 @@ body.section-viewforum .forumbg + .body-blok {
 
 .topics-header > .topics {
   display: table-cell;
-  width: 62.5%;
+  width: 61.11111%;
 }
 
 .topics-header > .author {
   display: table-cell;
-  width: 16.66667%;
+  width: 11.11111%;
 }
 
 .topics-header > .posts,
 .topics-header > .views {
   display: table-cell;
-  width: 4.16667%;
+  width: 5.55556%;
 }
 
 .topics-header > .lastpost {
   display: table-cell;
-  width: 12.5%;
+  width: 19.44444%;
   margin-right: 0;
 }
 
@@ -6171,32 +6174,32 @@ body.section-viewforum .forumbg + .body-blok {
 
 .topiclist.topics .icon {
   display: table-cell;
-  width: 4.16667%;
+  width: 2.77778%;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 .topiclist.topics .description {
   display: table-cell;
-  width: 54.16667%;
+  width: 55.55556%;
 }
 
 .topiclist.topics .author {
   display: table-cell;
-  width: 12.5%;
+  width: 11.11111%;
   text-align: center;
 }
 
 .topiclist.topics .posts,
 .topiclist.topics .views {
   display: table-cell;
-  width: 4.16667%;
+  width: 5.55556%;
   text-align: center;
 }
 
 .topiclist.topics .lastpost {
   display: table-cell;
-  width: 16.66667%;
+  width: 19.44444%;
   margin-right: 0;
   text-align: center;
 }

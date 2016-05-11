@@ -29,7 +29,8 @@ body.section-viewforum {
     }
 
     > .category {
-      border-bottom: solid 3px #C7D0D6;
+      background-color: #C0C8D0;
+      padding: 5px;
     }
 
     & + .body-blok {
@@ -61,20 +62,20 @@ body.section-viewforum {
     }
 
     > .topics {
-      @include span-columns(15 of 24);
+      @include span-columns(22 of 36);
     }
 
     > .author {
-      @include span-columns(4 of 24)
+      @include span-columns(4 of 36)
     }
 
     > .posts,
     > .views {
-      @include span-columns(1 of 24);
+      @include span-columns(2 of 36);
 
     }
     > .lastpost {
-      @include span-columns(3 of 24);
+      @include span-columns(7 of 36);
       @include omega;
     }
 
@@ -167,28 +168,28 @@ body.section-viewforum {
     }
 
     .icon {
-      @include span-columns(1 of 24);
+      @include span-columns(1 of 36);
       background-repeat: no-repeat;
       background-position: center center;
     }
 
     .description {
-      @include span-columns(13 of 24);
+      @include span-columns(20 of 36);
     }
 
     .author {
-      @include span-columns(3 of 24);
+      @include span-columns(4 of 36);
       text-align: center;
     }
 
     .posts,
     .views {
-      @include span-columns(1 of 24);
+      @include span-columns(2 of 36);
       text-align: center;
     }
 
     .lastpost {
-      @include span-columns(4 of 24);
+      @include span-columns(7 of 36);
       @include omega;
       text-align: center;
     }

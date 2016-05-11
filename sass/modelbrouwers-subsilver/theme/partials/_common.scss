@@ -266,9 +266,12 @@ ol ol ul, ol ul ul, ul ol ul, ul ul ul {
 
 .forumbg {
 	background: transparent none repeat-x 0 0;
-	margin-bottom: 4px;
 	padding: 0;
 	clear: both;
+	margin-top: -1px;
+	&:first-child {
+		margin-top: 0;
+	}
 }
 
 .forumbg .header a, .forabg .header a, th a {
