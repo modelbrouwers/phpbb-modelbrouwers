@@ -36,6 +36,20 @@ body.section-viewforum {
     & + .body-blok {
       margin-top: 15px;
     }
+
+    & + form {
+      @include outer-container(100%);
+      @include background-image(linear-gradient(to right bottom, #C8D0D5, #E0E5E9));
+      border: $cell-border;
+      border-top: none;
+
+      fieldset {
+        line-height: 19px;
+        margin: 0;
+        padding: 3px 0 1px;
+        border-bottom: solid 3px #C7D0D6;
+      }
+    }
   }
 
 }

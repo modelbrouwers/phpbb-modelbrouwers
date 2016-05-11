@@ -5999,6 +5999,28 @@ body.section-viewforum .forumbg + .body-blok {
   margin-top: 15px;
 }
 
+body.section-viewforum .forumbg + form {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to right bottom, #C8D0D5, #E0E5E9);
+  border: solid 1px #a9b8c2;
+  border-top: none;
+}
+
+body.section-viewforum .forumbg + form::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+body.section-viewforum .forumbg + form fieldset {
+  line-height: 19px;
+  margin: 0;
+  padding: 3px 0 1px;
+  border-bottom: solid 3px #C7D0D6;
+}
+
 .topics-header {
   max-width: 100%;
   margin-left: auto;

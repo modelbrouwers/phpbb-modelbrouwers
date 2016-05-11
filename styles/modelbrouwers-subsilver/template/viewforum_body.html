@@ -233,20 +233,22 @@
 {% endfor %}
 
 
+{% if S_SELECT_SORT_DAYS and not S_DISPLAY_ACTIVE %}
+<form method="post" action="{{ S_FORUM_ACTION }}">
+	<fieldset class="display-options">
+	{% if not S_IS_BOT %}
+		<label>{{ lang('DISPLAY_TOPICS') }}{{ lang('COLON') }} {{ S_SELECT_SORT_DAYS }}</label>
+		<label>{{ lang('SORT_BY') }} {{ S_SELECT_SORT_KEY }}</label>
+		<label>{{ S_SELECT_SORT_DIR }}</label>
+		<input type="submit" name="sort" value="{{ lang('GO') }}" class="button2" />
+	{% endif %}
+	</fieldset>
+</form>
+{% endif %}
 
-<!-- IF S_SELECT_SORT_DAYS and not S_DISPLAY_ACTIVE -->
-	<form method="post" action="{S_FORUM_ACTION}">
-		<fieldset class="display-options">
-	<!-- IF not S_IS_BOT -->
-			<label>{L_DISPLAY_TOPICS}{L_COLON} {S_SELECT_SORT_DAYS}</label>
-			<label>{L_SORT_BY} {S_SELECT_SORT_KEY}</label>
-			<label>{S_SELECT_SORT_DIR}</label>
-			<input type="submit" name="sort" value="{L_GO}" class="button2" />
-	<!-- ENDIF -->
-		</fieldset>
-	</form>
-	<hr />
-<!-- ENDIF -->
+
+
+
 
 <!-- IF .topicrow and not S_DISPLAY_ACTIVE -->
 	<div class="action-bar bottom">
