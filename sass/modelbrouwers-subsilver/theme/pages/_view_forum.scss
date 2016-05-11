@@ -129,6 +129,41 @@ body.section-viewforum {
           margin-bottom: 4px;
         }
       }
+
+      .pagination {
+        float: none;
+        text-align: left;
+        background-image: none;
+        padding: 0;
+        margin: 0;
+        font-size: 1em;
+
+        > ul > li {
+          a {
+            display: inline;
+            border: none;
+            color: #006597;
+            padding: 0;
+            background-color: transparent;
+            font-size: 1em;
+
+            &:after {
+              content: ",";
+              color: #323D4F;
+            }
+
+            &:hover {
+              color: #D46400;
+            }
+          }
+
+          &:last-child {
+            a:after {
+              content: "";
+            }
+          }
+        }
+      }
     }
 
     .icon {

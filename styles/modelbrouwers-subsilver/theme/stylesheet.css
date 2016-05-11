@@ -6138,6 +6138,37 @@ body.section-viewforum .forumbg + .body-blok {
   margin-bottom: 4px;
 }
 
+.topiclist.topics .row .pagination {
+  float: none;
+  text-align: left;
+  background-image: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+}
+
+.topiclist.topics .row .pagination > ul > li a {
+  display: inline;
+  border: none;
+  color: #006597;
+  padding: 0;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.topiclist.topics .row .pagination > ul > li a:after {
+  content: ",";
+  color: #323D4F;
+}
+
+.topiclist.topics .row .pagination > ul > li a:hover {
+  color: #D46400;
+}
+
+.topiclist.topics .row .pagination > ul > li:last-child a:after {
+  content: "";
+}
+
 .topiclist.topics .icon {
   display: table-cell;
   width: 4.16667%;
