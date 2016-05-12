@@ -49,6 +49,12 @@ body.section-viewforum {
         padding: 3px 0 1px;
         border-bottom: solid 3px #C7D0D6;
       }
+
+      @include media($mobile) {
+        label {
+          text-align: right;
+        }
+      }
     }
   }
 
@@ -104,6 +110,10 @@ body.section-viewforum {
     .inputbox {
       border-radius: 0;
     }
+
+    @include media($mobile) {
+      @include span-columns(9);
+    }
   }
 
   .jumpbox-return {
@@ -118,6 +128,35 @@ body.section-viewforum {
     .button {
       height: auto;
       border-radius: 0;
+    }
+    @include media($mobile) {
+      @include span-columns(3);
+    }
+  }
+
+  @include media($mobile) {
+    .permissions,
+    .icons-legend {
+      @include span-columns(12);
+      @include omega;
+    }
+
+    .permissions {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .icons-legend {
+      .legend-icon {
+        &:nth-child(3n) {
+          margin-right: flex-gutter();
+        }
+        &:nth-child(3n+1) {
+          clear: none;
+        }
+        @include span-columns(6);
+        @include omega(2n);
+      }
     }
   }
 }
@@ -235,24 +274,6 @@ body.section-viewforum {
     text-align: center;
   }
 
-  /*
-  @include media($tablet) {
-    .icon {
-      @include span-columns(2 of 24);
-    }
-    .description {
-      @include span-columns(18 of 24);
-    }
-    .topics,
-    .posts {
-      display: none;
-    }
-    .lastpost {
-      @include span-columns(4 of 24);
-    }
-  }
-  */
-
   @include media($mobile) {
 
     .topics-header {
@@ -333,6 +354,33 @@ body.section-viewforum {
       height: auto;
       width: 14px;
       background-position: -52px 2px;
+    }
+  }
+
+  @include media($mobile) {
+    .action-buttons {
+      @include row;
+      width: 100%;
+      margin-bottom: 15px;
+
+      .buttons,
+      .page-info {
+        @include span-columns(6 of 12);
+      }
+      .page-info {
+        text-align: right;
+      }
+
+    }
+    .pagination {
+      @include shift(0);
+      @include row;
+      width: 100%;
+      margin-left: 0;
+
+      > ul {
+        margin: 0 !important;
+      }
     }
   }
 }
