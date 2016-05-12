@@ -67,19 +67,6 @@
 		</div>
 	</div>
 
-	{% if S_DISPLAY_SEARCHBOX %}
-		<div class="search-box" role="search">
-			<form method="get" id="forum-search" action="{{ S_SEARCHBOX_ACTION }}">
-			<fieldset>
-				<input class="inputbox search tiny" type="search" name="keywords" id="search_keywords" size="20" placeholder="{{ lang('SEARCH_FORUM') }}" />
-				<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">{{ lang('SEARCH') }}</button>
-				<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">{{ lang('SEARCH_ADV') }}</a>
-				{{ S_SEARCH_LOCAL_HIDDEN_FIELDS }}
-			</fieldset>
-			</form>
-		</div>
-	{% endif %}
-
 	<div class="pagination">
 		{% if not S_IS_BOT and U_MARK_TOPICS and loops.topicrow %}
 			<a href="{{ U_MARK_TOPICS }}" class="mark" accesskey="m" data-ajax="mark_topics_read">
@@ -310,42 +297,59 @@
 
 
 {% if S_DISPLAY_POST_INFO %}
-<div class="icons-legend">
-	<div class="legend-icon">
-		{{ FOLDER_UNREAD_IMG }} {{ lang('UNREAD_POSTS') }}
+<div class="post-info">
+	<div class="icons-legend">
+		<div class="legend-icon">
+			{{ FOLDER_UNREAD_IMG }} {{ lang('UNREAD_POSTS') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_IMG }} {{ lang('NO_UNREAD_POSTS') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_ANNOUNCE_IMG }} {{ lang('ICON_ANNOUNCEMENT') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_HOT_UNREAD_IMG }} {{ lang('UNREAD_POSTS_HOT') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_HOT_IMG }} {{ lang('NO_UNREAD_POSTS_HOT') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_STICKY_IMG }} {{ lang('ICON_STICKY') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_LOCKED_UNREAD_IMG }} {{ lang('UNREAD_POSTS_LOCKED') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_LOCKED_IMG }} {{ lang('NO_UNREAD_POSTS_LOCKED') }}
+		</div>
+		<div class="legend-icon">
+			{{ FOLDER_MOVED_IMG }} {{ lang('TOPIC_MOVED') }}
+		</div>
 	</div>
-	<div class="legend-icon">
-		{{ FOLDER_IMG }} {{ lang('NO_UNREAD_POSTS') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_ANNOUNCE_IMG }} {{ lang('ICON_ANNOUNCEMENT') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_HOT_UNREAD_IMG }} {{ lang('UNREAD_POSTS_HOT') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_HOT_IMG }} {{ lang('NO_UNREAD_POSTS_HOT') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_STICKY_IMG }} {{ lang('ICON_STICKY') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_LOCKED_UNREAD_IMG }} {{ lang('UNREAD_POSTS_LOCKED') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_LOCKED_IMG }} {{ lang('NO_UNREAD_POSTS_LOCKED') }}
-	</div>
-	<div class="legend-icon">
-		{{ FOLDER_MOVED_IMG }} {{ lang('TOPIC_MOVED') }}
-	</div>
-</div>
 
-<div class="permissions">
-{% for rule in loops.rules %}{{ rule.RULE }}<br>{% endfor %}
+	<div class="permissions">
+	{% for rule in loops.rules %}{{ rule.RULE }}<br>{% endfor %}
+	</div>
 </div>
 {% endif %}
 
 
+<div class="jumpbox-row">
+{% if S_DISPLAY_SEARCHBOX %}
+	<div class="search-box" role="search">
+		<form method="get" id="forum-search" action="{{ S_SEARCHBOX_ACTION }}">
+		<fieldset>
+			<input class="inputbox search tiny" type="search" name="keywords" id="search_keywords" size="20" placeholder="{{ lang('SEARCH_FORUM') }}" />
+			<button class="button icon-button search-icon" type="submit" title="{{ lang('SEARCH') }}">{{ lang('SEARCH') }}</button>
+			<a href="{{ U_SEARCH }}" class="button icon-button search-adv-icon" title="{{ lang('SEARCH_ADV') }}">{{ lang('SEARCH_ADV') }}</a>
+			{{ S_SEARCH_LOCAL_HIDDEN_FIELDS }}
+		</fieldset>
+		</form>
+	</div>
+{% endif %}
+
 {% include "jumpbox.html" %}
+</div>
 
 {% include "overall_footer.html" %}

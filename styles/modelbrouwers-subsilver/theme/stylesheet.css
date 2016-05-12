@@ -1207,10 +1207,6 @@ form > p.post-notice strong {
   line-height: 20px;
 }
 
-#jumpbox {
-  margin: 5px 0;
-}
-
 .stat-block {
   clear: both;
 }
@@ -6029,10 +6025,6 @@ body.section-viewforum .online-list {
   margin-bottom: 20px;
 }
 
-body.section-viewforum .jumpbox-return {
-  display: none;
-}
-
 body.section-viewforum .icons-legend {
   float: left;
   display: block;
@@ -6077,6 +6069,17 @@ body.section-viewforum .icons-legend .legend-icon > span.imageset {
   margin-right: 5px;
 }
 
+body.section-viewforum .post-info {
+  display: block;
+  margin-bottom: 20px;
+}
+
+body.section-viewforum .post-info::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
 body.section-viewforum .permissions {
   float: left;
   display: block;
@@ -6088,6 +6091,58 @@ body.section-viewforum .permissions {
 
 body.section-viewforum .permissions:last-child {
   margin-right: 0;
+}
+
+body.section-viewforum .jumpbox-row {
+  display: block;
+}
+
+body.section-viewforum .jumpbox-row::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+body.section-viewforum .search-box {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+}
+
+body.section-viewforum .search-box:last-child {
+  margin-right: 0;
+}
+
+body.section-viewforum .search-box a.button {
+  height: auto;
+  border-radius: 0;
+}
+
+body.section-viewforum .search-box .inputbox {
+  border-radius: 0;
+}
+
+body.section-viewforum .jumpbox-return {
+  display: none;
+}
+
+body.section-viewforum #jumpbox {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-right: 0;
+  text-align: right;
+}
+
+body.section-viewforum #jumpbox:last-child {
+  margin-right: 0;
+}
+
+body.section-viewforum #jumpbox .button {
+  height: auto;
+  border-radius: 0;
 }
 
 .topics-header {
@@ -6301,7 +6356,6 @@ body.section-viewforum .permissions:last-child {
 
 .action-bar .buttons,
 .action-bar .buttons .button,
-.action-bar .search-box,
 .action-bar .pagination {
   float: none;
 }
@@ -6339,10 +6393,6 @@ body.section-viewforum .permissions:last-child {
 
 .action-bar .action-buttons .page-info {
   line-height: 26px;
-}
-
-.action-bar .search-box {
-  display: none;
 }
 
 .action-bar .pagination {
