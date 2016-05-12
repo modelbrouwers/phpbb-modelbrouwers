@@ -555,6 +555,7 @@ ul.linklist.bulletin > li.no-bulletin:before {
   border-left: 10px dashed transparent;
   border-right: 10px dashed transparent;
   -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
   /* better anti-aliasing in webkit */
   display: block;
 }
