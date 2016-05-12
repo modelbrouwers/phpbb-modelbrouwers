@@ -120,6 +120,7 @@
 	<div class="lastpost"><span>{{ lang('LAST_POST') }}</span></div>
 </div>
 
+
 {% for topicrow in loops.topicrow %}
 
 	{% if not topicrow.S_TOPIC_TYPE_SWITCH and not topicrow.S_FIRST_ROW %}
@@ -248,48 +249,103 @@
 
 
 
-
-
-<!-- IF .topicrow and not S_DISPLAY_ACTIVE -->
-	<div class="action-bar bottom">
-		<!-- IF not S_IS_BOT and S_DISPLAY_POST_INFO -->
+{% if loops.topicrow and not S_DISPLAY_ACTIVE %}
+<div class="action-bar bottom">
+	<div class="action-buttons">
+		{% if not S_IS_BOT and S_DISPLAY_POST_INFO %}
 			<div class="buttons">
 				<!-- EVENT viewforum_buttons_bottom_before -->
-
-				<a href="{U_POST_NEW_TOPIC}" class="button icon-button <!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->post-icon<!-- ENDIF -->" title="<!-- IF S_IS_LOCKED -->{L_FORUM_LOCKED}<!-- ELSE -->{L_POST_TOPIC}<!-- ENDIF -->">
-					<!-- IF S_IS_LOCKED -->{L_BUTTON_FORUM_LOCKED}<!-- ELSE -->{L_BUTTON_NEW_TOPIC}<!-- ENDIF -->
-				</a>
-
-				<!-- EVENT viewforum_buttons_bottom_after -->
+				<a href="{{ U_POST_NEW_TOPIC }}"
+				   class="button icon-button {{ S_IS_LOCKED ? 'locked-icon' : 'post-icon' }}"
+				   title="{{ S_IS_LOCKED ? lang('FORUM_LOCKED') : lang('POST_TOPIC') }}">
+				   	{{ S_IS_LOCKED ? lang('BUTTON_FORUM_LOCKED') : lang('BUTTON_NEW_TOPIC') }}
+			    </a>
+			    <!-- EVENT viewforum_buttons_bottom_after -->
 			</div>
-		<!-- ENDIF -->
+		{% endif %}
 
-		<div class="pagination">
-			<!-- IF not S_IS_BOT and U_MARK_TOPICS and .topicrow --><a href="{U_MARK_TOPICS}" data-ajax="mark_topics_read">{L_MARK_TOPICS_READ}</a> &bull; <!-- ENDIF -->
-			{TOTAL_TOPICS}
-			<!-- IF .pagination -->
-				<!-- INCLUDE pagination.html -->
-			<!-- ELSE -->
-				 &bull; {PAGE_NUMBER}
-			<!-- ENDIF -->
+		<div class="page-info">
+			<span class="current-page">{{ PAGE_NUMBER }}</span>
+			<span class="total-topics">[ {{ TOTAL_TOPICS }} ]</span>
 		</div>
 	</div>
-<!-- ENDIF -->
 
-<!-- INCLUDE jumpbox.html -->
+	<div class="pagination">
+		{% if not S_IS_BOT and U_MARK_TOPICS and loops.topicrow %}
+			<a href="{{ U_MARK_TOPICS }}" class="mark" accesskey="m" data-ajax="mark_topics_read">
+				{{ lang('MARK_TOPICS_READ') }}
+			</a> &bull;
+		{% endif %}
 
-<!-- IF S_DISPLAY_ONLINE_LIST -->
-	<div class="stat-block online-list">
-		<h3><!-- IF U_VIEWONLINE --><a href="{U_VIEWONLINE}">{L_WHO_IS_ONLINE}</a><!-- ELSE -->{L_WHO_IS_ONLINE}<!-- ENDIF --></h3>
-		<p>{LOGGED_IN_USER_LIST}</p>
+		{% if loops.pagination %}
+			{% include "pagination.html" %}
+		{% endif %}
 	</div>
-<!-- ENDIF -->
 
-<!-- IF S_DISPLAY_POST_INFO -->
-	<div class="stat-block permissions">
-		<h3>{L_FORUM_PERMISSIONS}</h3>
-		<p><!-- BEGIN rules -->{rules.RULE}<br /><!-- END rules --></p>
+</div>
+{% endif %}
+
+
+<div class="navbar" role="navigation">
+	<div class="inner">
+		<ul id="nav-breadcrumbs-bottom" class="linklist navlinks" role="menubar">
+			{% include "nav_breadcrumbs.html" %}
+		</ul>
 	</div>
-<!-- ENDIF -->
+</div>
 
-<!-- INCLUDE overall_footer.html -->
+
+{% if S_DISPLAY_ONLINE_LIST %}
+<div class="stat-block online-list">
+	<h3>
+		{% if U_VIEWONLINE %}
+			<a href="{{ U_VIEWONLINE }}">{{ lang('WHO_IS_ONLINE') }}</a>
+		{% else %}
+			{{ lang('WHO_IS_ONLINE') }}
+		{% endif %}
+	</h3>
+	<p>{{ LOGGED_IN_USER_LIST }}</p>
+</div>
+{% endif %}
+
+
+{% if S_DISPLAY_POST_INFO %}
+<div class="icons-legend">
+	<div class="legend-icon">
+		{{ FOLDER_UNREAD_IMG }} {{ lang('UNREAD_POSTS') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_IMG }} {{ lang('NO_UNREAD_POSTS') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_ANNOUNCE_IMG }} {{ lang('ICON_ANNOUNCEMENT') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_HOT_UNREAD_IMG }} {{ lang('UNREAD_POSTS_HOT') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_HOT_IMG }} {{ lang('NO_UNREAD_POSTS_HOT') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_STICKY_IMG }} {{ lang('ICON_STICKY') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_LOCKED_UNREAD_IMG }} {{ lang('UNREAD_POSTS_LOCKED') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_LOCKED_IMG }} {{ lang('NO_UNREAD_POSTS_LOCKED') }}
+	</div>
+	<div class="legend-icon">
+		{{ FOLDER_MOVED_IMG }} {{ lang('TOPIC_MOVED') }}
+	</div>
+</div>
+
+<div class="permissions">
+{% for rule in loops.rules %}{{ rule.RULE }}<br>{% endfor %}
+</div>
+{% endif %}
+
+
+{% include "jumpbox.html" %}
+
+{% include "overall_footer.html" %}

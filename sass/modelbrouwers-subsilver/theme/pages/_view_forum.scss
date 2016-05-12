@@ -52,6 +52,41 @@ body.section-viewforum {
     }
   }
 
+  .action-bar.bottom + .navbar {
+    margin-top: 20px;
+  }
+
+  .online-list {
+    margin-bottom: 20px;
+  }
+
+  .jumpbox-return {
+    display: none;
+  }
+
+  // legend + perms next to each other
+  .icons-legend {
+    @include span-columns(6);
+
+    .legend-icon {
+      @include span-columns(2 of 6);
+      @include omega(3n);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 3px;
+
+      > span.imageset {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .permissions {
+    @include span-columns(6);
+    text-align: right;
+    @include omega;
+  }
 }
 
 

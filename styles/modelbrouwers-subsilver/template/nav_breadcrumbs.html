@@ -1,0 +1,18 @@
+<!-- DEFINE $MICRODATA = ' itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""' -->
+<!-- EVENT overall_header_breadcrumbs_before -->
+<li class="small-icon icon-home breadcrumbs">
+    <!-- IF U_SITE_HOME --><span class="crumb"{$MICRODATA}><a href="{{ U_SITE_HOME }}" data-navbar-reference="home" itemprop="url"><span itemprop="title">{{ lang('SITE_HOME') }}</span></a></span><!-- ENDIF -->
+    <!-- EVENT overall_header_breadcrumb_prepend -->
+    <span class="crumb"{$MICRODATA}><a href="{{ U_INDEX }}" accesskey="h" data-navbar-reference="index" itemprop="url"><span itemprop="title">{{ lang('INDEX') }}</span></a></span>
+    <!-- BEGIN navlinks -->
+        <!-- EVENT overall_header_navlink_prepend -->
+        <span class="crumb"{$MICRODATA}<!-- IF navlinks.MICRODATA --> {navlinks.MICRODATA}<!-- ENDIF -->><a href="{navlinks.U_VIEW_FORUM}" itemprop="url"><span itemprop="title">{navlinks.FORUM_NAME}</span></a></span>
+        <!-- EVENT overall_header_navlink_append -->
+    <!-- END navlinks -->
+    <!-- EVENT overall_header_breadcrumb_append -->
+</li>
+<!-- EVENT overall_header_breadcrumbs_after -->
+
+<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
+    <li class="rightside responsive-search" style="display: none;"><a href="{{ U_SEARCH }}" title="{{ lang('SEARCH_ADV_EXPLAIN') }}" role="menuitem">{{ lang('SEARCH') }}</a></li>
+<!-- ENDIF -->
