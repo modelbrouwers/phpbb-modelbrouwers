@@ -5700,6 +5700,12 @@ body > .link-list {
   margin-top: 10px;
 }
 
+@media screen and (max-width: 600px) {
+  .trigger {
+    float: left;
+  }
+}
+
 div.time {
   max-width: 100%;
   margin-left: auto;
@@ -6157,33 +6163,6 @@ body.section-viewforum #jumpbox .button {
   border-bottom: solid 1px #a9b8c2;
   padding-top: 5px;
   padding-bottom: 5px;
-  /*
-    @include media($mobile) {
-      .forums {
-        @include span-columns(19 of 24);
-      }
-      > .topics,
-      > .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(5 of 24);
-      }
-    }
-
-    @include media($tablet) {
-      .forums {
-        @include span-columns(20 of 24);
-      }
-      > .topics,
-      > .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(4 of 24);
-      }
-    }
-    */
 }
 
 .topics-header::after {
@@ -6202,59 +6181,6 @@ body.section-viewforum #jumpbox .button {
 .topics-header > .topics {
   display: table-cell;
   width: 61.11111%;
-}
-
-.topics-header > .author {
-  display: table-cell;
-  width: 11.11111%;
-}
-
-.topics-header > .posts,
-.topics-header > .views {
-  display: table-cell;
-  width: 5.55556%;
-}
-
-.topics-header > .lastpost {
-  display: table-cell;
-  width: 19.44444%;
-  margin-right: 0;
-}
-
-.topiclist.topics {
-  /*
-    @include media($mobile) {
-      .icon {
-        @include span-columns(3 of 24);
-      }
-      .description {
-        @include span-columns(16 of 24);
-      }
-      .topics,
-      .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(5 of 24);
-      }
-    }
-
-    @include media($tablet) {
-      .icon {
-        @include span-columns(2 of 24);
-      }
-      .description {
-        @include span-columns(18 of 24);
-      }
-      .topics,
-      .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(4 of 24);
-      }
-    }
-    */
 }
 
 .topiclist.topics .row {
@@ -6319,36 +6245,85 @@ body.section-viewforum #jumpbox .button {
   content: "";
 }
 
-.topiclist.topics .icon {
+.icon {
   display: table-cell;
   width: 2.77778%;
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-.topiclist.topics .description {
+.description {
   display: table-cell;
   width: 55.55556%;
 }
 
-.topiclist.topics .author {
+.author {
   display: table-cell;
   width: 11.11111%;
   text-align: center;
 }
 
-.topiclist.topics .posts,
-.topiclist.topics .views {
+.posts,
+.views {
   display: table-cell;
   width: 5.55556%;
   text-align: center;
 }
 
-.topiclist.topics .lastpost {
+.lastpost {
   display: table-cell;
   width: 19.44444%;
   margin-right: 0;
   text-align: center;
+}
+
+/*
+  @include media($tablet) {
+    .icon {
+      @include span-columns(2 of 24);
+    }
+    .description {
+      @include span-columns(18 of 24);
+    }
+    .topics,
+    .posts {
+      display: none;
+    }
+    .lastpost {
+      @include span-columns(4 of 24);
+    }
+  }
+  */
+@media screen and (max-width: 600px) {
+  .topics-header .topics {
+    display: table-cell;
+    width: 75%;
+  }
+  .icon {
+    display: table-cell;
+    width: 8.33333%;
+  }
+  .description {
+    display: table-cell;
+    width: 58.33333%;
+  }
+  .author {
+    display: table-cell;
+    width: 25%;
+    border-right: none !important;
+  }
+  .author a {
+    display: block;
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .posts,
+  .views,
+  .lastpost {
+    display: none;
+  }
 }
 
 .action-bar {

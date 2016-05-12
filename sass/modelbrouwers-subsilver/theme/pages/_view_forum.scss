@@ -146,48 +146,6 @@ body.section-viewforum {
     > .topics {
       @include span-columns(22 of 36);
     }
-
-    > .author {
-      @include span-columns(4 of 36)
-    }
-
-    > .posts,
-    > .views {
-      @include span-columns(2 of 36);
-
-    }
-    > .lastpost {
-      @include span-columns(7 of 36);
-      @include omega;
-    }
-
-    /*
-    @include media($mobile) {
-      .forums {
-        @include span-columns(19 of 24);
-      }
-      > .topics,
-      > .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(5 of 24);
-      }
-    }
-
-    @include media($tablet) {
-      .forums {
-        @include span-columns(20 of 24);
-      }
-      > .topics,
-      > .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(4 of 24);
-      }
-    }
-    */
   }
 
   .topiclist.topics {
@@ -248,67 +206,85 @@ body.section-viewforum {
         }
       }
     }
+  }
+
+  .icon {
+    @include span-columns(1 of 36);
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .description {
+    @include span-columns(20 of 36);
+  }
+
+  .author {
+    @include span-columns(4 of 36);
+    text-align: center;
+  }
+
+  .posts,
+  .views {
+    @include span-columns(2 of 36);
+    text-align: center;
+  }
+
+  .lastpost {
+    @include span-columns(7 of 36);
+    @include omega;
+    text-align: center;
+  }
+
+  /*
+  @include media($tablet) {
+    .icon {
+      @include span-columns(2 of 24);
+    }
+    .description {
+      @include span-columns(18 of 24);
+    }
+    .topics,
+    .posts {
+      display: none;
+    }
+    .lastpost {
+      @include span-columns(4 of 24);
+    }
+  }
+  */
+
+  @include media($mobile) {
+
+    .topics-header {
+      .topics {
+        @include span-columns(9);
+      }
+    }
 
     .icon {
-      @include span-columns(1 of 36);
-      background-repeat: no-repeat;
-      background-position: center center;
+      @include span-columns(1);
     }
 
     .description {
-      @include span-columns(20 of 36);
+      @include span-columns(7);
     }
-
     .author {
-      @include span-columns(4 of 36);
-      text-align: center;
-    }
+      @include span-columns(3);
+      border-right: none !important;
 
+      a {
+        display: block;
+        max-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
     .posts,
-    .views {
-      @include span-columns(2 of 36);
-      text-align: center;
-    }
-
+    .views,
     .lastpost {
-      @include span-columns(7 of 36);
-      @include omega;
-      text-align: center;
+      display: none;
     }
-
-    /*
-    @include media($mobile) {
-      .icon {
-        @include span-columns(3 of 24);
-      }
-      .description {
-        @include span-columns(16 of 24);
-      }
-      .topics,
-      .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(5 of 24);
-      }
-    }
-
-    @include media($tablet) {
-      .icon {
-        @include span-columns(2 of 24);
-      }
-      .description {
-        @include span-columns(18 of 24);
-      }
-      .topics,
-      .posts {
-        display: none;
-      }
-      .lastpost {
-        @include span-columns(4 of 24);
-      }
-    }
-    */
   }
 }
 

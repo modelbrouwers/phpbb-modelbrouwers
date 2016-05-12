@@ -40,3 +40,10 @@ body {
     margin-top: 10px;
   }
 }
+
+
+@include media($mobile) {
+  .trigger {
+    float: left;
+  }
+}
