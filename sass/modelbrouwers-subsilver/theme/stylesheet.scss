@@ -12,8 +12,9 @@
 */
 
 @import 'bourbon';
-@import 'partials/grid-settings';
+@import '../../all/grid-settings';
 @import 'neat';
 
 @import 'partials/all';
+@import '../../all/all'; // shared css between themes
 @import 'pages/all';
