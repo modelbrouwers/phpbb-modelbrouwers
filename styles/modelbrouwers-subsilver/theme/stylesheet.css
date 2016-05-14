@@ -6599,10 +6599,18 @@ body.section-viewforum #jumpbox .button {
   margin-right: 0;
 }
 
+.action-bar .pagination li.page-jump a,
 .action-bar .pagination li.next a {
   height: auto;
+}
+
+.action-bar .pagination li.next a {
   width: 14px;
   background-position: -52px 2px;
+}
+
+.action-bar .pagination li.page-jump a {
+  width: 32px;
 }
 
 @media screen and (max-width: 600px) {

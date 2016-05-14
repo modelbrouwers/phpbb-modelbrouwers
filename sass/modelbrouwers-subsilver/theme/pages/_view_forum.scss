@@ -354,10 +354,18 @@ body.section-viewforum {
     margin-bottom: 0;
     line-height: 26px;
 
+    li.page-jump a,
     li.next a {
       height: auto;
+    }
+
+    li.next a {
       width: 14px;
       background-position: -52px 2px;
+    }
+
+    li.page-jump a {
+      width: 32px;
     }
   }
 
