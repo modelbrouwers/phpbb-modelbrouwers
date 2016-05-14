@@ -5972,6 +5972,9 @@ header.container-fluid .navbar-brand {
     display: table-cell;
     width: 20.83333%;
   }
+  .forums-header .lastpost p {
+    max-width: 64px;
+  }
 }
 
 @media screen and (min-width: 600px) and (max-width: 900px) {
@@ -6044,6 +6047,14 @@ header.container-fluid .navbar-brand {
   width: 16.66667%;
   margin-right: 0;
   text-align: center;
+}
+
+.topiclist.forums .lastpost p {
+  max-width: 64px;
+}
+
+.topiclist.forums .lastpost p:first-child {
+  display: none;
 }
 
 @media screen and (max-width: 600px) {

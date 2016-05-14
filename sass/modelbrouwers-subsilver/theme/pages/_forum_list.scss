@@ -79,6 +79,10 @@ $cell-border: solid 1px #a9b8c2;
       }
       .lastpost {
         @include span-columns(5 of 24);
+
+        p {
+          max-width: 64px;
+        }
       }
     }
 
@@ -140,6 +144,14 @@ $cell-border: solid 1px #a9b8c2;
       @include span-columns(4 of 24);
       @include omega;
       text-align: center;
+
+      p {
+        max-width: 64px;
+
+        &:first-child {
+          display: none;
+        }
+      }
     }
 
     @include media($mobile) {
