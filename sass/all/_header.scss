@@ -1,0 +1,13 @@
+@include media($mobile) {
+  .link-list {
+    display: none;
+  }
+
+  #page-header {
+    margin-top: 15px;
+  }
+
+  #nav-main {
+    margin-bottom: 15px;
+  }
+}

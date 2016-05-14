@@ -158,6 +158,10 @@ body.section-viewforum {
         @include omega(2n);
       }
     }
+
+    .trigger {
+      float: left;
+    }
   }
 }
 

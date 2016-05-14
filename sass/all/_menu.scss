@@ -1,4 +1,13 @@
 header.container-fluid {
+
+  $nav-gradient: linear-gradient(180deg, #ececec, #f8f8f8);
+  $nav-gradient-reverse: linear-gradient(0deg, #ececec, #f8f8f8);
+  $nav-tab: #e5e5e5;
+  $nav-tab-highlight: #fafafa;
+  $nav-tab-text: #f4f4f4;
+  $nav-tab-text-highlight: #fafafa;
+  $broken-white: rgba(255,255,255, 0.5);
+
   box-sizing: border-box;
 
   * {
@@ -6,11 +15,10 @@ header.container-fluid {
   }
 
   .navbar {
-    background-color: #f8f8f8;
     position: relative;
-    min-height: 50px;
+    background-color: #f8f8f8;
     border: 1px solid #e7e7e7;
-    margin: 0 0 20px;
+    margin-top: 0;
     padding: 0;
   }
 
@@ -55,19 +63,49 @@ header.container-fluid {
 
   .navbar-brand {
     float: left;
-    height: 50px;
+    height: 35px;
     padding: 15px 15px;
-    margin-left: 0 !important;
     font-size: 18px;
     line-height: 20px;
   }
 
   .navbar-collapse {
-    &.collapse {
-      display: none;
-    }
-    &.in {
-      display: block;
+
+    @include media($mobile) {
+
+      margin-left: -15px;
+      margin-right: -15px;
+
+      overflow-y: auto;
+      overflow-x: visible;
+      border-top: solid 1px #e7e7e7;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+
+      &.collapse {
+        display: none;
+      }
+
+      &.in {
+        display: block;
+      }
+
+      li.tab {
+        @include background($nav-gradient);
+        border: solid 1px $nav-tab;
+        float: none;
+
+        &:hover,
+        &.active,
+        &:focus,
+        &:active {
+          @include background($nav-gradient-reverse);
+        }
+
+        a {
+          display: block;
+          color: #777;
+        }
+      }
     }
   }
 
@@ -75,12 +113,33 @@ header.container-fluid {
     .navbar-brand {
       height: 50px;
       padding: 7.5px 15px;
+      margin-left: 0 !important;
+    }
+
+    .navbar {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
   @include media($large-screen-up) {
+    .navbar {
+      min-height: 35px;
+      max-height: 35px;
+      margin: 0 -15px;
+      border: none;
+    }
+
     .navbar-toggle {
       display: none;
+    }
+
+    .navbar-brand {
+      margin-left: -15px;
+      position: absolute;
+      padding: 0;
+      top: 0;
+      left: 30px;
     }
   }
 }
