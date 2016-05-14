@@ -66,6 +66,9 @@ header.container-fluid {
     &.collapse {
       display: none;
     }
+    &.in {
+      display: block;
+    }
   }
 
   @include media($mobile) {

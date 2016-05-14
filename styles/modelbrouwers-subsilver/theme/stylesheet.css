@@ -5820,6 +5820,10 @@ header.container-fluid .navbar-collapse.collapse {
   display: none;
 }
 
+header.container-fluid .navbar-collapse.in {
+  display: block;
+}
+
 @media screen and (max-width: 600px) {
   header.container-fluid .navbar-brand {
     height: 50px;
