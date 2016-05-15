@@ -1,3 +1,14 @@
 body.section-viewtopic {
-  // add styles
+
+  @extend %forum;
+
+  .action-bar {
+    .topic-tools {
+      float: right;
+
+      .button {
+        height: auto;
+      }
+    }
+  }
 }

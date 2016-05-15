@@ -20,30 +20,7 @@
 </h2>
 <!-- EVENT viewforum_forum_title_after -->
 
-{% if FORUM_DESC or MODERATORS or U_MCP %}
-<div>
-	{% if FORUM_DESC %}<p class="forum-desc">{{ FORUM_DESC }}</p>{% endif %}
-	{% if MODERATORS %}
-		<p class="forum-moderators">
-			<strong>{{ S_SINGLE_MODERATOR ? lang('MODERATOR') : lang('MODERATORS') }}</strong>{{ lang('COLON') }}
-			{{ MODERATORS }}
-		</p>
-	{% endif %}
-	{% if U_MCP %}<p class="forum-mcp">[ <a href="{{ U_MCP }}">{{ lang('MCP') }}</a> ]</p>{% endif %}
-</div>
-{% endif %}
-
-
-{% if S_FORUM_RULES %}
-<div class="rules {{ U_FORUM_RULES ? 'rules-links' : '' }}">
-	{% if U_FORUM_RULES %}
-		<a href="{{ U_FORUM_RULES }}">{{ lang('FORUM_RULES') }}</a>
-	{% else %}
-		<strong>{{ lang('FORUM_RULES') }}</strong><br>
-		{{ FORUM_RULES }}
-	{% endif %}
-</div>
-{% endif %}
+{% include "_forum_header.html" %}
 
 
 {% if S_DISPLAY_POST_INFO or loops.pagination or TOTAL_POSTS or TOTAL_TOPICS %}

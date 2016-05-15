@@ -6095,17 +6095,17 @@ header.container-fluid .navbar-brand {
   }
 }
 
-body.section-viewforum .forum-title + div {
+body.section-viewforum .forum-title + div, body.section-viewtopic .forum-title + div {
   display: block;
 }
 
-body.section-viewforum .forum-title + div::after {
+body.section-viewforum .forum-title + div::after, body.section-viewtopic .forum-title + div::after {
   clear: both;
   content: "";
   display: table;
 }
 
-body.section-viewforum p.forum-desc {
+body.section-viewforum p.forum-desc, body.section-viewtopic p.forum-desc {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -6113,11 +6113,11 @@ body.section-viewforum p.forum-desc {
   display: none;
 }
 
-body.section-viewforum p.forum-desc:last-child {
+body.section-viewforum p.forum-desc:last-child, body.section-viewtopic p.forum-desc:last-child {
   margin-right: 0;
 }
 
-body.section-viewforum p.forum-moderators {
+body.section-viewforum p.forum-moderators, body.section-viewtopic p.forum-moderators {
   margin-top: 0;
   float: left;
   display: block;
@@ -6125,11 +6125,11 @@ body.section-viewforum p.forum-moderators {
   width: 74.41059%;
 }
 
-body.section-viewforum p.forum-moderators:last-child {
+body.section-viewforum p.forum-moderators:last-child, body.section-viewtopic p.forum-moderators:last-child {
   margin-right: 0;
 }
 
-body.section-viewforum p.forum-mcp {
+body.section-viewforum p.forum-mcp, body.section-viewtopic p.forum-mcp {
   margin-top: 0;
   float: left;
   display: block;
@@ -6138,7 +6138,7 @@ body.section-viewforum p.forum-mcp {
   text-align: right;
 }
 
-body.section-viewforum p.forum-mcp:last-child {
+body.section-viewforum p.forum-mcp:last-child, body.section-viewtopic p.forum-mcp:last-child {
   margin-right: 0;
 }
 
@@ -6652,6 +6652,14 @@ body.section-viewforum #jumpbox .button {
   .action-bar .pagination > ul {
     margin: 0 !important;
   }
+}
+
+body.section-viewtopic .action-bar .topic-tools {
+  float: right;
+}
+
+body.section-viewtopic .action-bar .topic-tools .button {
+  height: auto;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

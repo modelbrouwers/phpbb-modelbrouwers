@@ -1,5 +1,5 @@
-body.section-viewforum {
-
+// forum header stuff, shared between viewforum/viewtopic
+%forum {
   .forum-title + div {
     @include row;
   }
@@ -19,6 +19,12 @@ body.section-viewforum {
     @include span-columns(3);
     text-align: right;
   }
+}
+
+
+body.section-viewforum {
+
+  @extend %forum;
 
   .forumbg {
 
