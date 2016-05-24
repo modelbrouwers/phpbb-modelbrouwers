@@ -12,3 +12,23 @@ body.section-viewtopic {
     }
   }
 }
+
+body.section-viewtopic {
+@include display-context(table) {
+  .topic-header {
+    @extend %table-header;
+
+    .author {
+      border-right: solid 1px #A9B8C2;
+    }
+  }
+
+  .author {
+    @include span-columns(2);
+  }
+
+  .message {
+    @include span-columns(10);
+  }
+}
+}

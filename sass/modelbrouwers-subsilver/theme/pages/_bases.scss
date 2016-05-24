@@ -1,0 +1,25 @@
+// dark-blue gradient
+$dark-blue: #00679b;
+$light-blue: #3a95c2;
+
+$cell-border: solid 1px #a9b8c2;
+
+
+%table-header {
+  @include outer-container(100%);
+  @include fill-parent;
+  @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
+  display: table;
+
+  border-top: solid 3px #3E88AE;
+  border-bottom: $cell-border;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  > div {
+    text-align: center;
+    color: #FFA34F;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+}

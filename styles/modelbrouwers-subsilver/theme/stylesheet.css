@@ -5880,6 +5880,32 @@ header.container-fluid .navbar-brand {
   }
 }
 
+.forums-header, .topics-header, body.section-viewtopic .topic-header {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-image: linear-gradient(to bottom, #00679b, #3a95c2);
+  display: table;
+  border-top: solid 3px #3E88AE;
+  border-bottom: solid 1px #a9b8c2;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.forums-header::after, .topics-header::after, body.section-viewtopic .topic-header::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.forums-header > div, .topics-header > div, body.section-viewtopic .topic-header > div {
+  text-align: center;
+  color: #FFA34F;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
 .forabg {
   border: solid 1px #a9b8c2;
 }
@@ -5914,32 +5940,6 @@ header.container-fluid .navbar-brand {
 
 .forabg + .body-blok {
   margin-top: 15px;
-}
-
-.forums-header {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  background-image: linear-gradient(to bottom, #00679b, #3a95c2);
-  display: table;
-  border-top: solid 3px #3E88AE;
-  border-bottom: solid 1px #a9b8c2;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.forums-header::after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.forums-header > div {
-  text-align: center;
-  color: #FFA34F;
-  font-weight: bold;
-  font-size: 1.1em;
 }
 
 .forums-header > .forums {
@@ -6382,32 +6382,6 @@ body.section-viewforum #jumpbox .button {
   }
 }
 
-.topics-header {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  background-image: linear-gradient(to bottom, #00679b, #3a95c2);
-  display: table;
-  border-top: solid 3px #3E88AE;
-  border-bottom: solid 1px #a9b8c2;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.topics-header::after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.topics-header > div {
-  text-align: center;
-  color: #FFA34F;
-  font-weight: bold;
-  font-size: 1.1em;
-}
-
 .topics-header > .topics {
   display: table-cell;
   width: 61.11111%;
@@ -6660,6 +6634,20 @@ body.section-viewtopic .action-bar .topic-tools {
 
 body.section-viewtopic .action-bar .topic-tools .button {
   height: auto;
+}
+
+body.section-viewtopic .topic-header .author {
+  border-right: solid 1px #A9B8C2;
+}
+
+body.section-viewtopic .author {
+  display: table-cell;
+  width: 16.66667%;
+}
+
+body.section-viewtopic .message {
+  display: table-cell;
+  width: 83.33333%;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

@@ -174,23 +174,8 @@ body.section-viewforum {
 
 @include display-context(table) {
   .topics-header {
-    @include outer-container(100%);
-    @include fill-parent;
-    @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
-    display: table;
 
-    border-top: solid 3px #3E88AE;
-    border-bottom: $cell-border;
-    padding-top: 5px;
-    padding-bottom: 5px;
-
-
-    > div {
-      text-align: center;
-      color: #FFA34F;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
+    @extend %table-header;
 
     > .topics {
       @include span-columns(22 of 36);
