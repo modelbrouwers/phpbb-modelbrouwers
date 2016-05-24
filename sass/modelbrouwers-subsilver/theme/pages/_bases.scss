@@ -6,10 +6,9 @@ $cell-border: solid 1px #a9b8c2;
 
 
 %table-header {
+  @include row(table);
   @include outer-container(100%);
-  @include fill-parent;
   @include background-image(linear-gradient(to bottom, $dark-blue, $light-blue));
-  display: table;
 
   border-top: solid 3px #3E88AE;
   border-bottom: $cell-border;

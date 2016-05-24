@@ -311,8 +311,6 @@ ol ol ul, ol ul ul, ul ol ul, ul ul ul {
 }
 
 .post {
-  padding: 5px 10px;
-  margin-bottom: 4px;
   background-repeat: no-repeat;
   background-position: 100% 0;
   position: relative;
@@ -2516,7 +2514,7 @@ dd.profile-contact {
 
 .online {
   background-image: none;
-  background-position: 100% 0;
+  background-position: 100% 25px;
   background-repeat: no-repeat;
 }
 
@@ -2861,7 +2859,7 @@ ul.linklist.bulletin > li.small-icon:before {
   position: absolute;
   margin: 0;
   right: 0;
-  top: 5px;
+  bottom: 5px;
 }
 
 .post-buttons > li {
@@ -5881,12 +5879,13 @@ header.container-fluid .navbar-brand {
 }
 
 .forums-header, .topics-header, body.section-viewtopic .topic-header {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
   background-image: linear-gradient(to bottom, #00679b, #3a95c2);
-  display: table;
   border-top: solid 3px #3E88AE;
   border-bottom: solid 1px #a9b8c2;
   padding-top: 5px;
@@ -6636,18 +6635,47 @@ body.section-viewtopic .action-bar .topic-tools .button {
   height: auto;
 }
 
-body.section-viewtopic .topic-header .author {
-  border-right: solid 1px #A9B8C2;
+body.section-viewtopic article .row {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+body.section-viewtopic .topic-header {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-left: solid 1px #a9b8c2;
+}
+
+body.section-viewtopic .topic-header > .author,
+body.section-viewtopic .topic-header > .message {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+body.section-viewtopic .topic-header > .author {
+  border-right: solid 1px #a9b8c2;
+}
+
+body.section-viewtopic .author header,
+body.section-viewtopic .message header {
+  padding: 6px;
+  border-bottom: solid 1px #a9b8c2;
 }
 
 body.section-viewtopic .author {
   display: table-cell;
   width: 16.66667%;
+  border-right: solid 1px #a9b8c2;
 }
 
 body.section-viewtopic .message {
   display: table-cell;
   width: 83.33333%;
+}
+
+body.section-viewtopic header .details {
+  float: right;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

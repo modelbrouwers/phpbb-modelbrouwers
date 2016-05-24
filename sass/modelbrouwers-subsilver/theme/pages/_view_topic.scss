@@ -14,21 +14,51 @@ body.section-viewtopic {
 }
 
 body.section-viewtopic {
+
+article .row {
+  @include row(table);
+}
+
 @include display-context(table) {
+
   .topic-header {
     @extend %table-header;
 
-    .author {
-      border-right: solid 1px #A9B8C2;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-left: $cell-border;
+    // border-right: $cell-border;
+
+    > .author,
+    > .message {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+
+    > .author {
+      border-right: $cell-border;
+    }
+  }
+
+  .author,
+  .message {
+    header {
+      padding: 6px;
+      border-bottom: $cell-border;
     }
   }
 
   .author {
     @include span-columns(2);
+    border-right: $cell-border;
   }
 
   .message {
     @include span-columns(10);
+  }
+
+  header .details {
+    float: right;
   }
 }
 }

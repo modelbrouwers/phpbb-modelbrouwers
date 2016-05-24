@@ -147,293 +147,301 @@
 		        {{ postrow.S_POST_HIDDEN ? 'style="display: none;"' : '' }}
 		        ">
 
-		<div class="author
-		            {{ postrow.RANK_TITLE or postrow.RANK_IMG ? 'has-profile-rank' : 'no-profile-rank' }}
-		            {{ postrow.POST_AVATAR ? 'has-avatar' : 'no-avatar' }}"
-		            id="profile{{ postrow.POST_ID }}">
+		<div class="row">
+			<aside class="author
+			            {{ postrow.RANK_TITLE or postrow.RANK_IMG ? 'has-profile-rank' : 'no-profile-rank' }}
+			            {{ postrow.POST_AVATAR ? 'has-avatar' : 'no-avatar' }}"
+			            id="profile{{ postrow.POST_ID }}">
 
-			{# Author name (coloured) #}
-			<!-- EVENT viewtopic_body_post_author_before -->
-			{% if not postrow.U_POST_AUTHOR %}
-				<strong>{{ postrow.POST_AUTHOR_FULL }}</strong>
-			{% else %}
-				{{ postrow.POST_AUTHOR_FULL }}
-			{% endif %}
-			<!-- EVENT viewtopic_body_post_author_after -->
-
-			{# Author online status #}
-			<div class="online-status">
-				{% if postrow.S_ONLINE and not postrow.S_POST_HIDDEN %}
-					{{ lang('ONLINE') }}
-				{% else %}
-					{{ lang('OFFLINE') }}
-				{% endif %}
-			</div>
-
-			{# Author rank #}
-			<!-- EVENT viewtopic_body_postrow_rank_before -->
-			{% if postrow.RANK_TITLE or postrow.RANK_IMG %}
-				<div class="profile-rank">
-					{{ postrow.RANK_TITLE }}
-					{% if postrow.RANK_TITLE and postrow.RANK_IMG %}<br>{% endif %}
-					{{ postrow.RANK_IMG }}
-				</div>
-			{% endif %}
-			<!-- EVENT viewtopic_body_postrow_rank_after -->
-
-			{# Author avatar #}
-			<div class="avatar-container">
-				<!-- EVENT viewtopic_body_avatar_before -->
-				{% if postrow.POSTER_AVATAR %}
-					{% if postrow.U_POST_AUTHOR %}
-						<a href="{{ postrow.U_POST_AUTHOR }}" class="avatar">{{ postrow.POSTER_AVATAR }}</a>
+				{# Author name (coloured) #}
+				<header>
+					<!-- EVENT viewtopic_body_post_author_before -->
+					{% if not postrow.U_POST_AUTHOR %}
+						<strong>{{ postrow.POST_AUTHOR_FULL }}</strong>
 					{% else %}
-						<span class="avatar">{{ postrow.POSTER_AVATAR }}</span>
+						{{ postrow.POST_AUTHOR_FULL }}
+					{% endif %}
+					<!-- EVENT viewtopic_body_post_author_after -->
+				</header>
+
+				{# Author online status #}
+				<div class="online-status">
+					{% if postrow.S_ONLINE and not postrow.S_POST_HIDDEN %}
+						{{ lang('ONLINE') }}
+					{% else %}
+						{{ lang('OFFLINE') }}
+					{% endif %}
+				</div>
+
+				{# Author rank #}
+				<!-- EVENT viewtopic_body_postrow_rank_before -->
+				{% if postrow.RANK_TITLE or postrow.RANK_IMG %}
+					<div class="profile-rank">
+						{{ postrow.RANK_TITLE }}
+						{% if postrow.RANK_TITLE and postrow.RANK_IMG %}<br>{% endif %}
+						{{ postrow.RANK_IMG }}
+					</div>
+				{% endif %}
+				<!-- EVENT viewtopic_body_postrow_rank_after -->
+
+				{# Author avatar #}
+				<div class="avatar-container">
+					<!-- EVENT viewtopic_body_avatar_before -->
+					{% if postrow.POSTER_AVATAR %}
+						{% if postrow.U_POST_AUTHOR %}
+							<a href="{{ postrow.U_POST_AUTHOR }}" class="avatar">{{ postrow.POSTER_AVATAR }}</a>
+						{% else %}
+							<span class="avatar">{{ postrow.POSTER_AVATAR }}</span>
+						{% endif %}
+					{% endif %}
+					<!-- EVENT viewtopic_body_avatar_after -->
+				</div>
+
+				{# Author stats #}
+
+				{% if postrow.POSTER_JOINED %}
+					<div class="stat joined">
+						<strong>{{ lang('JOINED') }}{{ lang('COLON') }}</strong>
+						{{ postrow.POSTER_JOINED }}
+					</div>
+				{% endif %}
+
+				{% if postrow.POSTER_JOINED %}
+					<div class="stat profile-posts">
+						<strong>{{ lang('POSTS') }}{{ lang('COLON') }}</strong>
+						{{ postrow.POSTER_POSTS }}
+					</div>
+				{% endif %}
+
+				{% if postrow.POSTER_FROM %}
+					<div class="stat location">
+						<strong>{{ lang('LOCATION') }}{{ lang('COLON') }}</strong>
+						{{ postrow.POSTER_FROM }}
+					</div>
+				{% endif %}
+
+				{% if postrow.POSTER_AGE %}
+					<div class="stat age">
+						<strong>{{ lang('AGE') }}{{ lang('COLON') }}</strong>
+						{{ postrow.POSTER_AGE }}
+					</div>
+				{% endif %}
+
+				{% if postrow.POSTER_WARNINGS %}
+					<div class="stat profile-warnings">
+						<strong>{{ lang('WARNINGS') }}{{ lang('COLON') }}</strong>
+						{{ postrow.POSTER_WARNINGS }}
+					</dd>
+				{% endif %}
+
+				{# Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field.
+				{% if postrow.S_PROFILE_FIELD1 %}
+					<dd><strong>{postrow.PROFILE_FIELD1_NAME}{L_COLON}</strong> {postrow.PROFILE_FIELD1_VALUE}</dd>
+				{% endif %}
+				#}
+
+				<!-- EVENT viewtopic_body_postrow_custom_fields_before -->
+
+				{% for custom_field in loops.custom_fields %}
+					{% if not postrow.custom_fields.S_PROFILE_CONTACT %}
+						<div class="stat profile-custom-field profile-{{ postrow.custom_fields.PROFILE_FIELD_IDENT }}">
+							<strong>{{ postrow.custom_fields.PROFILE_FIELD_NAME }}{{ lang('COLON') }}</strong>
+							{{ postrow.custom_fields.PROFILE_FIELD_VALUE }}
+						</div>
+					{% endif %}
+				{% endfor %}
+
+				<!-- EVENT viewtopic_body_postrow_custom_fields_after -->
+
+				{% if U_MCP %}
+					<span id="sharing_{{ postrow.POSTER_ID }}" class="sharing" data-posterid="{{ postrow.POSTER_ID }}"></span>
+				{% endif %}
+
+			</aside>
+
+			{# Actual post body #}
+			<div class="message">
+				{% if postrow.S_POST_HIDDEN %}
+					{% if postrow.S_POST_DELETED %}
+						<div class="ignore" id="post_hidden{{ postrow.POST_ID }}">
+							{{ postrow.L_POST_DELETED_MESSAGE }}<br />
+							{{ postrow.L_POST_DISPLAY }}
+						</div>
+					{% elseif postrow.S_IGNORE_POST %}
+						<div class="ignore" id="post_hidden{{ postrow.POST_ID }}">
+							{{ postrow.L_IGNORE_POST }}<br />
+							{{ postrow.L_POST_DISPLAY }}
+						</div>
 					{% endif %}
 				{% endif %}
-				<!-- EVENT viewtopic_body_avatar_after -->
-			</div>
 
-			{# Author stats #}
+				{# And actual content... #}
+				<div id="post_content{{ postrow.POST_ID }}" {{ postrow.S_POST_HIDDEN ? 'style="display: none;"' : '' }}>
 
-			{% if postrow.POSTER_JOINED %}
-				<div class="stat joined">
-					<strong>{{ lang('JOINED') }}{{ lang('COLON') }}</strong>
-					{{ postrow.POSTER_JOINED }}
-				</div>
-			{% endif %}
+					{# subject #}
+					<header>
+						<!-- EVENT viewtopic_body_post_subject_before -->
+						{% if postrow.POST_ICON_IMG %}
+							<img src="{{ T_ICONS_PATH }}{{ postrow.POST_ICON_IMG }}" width="{{ postrow.POST_ICON_IMG_WIDTH }}"
+							     height="{{ postrow.POST_ICON_IMG_HEIGHT }}" alt="" />
+						{% endif %}
+						<strong>{{ lang('POST_SUBJECT') }}{{ lang('COLON') }}</strong>
+						<a href="#p{{ postrow.POST_ID }}">{{ postrow.POST_SUBJECT }}</a>
+						<!-- EVENT viewtopic_body_post_subject_after -->
 
-			{% if postrow.POSTER_JOINED %}
-				<div class="stat profile-posts">
-					<strong>{{ lang('POSTS') }}{{ lang('COLON') }}</strong>
-					{{ postrow.POSTER_POSTS }}
-				</div>
-			{% endif %}
-
-			{% if postrow.POSTER_FROM %}
-				<div class="stat location">
-					<strong>{{ lang('LOCATION') }}{{ lang('COLON') }}</strong>
-					{{ postrow.POSTER_FROM }}
-				</div>
-			{% endif %}
-
-			{% if postrow.POSTER_AGE %}
-				<div class="stat age">
-					<strong>{{ lang('AGE') }}{{ lang('COLON') }}</strong>
-					{{ postrow.POSTER_AGE }}
-				</div>
-			{% endif %}
-
-			{% if postrow.POSTER_WARNINGS %}
-				<div class="stat profile-warnings">
-					<strong>{{ lang('WARNINGS') }}{{ lang('COLON') }}</strong>
-					{{ postrow.POSTER_WARNINGS }}
-				</dd>
-			{% endif %}
-
-			{# Use a construct like this to include admin defined profile fields. Replace FIELD1 with the name of your field.
-			{% if postrow.S_PROFILE_FIELD1 %}
-				<dd><strong>{postrow.PROFILE_FIELD1_NAME}{L_COLON}</strong> {postrow.PROFILE_FIELD1_VALUE}</dd>
-			{% endif %}
-			#}
-
-			<!-- EVENT viewtopic_body_postrow_custom_fields_before -->
-
-			{% for custom_field in loops.custom_fields %}
-				{% if not postrow.custom_fields.S_PROFILE_CONTACT %}
-					<div class="stat profile-custom-field profile-{{ postrow.custom_fields.PROFILE_FIELD_IDENT }}">
-						<strong>{{ postrow.custom_fields.PROFILE_FIELD_NAME }}{{ lang('COLON') }}</strong>
-						{{ postrow.custom_fields.PROFILE_FIELD_VALUE }}
-					</div>
-				{% endif %}
-			{% endfor %}
-
-			<!-- EVENT viewtopic_body_postrow_custom_fields_after -->
-
-			{% if U_MCP %}
-				<span id="sharing_{{ postrow.POSTER_ID }}" class="sharing" data-posterid="{{ postrow.POSTER_ID }}"></span>
-			{% endif %}
-
-		</div>
-
-		{# Actual post body #}
-		<div class="message">
-			{% if postrow.S_POST_HIDDEN %}
-				{% if postrow.S_POST_DELETED %}
-					<div class="ignore" id="post_hidden{{ postrow.POST_ID }}">
-						{{ postrow.L_POST_DELETED_MESSAGE }}<br />
-						{{ postrow.L_POST_DISPLAY }}
-					</div>
-				{% elseif postrow.S_IGNORE_POST %}
-					<div class="ignore" id="post_hidden{{ postrow.POST_ID }}">
-						{{ postrow.L_IGNORE_POST }}<br />
-						{{ postrow.L_POST_DISPLAY }}
-					</div>
-				{% endif %}
-			{% endif %}
-
-			{# And actual content... #}
-			<div id="post_content{{ postrow.POST_ID }}" {{ postrow.S_POST_HIDDEN ? 'style="display: none;"' : '' }}>
-
-
-				{# subject #}
-				<!-- EVENT viewtopic_body_post_subject_before -->
-				{% if postrow.POST_ICON_IMG %}
-					<img src="{{ T_ICONS_PATH }}{{ postrow.POST_ICON_IMG }}" width="{{ postrow.POST_ICON_IMG_WIDTH }}"
-					     height="{{ postrow.POST_ICON_IMG_HEIGHT }}" alt="" />
-				{% endif %}
-				<strong>{{ lang('POST_SUBJECT') }}{{ lang('COLON') }}</strong>
-				<a href="#p{{ postrow.POST_ID }}">{{ postrow.POST_SUBJECT }}</a>
-				<!-- EVENT viewtopic_body_post_subject_after -->
-
-				{# details #}
-				<!-- EVENT viewtopic_body_postrow_post_details_before -->
-				<span class="posti">
-					<a href="{{ postrow.U_MINI_POST }}"
-					   onclick="prompt('{{ lang('MESSAGE') }} #{{ postrow.POST_NUMBER }}', this.href); return false;">
-					   	#{postrow.POST_NUMBER}
-					</a>
-				</span>
-				{% if S_IS_BOT %}
-					{{ postrow.MINI_POST_IMG }}
-				{% else %}
-					<a href="{{ postrow.U_MINI_POST }}">{{ postrow.MINI_POST_IMG }}</a>
-				{% endif %}
-				{{ postrow.POST_DATE }}
-				<!-- EVENT viewtopic_body_postrow_post_details_after -->
-
-
-
-				{% set SHOW_POST_BUTTONS=(postrow.U_EDIT or postrow.U_DELETE or postrow.U_REPORT or postrow.U_WARN or postrow.U_INFO or postrow.U_QUOTE) %}
-
-				<!-- EVENT viewtopic_body_post_buttons_list_before -->
-				{% if not S_IS_BOT %}
-					{% if SHOW_POST_BUTTONS %}
-						<ul class="post-buttons">
-							<!-- EVENT viewtopic_body_post_buttons_before -->
-							{% if postrow.U_EDIT %}
-								<li>
-									<a href="{{ postrow.U_EDIT }}" title="{{ lang('EDIT_POST') }}" class="button icon-button edit-icon"><span>{{ lang('BUTTON_EDIT') }}</span></a>
-								</li>
+						{# details #}
+						<span class="details">
+							<!-- EVENT viewtopic_body_postrow_post_details_before -->
+							{% if S_IS_BOT %}
+								{{ postrow.MINI_POST_IMG }}
+							{% else %}
+								<a href="{{ postrow.U_MINI_POST }}">{{ postrow.MINI_POST_IMG }}</a>
 							{% endif %}
-							{% if postrow.U_DELETE %}
-								<li>
-									<a href="{{ postrow.U_DELETE }}" title="{{ lang('DELETE_POST') }}" class="button icon-button delete-icon"><span>{{ lang('DELETE_POST') }}</span></a>
-								</li>
-							{% endif %}
-							{% if postrow.U_REPORT %}
-								<li>
-									<a href="{{ postrow.U_REPORT }}" title="{{ lang('REPORT_POST') }}" class="button icon-button report-icon"><span>{{ lang('REPORT_POST') }}</span></a>
-								</li>
-							{% endif %}
-							{% if postrow.U_WARN %}
-								<li>
-									<a href="{{ postrow.U_WARN }}" title="{{ lang('WARN_USER') }}" class="button icon-button warn-icon"><span>{{ lang('WARN_USER') }}</span></a>
-								</li>
-							{% endif %}
-							{% if postrow.U_INFO %}
-								<li>
-									<a href="{{ postrow.U_INFO }}" title="{{ lang('INFORMATION') }}" class="button icon-button info-icon"><span>{{ lang('INFORMATION') }}</span></a>
-								</li>
-							{% endif %}
-							{% if postrow.U_QUOTE %}
-								<li>
-									<a href="{{ postrow.U_QUOTE }}" title="{{ lang('REPLY_WITH_QUOTE') }}" class="button icon-button quote-icon"><span>{{ lang('QUOTE') }}</span></a>
-								</li>
-							{% endif %}
-							<!-- EVENT viewtopic_body_post_buttons_after -->
+							<strong>{{ lang('POSTED') }}{{ lang('COLON') }}</strong>
+							{{ postrow.POST_DATE }}
+							<span class="posti">
+								<a href="{{ postrow.U_MINI_POST }}"
+								   onclick="prompt('{{ lang('MESSAGE') }} #{{ postrow.POST_NUMBER }}', this.href); return false;">
+								   	#{postrow.POST_NUMBER}
+								</a>
+							</span>
+							<!-- EVENT viewtopic_body_postrow_post_details_after -->
+						</span>
+
+					</header>
+
+
+					{% set SHOW_POST_BUTTONS=(postrow.U_EDIT or postrow.U_DELETE or postrow.U_REPORT or postrow.U_WARN or postrow.U_INFO or postrow.U_QUOTE) %}
+
+					<!-- EVENT viewtopic_body_post_buttons_list_before -->
+					{% if not S_IS_BOT %}
+						{% if SHOW_POST_BUTTONS %}
+							<ul class="post-buttons">
+								<!-- EVENT viewtopic_body_post_buttons_before -->
+								{% if postrow.U_EDIT %}
+									<li>
+										<a href="{{ postrow.U_EDIT }}" title="{{ lang('EDIT_POST') }}" class="button icon-button edit-icon"><span>{{ lang('BUTTON_EDIT') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_DELETE %}
+									<li>
+										<a href="{{ postrow.U_DELETE }}" title="{{ lang('DELETE_POST') }}" class="button icon-button delete-icon"><span>{{ lang('DELETE_POST') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_REPORT %}
+									<li>
+										<a href="{{ postrow.U_REPORT }}" title="{{ lang('REPORT_POST') }}" class="button icon-button report-icon"><span>{{ lang('REPORT_POST') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_WARN %}
+									<li>
+										<a href="{{ postrow.U_WARN }}" title="{{ lang('WARN_USER') }}" class="button icon-button warn-icon"><span>{{ lang('WARN_USER') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_INFO %}
+									<li>
+										<a href="{{ postrow.U_INFO }}" title="{{ lang('INFORMATION') }}" class="button icon-button info-icon"><span>{{ lang('INFORMATION') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_QUOTE %}
+									<li>
+										<a href="{{ postrow.U_QUOTE }}" title="{{ lang('REPLY_WITH_QUOTE') }}" class="button icon-button quote-icon"><span>{{ lang('QUOTE') }}</span></a>
+									</li>
+								{% endif %}
+								<!-- EVENT viewtopic_body_post_buttons_after -->
+							</ul>
+						{% endif %}
+					{% endif %}
+					<!-- EVENT viewtopic_body_post_buttons_list_after -->
+
+					{% if postrow.S_POST_UNAPPROVED %}
+						<form method="post" class="mcp_approve" action="{{ postrow.U_APPROVE_ACTION }}">
+							<p class="post-notice unapproved">
+								<strong>{{ lang('POST_UNAPPROVED_ACTION') }}</strong>
+								<input class="button2" type="submit" value="{{ lang('DISAPPROVE') }}" name="action[disapprove]" />
+								<input class="button1" type="submit" value="{{ lang('APPROVE') }}" name="action[approve]" />
+								<input type="hidden" name="post_id_list[]" value="{{ postrow.POST_ID }}" />
+								{{ S_FORM_TOKEN }}
+							</p>
+						</form>
+					{% elseif postrow.S_POST_DELETED %}
+						<form method="post" class="mcp_approve" action="{{ postrow.U_APPROVE_ACTION }}">
+							<p class="post-notice deleted">
+								<strong>{{ lang('POST_DELETED_ACTION') }}</strong>
+								{% if postrow.S_DELETE_PERMANENT %}
+									<input class="button2" type="submit" value="{{ lang('DELETE') }}" name="action[delete]" />
+								{% endif %}
+								<input class="button1" type="submit" value="{{ lang('RESTORE') }}" name="action[restore]" />
+								<input type="hidden" name="post_id_list[]" value="{{ postrow.POST_ID }}" />
+								{{ S_FORM_TOKEN }}
+							</p>
+						</form>
+					{% endif %}
+
+					{% if postrow.S_POST_REPORTED %}
+					<p class="post-notice reported">
+						<a href="{{ postrow.U_MCP_REPORT }}"><strong>{{ lang('POST_REPORTED') }}</strong></a>
+					</p>
+					{% endif %}
+
+					<div class="content">{{ postrow.MESSAGE }}</div>
+
+					{# TODO: test #}
+					{% if postrow.S_HAS_ATTACHMENTS %}
+					<div class="attachments">
+						<strong>{{ lang('ATTACHMENTS') }}</strong>
+						<ul>
+						{% for attachment in postrow.attachment %}
+							<li>{{ postrow.attachment.DISPLAY_ATTACHMENT }}</li>
+						{% endfor %}
 						</ul>
 					{% endif %}
-				{% endif %}
-				<!-- EVENT viewtopic_body_post_buttons_list_after -->
 
-				{% if postrow.S_POST_UNAPPROVED %}
-					<form method="post" class="mcp_approve" action="{{ postrow.U_APPROVE_ACTION }}">
-						<p class="post-notice unapproved">
-							<strong>{{ lang('POST_UNAPPROVED_ACTION') }}</strong>
-							<input class="button2" type="submit" value="{{ lang('DISAPPROVE') }}" name="action[disapprove]" />
-							<input class="button1" type="submit" value="{{ lang('APPROVE') }}" name="action[approve]" />
-							<input type="hidden" name="post_id_list[]" value="{{ postrow.POST_ID }}" />
-							{{ S_FORM_TOKEN }}
-						</p>
-					</form>
-				{% elseif postrow.S_POST_DELETED %}
-					<form method="post" class="mcp_approve" action="{{ postrow.U_APPROVE_ACTION }}">
-						<p class="post-notice deleted">
-							<strong>{{ lang('POST_DELETED_ACTION') }}</strong>
-							{% if postrow.S_DELETE_PERMANENT %}
-								<input class="button2" type="submit" value="{{ lang('DELETE') }}" name="action[delete]" />
+					{# notices #}
+					<!-- EVENT viewtopic_body_postrow_post_notices_before -->
+					{% if postrow.S_DISPLAY_NOTICE %}
+						<div class="rules">{{ lang('DOWNLOAD_NOTICE') }}</div>
+					{% endif %}
+
+					{% if postrow.DELETED_MESSAGE or postrow.DELETE_REASON %}
+						<div class="notice post_deleted_msg">
+							{{ postrow.DELETED_MESSAGE }}
+							{% if postrow.DELETE_REASON %}
+								<br />
+								<strong>{{ lang('REASON') }}{{ lang('COLON') }}</strong>
+								<em>{{ postrow.DELETE_REASON }}</em>
 							{% endif %}
-							<input class="button1" type="submit" value="{{ lang('RESTORE') }}" name="action[restore]" />
-							<input type="hidden" name="post_id_list[]" value="{{ postrow.POST_ID }}" />
-							{{ S_FORM_TOKEN }}
-						</p>
-					</form>
-				{% endif %}
+						</div>
+					{% elseif postrow.EDITED_MESSAGE or postrow.EDIT_REASON %}
+						<div class="notice">
+							{{ postrow.EDITED_MESSAGE }}
+							{% if postrow.EDIT_REASON %}
+								<br />
+								<strong>{{ lang('REASON') }}{{ lang('COLON') }}</strong>
+								<em>{{ postrow.EDIT_REASON }}</em>
+							{% endif %}
+						</div>
+					{% endif %}
 
-				{% if postrow.S_POST_REPORTED %}
-				<p class="post-notice reported">
-					<a href="{{ postrow.U_MCP_REPORT }}"><strong>{{ lang('POST_REPORTED') }}</strong></a>
-				</p>
-				{% endif %}
+					{% if postrow.BUMPED_MESSAGE %}
+						<div class="notice bumped">{{ postrow.BUMPED_MESSAGE }}</div>
+					{% endif %}
+					<!-- EVENT viewtopic_body_postrow_post_notices_after -->
 
-				<div class="content">{{ postrow.MESSAGE }}</div>
+					{% if postrow.SIGNATURE %}
+						<div id="sig{{ postrow.POST_ID }}" class="signature">
+							{{ postrow.SIGNATURE }}
+						</div>
+					{% endif %}
 
-				{# TODO: test #}
-				{% if postrow.S_HAS_ATTACHMENTS %}
-				<div class="attachments">
-					<strong>{{ lang('ATTACHMENTS') }}</strong>
-					<ul>
-					{% for attachment in postrow.attachment %}
-						<li>{{ postrow.attachment.DISPLAY_ATTACHMENT }}</li>
-					{% endfor %}
-					</ul>
-				{% endif %}
+					<!-- EVENT viewtopic_body_postrow_post_content_footer -->
 
-				{# notices #}
-				<!-- EVENT viewtopic_body_postrow_post_notices_before -->
-				{% if postrow.S_DISPLAY_NOTICE %}
-					<div class="rules">{{ lang('DOWNLOAD_NOTICE') }}</div>
-				{% endif %}
-
-				{% if postrow.DELETED_MESSAGE or postrow.DELETE_REASON %}
-					<div class="notice post_deleted_msg">
-						{{ postrow.DELETED_MESSAGE }}
-						{% if postrow.DELETE_REASON %}
-							<br />
-							<strong>{{ lang('REASON') }}{{ lang('COLON') }}</strong>
-							<em>{{ postrow.DELETE_REASON }}</em>
-						{% endif %}
-					</div>
-				{% elseif postrow.EDITED_MESSAGE or postrow.EDIT_REASON %}
-					<div class="notice">
-						{{ postrow.EDITED_MESSAGE }}
-						{% if postrow.EDIT_REASON %}
-							<br />
-							<strong>{{ lang('REASON') }}{{ lang('COLON') }}</strong>
-							<em>{{ postrow.EDIT_REASON }}</em>
-						{% endif %}
-					</div>
-				{% endif %}
-
-				{% if postrow.BUMPED_MESSAGE %}
-					<div class="notice bumped">{{ postrow.BUMPED_MESSAGE }}</div>
-				{% endif %}
-				<!-- EVENT viewtopic_body_postrow_post_notices_after -->
-
-				{% if postrow.SIGNATURE %}
-					<div id="sig{{ postrow.POST_ID }}" class="signature">
-						{{ postrow.SIGNATURE }}
-					</div>
-				{% endif %}
-
-				<!-- EVENT viewtopic_body_postrow_post_content_footer -->
+				</div>
 
 			</div>
-
 		</div>
 
-		<footer>
+		<footer class="row">
 			<!-- EVENT viewtopic_body_postrow_back2top_before -->
 			<div class="back2top">
 				<!-- EVENT viewtopic_body_postrow_back2top_prepend -->
