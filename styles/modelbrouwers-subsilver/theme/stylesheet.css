@@ -1930,54 +1930,10 @@ dd.option {
 
 /* Post body styles
 ----------------------------------------*/
-.postbody {
-  padding: 0;
-  line-height: 1.48em;
-  width: 76%;
-  float: left;
-  position: relative;
-}
-
-.postbody .ignore {
-  font-size: 1.1em;
-}
-
-.postbody h3.first {
-  /* The first post on the page uses this */
-  font-size: 1.7em;
-}
-
-.postbody h3 {
-  /* Postbody requires a different h3 format - so change it here */
-  float: left;
-  font-size: 1.5em;
-  padding: 2px 0 0 0;
-  margin-top: 0 !important;
-  margin-bottom: 0.3em !important;
-  text-transform: none;
-  border: none;
-  font-family: "Trebuchet MS", Verdana, Helvetica, Arial, sans-serif;
-  line-height: 125%;
-}
-
-.postbody h3 img {
-  vertical-align: bottom;
-}
-
 .has-profile .postbody h3 {
   /* If there is a post-profile, we position the post-buttons differently */
   float: none !important;
   margin-right: 180px;
-}
-
-.postbody .content {
-  font-size: 1.3em;
-  overflow-x: auto;
-}
-
-.postbody img.postimage {
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .search .postbody {
@@ -4188,10 +4144,6 @@ li.header dt, li.header dd {
 
 /* Content container styles
 ----------------------------------------*/
-.content {
-  color: #333333;
-}
-
 .content h2, .panel h2 {
   color: #115098;
   border-bottom-color: #a9b8c2;
@@ -6706,6 +6658,20 @@ body.section-viewtopic .author header {
 body.section-viewtopic .message {
   display: table-cell;
   width: 83.33333%;
+}
+
+body.section-viewtopic .message .content {
+  font-size: 1.3em;
+  overflow-x: auto;
+  padding: 4px;
+}
+
+body.section-viewtopic .message .ignore {
+  font-size: 1.1em;
+}
+
+body.section-viewtopic .message img.postimage {
+  max-width: 100%;
 }
 
 body.section-viewtopic header .details {
