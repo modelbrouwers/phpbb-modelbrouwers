@@ -15,7 +15,7 @@ body.section-viewtopic {
 
 body.section-viewtopic {
 
-article .row {
+article.post .row {
   @include row(table);
 }
 
@@ -40,6 +40,50 @@ article .row {
     }
   }
 
+  .post {
+
+    .profile-rank,
+    .avatar-container,
+    .stat,
+    .sharing {
+      padding: 7px;
+    }
+
+    .online-status {
+      @include background-image(linear-gradient(to bottom, #ffffff, #bcc1c3));
+      max-width: 72px;
+      border: solid 1px #357ea4;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: bolder;
+      margin: 7px;
+      padding: 1px;
+      text-shadow: 1px 1px 0 #FFFFFF,
+                  -1px -1px 0 #FFFFFF,
+                  -1px -1px 0 rgba(188, 42, 77, 0.2);
+      cursor: default;
+    }
+
+    &.online .online-status {
+      color: #6ca964;
+    }
+
+    &.offline .online-status {
+      color: #b63232;
+    }
+
+    .stat,
+    .sharing {
+      color: #000000;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .sharing {
+      display: block;
+    }
+  }
+
   .author,
   .message {
     header {
@@ -51,6 +95,11 @@ article .row {
   .author {
     @include span-columns(2);
     border-right: $cell-border;
+    text-align: left;
+
+    header {
+      text-align: center;
+    }
   }
 
   .message {

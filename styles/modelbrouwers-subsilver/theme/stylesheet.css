@@ -2512,12 +2512,6 @@ dd.profile-contact {
   margin-right: -14px;
 }
 
-.online {
-  background-image: none;
-  background-position: 100% 25px;
-  background-repeat: no-repeat;
-}
-
 /* Poster profile used by search*/
 .search .postprofile {
   width: 30%;
@@ -4434,10 +4428,6 @@ fieldset.polls dd div {
 
 .postprofile strong {
   color: #000000;
-}
-
-.online {
-  background-image: url("./en/icon_user_online.gif");
 }
 
 dd.profile-warnings {
@@ -6635,7 +6625,7 @@ body.section-viewtopic .action-bar .topic-tools .button {
   height: auto;
 }
 
-body.section-viewtopic article .row {
+body.section-viewtopic article.post .row {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -6657,6 +6647,45 @@ body.section-viewtopic .topic-header > .author {
   border-right: solid 1px #a9b8c2;
 }
 
+body.section-viewtopic .post .profile-rank,
+body.section-viewtopic .post .avatar-container,
+body.section-viewtopic .post .stat,
+body.section-viewtopic .post .sharing {
+  padding: 7px;
+}
+
+body.section-viewtopic .post .online-status {
+  background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
+  max-width: 72px;
+  border: solid 1px #357ea4;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bolder;
+  margin: 7px;
+  padding: 1px;
+  text-shadow: 1px 1px 0 #FFFFFF, -1px -1px 0 #FFFFFF, -1px -1px 0 rgba(188, 42, 77, 0.2);
+  cursor: default;
+}
+
+body.section-viewtopic .post.online .online-status {
+  color: #6ca964;
+}
+
+body.section-viewtopic .post.offline .online-status {
+  color: #b63232;
+}
+
+body.section-viewtopic .post .stat,
+body.section-viewtopic .post .sharing {
+  color: #000000;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.section-viewtopic .post .sharing {
+  display: block;
+}
+
 body.section-viewtopic .author header,
 body.section-viewtopic .message header {
   padding: 6px;
@@ -6667,6 +6696,11 @@ body.section-viewtopic .author {
   display: table-cell;
   width: 16.66667%;
   border-right: solid 1px #a9b8c2;
+  text-align: left;
+}
+
+body.section-viewtopic .author header {
+  text-align: center;
 }
 
 body.section-viewtopic .message {
