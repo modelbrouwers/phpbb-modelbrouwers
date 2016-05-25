@@ -42,6 +42,10 @@ article.post .row {
 
   .post {
 
+    header .details {
+      float: right;
+    }
+
     .profile-rank,
     .avatar-container,
     .stat,
@@ -120,8 +124,15 @@ article.post .row {
     }
   }
 
-  header .details {
-    float: right;
+  .signature {
+    // we have rules about the maximum height of images/number of lines
+    max-height: 175px;
+    overflow: hidden;
+    margin: 1.5em 4px 0;
+    padding-top: 0.5em;
+    font-size: 1.1em;
+    border-top: solid 1px rgba($cell-color, 0.5);
+    line-height: 140%;
   }
 }
 }

@@ -1,8 +1,9 @@
 // dark-blue gradient
 $dark-blue: #00679b;
 $light-blue: #3a95c2;
+$cell-color: #a9b8c2;
 
-$cell-border: solid 1px #a9b8c2;
+$cell-border: solid 1px $cell-color;
 
 
 %table-header {

@@ -393,44 +393,6 @@ p.author {
   clear: both;
 }
 
-/* Post signature */
-.signature {
-  margin-top: 1.5em;
-  padding-top: 0.2em;
-  font-size: 1.1em;
-  border-top: 1px solid transparent;
-  clear: left;
-  line-height: 140%;
-  overflow: hidden;
-  width: 100%;
-  opacity: 0.5;
-}
-
-.signature:hover {
-  opacity: 1.0;
-}
-
-.signature.standalone {
-  border-top-width: 0;
-  margin-top: 0;
-}
-
-dd .signature {
-  margin: 0;
-  padding: 0;
-  clear: none;
-  border: none;
-}
-
-.signature li {
-  list-style-type: inherit;
-}
-
-.signature ul, .signature ol {
-  margin-bottom: 1em;
-  margin-left: 3em;
-}
-
 /* Post noticies */
 .notice {
   font-family: "Lucida Grande", Verdana, Helvetica, Arial, sans-serif;
