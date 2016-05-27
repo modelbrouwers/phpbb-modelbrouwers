@@ -15,6 +15,17 @@ body.section-viewtopic {
 
 body.section-viewtopic {
 
+%button {
+  @include background-image(linear-gradient(to bottom, #ffffff, #bcc1c3));
+  border: solid 1px #357ea4;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bolder;
+  padding: 1px;
+  cursor: default;
+}
+
+
 article.post .row {
   @include row(table);
 }
@@ -42,6 +53,8 @@ article.post .row {
 
   .post {
 
+    margin-bottom: 5px;
+
     header .details {
       float: right;
     }
@@ -54,18 +67,10 @@ article.post .row {
     }
 
     .online-status {
-      @include background-image(linear-gradient(to bottom, #ffffff, #bcc1c3));
+      @extend %button;
+
       max-width: 72px;
-      border: solid 1px #357ea4;
-      border-radius: 4px;
-      text-align: center;
-      font-weight: bolder;
       margin: 7px;
-      padding: 1px;
-      text-shadow: 1px 1px 0 #FFFFFF,
-                  -1px -1px 0 #FFFFFF,
-                  -1px -1px 0 rgba(188, 42, 77, 0.2);
-      cursor: default;
     }
 
     &.online .online-status {
@@ -138,6 +143,7 @@ article.post .row {
   .back2top {
     @include span-columns(2);
     border-top: $cell-border;
+    border-right: $cell-border;
 
     a.top {
       display: block;
@@ -148,19 +154,41 @@ article.post .row {
 
   .profile-contact {
     @include span-columns(10);
+    border-top: $cell-border;
+    padding: 4px;
 
     ul {
       list-style: none;
 
       li {
         display: inline-block;
+        @extend %button;
+        position: relative;
+        text-align: center;
+
+        a {
+          display: block;
+          padding-left: 18px; // icon width + padding
+          padding-right: 4px;
+          min-width: 72px;
+        }
+
+        a:hover {
+          text-decoration: none;
+        }
       }
     }
 
     .small-icon {
       width: 16px;
-      height: 14px;
-      display: inline-block;
+      height: 16px;
+      position: absolute;
+      top: -3px;
+      left: 2px;
+    }
+
+    .icon-sendemail {
+      top: -1px;
     }
 
   }

@@ -6516,6 +6516,16 @@ body.section-viewtopic .action-bar .topic-tools .button {
   height: auto;
 }
 
+body.section-viewtopic .post .online-status, body.section-viewtopic .profile-contact ul li {
+  background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
+  border: solid 1px #357ea4;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: bolder;
+  padding: 1px;
+  cursor: default;
+}
+
 body.section-viewtopic article.post .row {
   display: table;
   width: 100%;
@@ -6538,6 +6548,10 @@ body.section-viewtopic .topic-header > .author {
   border-right: solid 1px #a9b8c2;
 }
 
+body.section-viewtopic .post {
+  margin-bottom: 5px;
+}
+
 body.section-viewtopic .post header .details {
   float: right;
 }
@@ -6550,16 +6564,8 @@ body.section-viewtopic .post .sharing {
 }
 
 body.section-viewtopic .post .online-status {
-  background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
   max-width: 72px;
-  border: solid 1px #357ea4;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: bolder;
   margin: 7px;
-  padding: 1px;
-  text-shadow: 1px 1px 0 #FFFFFF, -1px -1px 0 #FFFFFF, -1px -1px 0 rgba(188, 42, 77, 0.2);
-  cursor: default;
 }
 
 body.section-viewtopic .post.online .online-status {
@@ -6631,6 +6637,7 @@ body.section-viewtopic .back2top {
   display: table-cell;
   width: 16.66667%;
   border-top: solid 1px #a9b8c2;
+  border-right: solid 1px #a9b8c2;
 }
 
 body.section-viewtopic .back2top a.top {
@@ -6642,6 +6649,8 @@ body.section-viewtopic .back2top a.top {
 body.section-viewtopic .profile-contact {
   display: table-cell;
   width: 83.33333%;
+  border-top: solid 1px #a9b8c2;
+  padding: 4px;
 }
 
 body.section-viewtopic .profile-contact ul {
@@ -6650,12 +6659,31 @@ body.section-viewtopic .profile-contact ul {
 
 body.section-viewtopic .profile-contact ul li {
   display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+body.section-viewtopic .profile-contact ul li a {
+  display: block;
+  padding-left: 18px;
+  padding-right: 4px;
+  min-width: 72px;
+}
+
+body.section-viewtopic .profile-contact ul li a:hover {
+  text-decoration: none;
 }
 
 body.section-viewtopic .profile-contact .small-icon {
   width: 16px;
-  height: 14px;
-  display: inline-block;
+  height: 16px;
+  position: absolute;
+  top: -3px;
+  left: 2px;
+}
+
+body.section-viewtopic .profile-contact .icon-sendemail {
+  top: -1px;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
