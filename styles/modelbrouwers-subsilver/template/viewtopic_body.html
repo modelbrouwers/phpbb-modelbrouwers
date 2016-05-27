@@ -198,7 +198,6 @@
 				</div>
 
 				{# Author stats #}
-
 				{% if postrow.POSTER_JOINED %}
 					<div class="stat joined">
 						<strong>{{ lang('JOINED') }}{{ lang('COLON') }}</strong>
@@ -454,17 +453,35 @@
 			{% if not S_IS_BOT and postrow.contact %}
 				<div class="profile-contact">
 					<ul>
-					{% for contact in postrow.contact %}
+						{% if postrow.U_POST_AUTHOR %}
 						<li>
-							<a href="{{ contact.U_CONTACT ? contact.U_CONTACT : postrow.U_POST_AUTHOR }}"
-							   title="{{ contact.NAME }}"
-							   {% if contact.ID == 'jabber' %}onclick="popup(this.href, 750, 320); return false;"{% endif %}
-							   >
-							   	<span class="contact-icon {{ contact.ID }}-icon">{{ contact.NAME }}</span>
-						    </a>
+							<a href="{{ postrow.U_POST_AUTHOR }}">
+								<span class="small-icon icon-profile"></span>
+								{{ lang('READ_PROFILE')|lower }}
+							</a>
 						</li>
-					{% endfor %}
-					<!-- EVENT viewtopic_body_contact_fields_extra -->
+						{% endif %}
+
+						{% if postrow.U_PM %}
+						<li>
+							<a href="{{ postrow.U_PM }}">
+								<span class="small-icon icon-members"></span>
+								{{ lang('PM')|lower }}
+							</a>
+						</li>
+						{% endif %}
+
+						{% if postrow.U_EMAIL %}
+						<li>
+							<a href="{{ postrow.U_EMAIL }}">
+								<span class="small-icon icon-sendemail"></span>
+								{{ lang('EMAIL')|lower }}
+							</a>
+						</li>
+						{% endif %}
+
+						<!-- EVENT viewtopic_body_contact_fields_extra -->
+
 					</ul>
 				</div>
 			{% endif %}

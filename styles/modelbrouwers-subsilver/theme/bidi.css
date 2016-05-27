@@ -320,11 +320,6 @@
 /**
 * links.css
 */
-/* Back to top of page */
-.rtl .back2top {
-  text-align: left;
-}
-
 /* Links adjustment to correctly display an order of rtl/ltr mixed content */
 .rtl a {
   direction: rtl;
@@ -341,10 +336,6 @@ li.breadcrumbs span:first-child > a {
   border-radius: 0 3px 3px 0;
   left: 0;
   right: auto;
-}
-
-.rtl a.top {
-  float: left;
 }
 
 .rtl a.top2 {

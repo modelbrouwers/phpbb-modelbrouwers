@@ -1559,25 +1559,6 @@ a.lastsubject {
   font-weight: normal;
 }
 
-/* Back to top of page */
-.back2top {
-  clear: both;
-  height: 11px;
-  text-align: right;
-}
-
-a.top {
-  background: none no-repeat top left;
-  text-decoration: none;
-  width: 11px;
-  height: 11px;
-  display: block;
-  float: right;
-  overflow: hidden;
-  letter-spacing: 1000px;
-  text-indent: 11px;
-}
-
 a.top2 {
   background: none no-repeat 0 50%;
   text-decoration: none;
@@ -3986,10 +3967,6 @@ a.exlinks {
 }
 
 /* Back to top of page */
-a.top {
-  background-image: url("./images/icon_back_top.gif");
-}
-
 a.top2 {
   background-image: url("./images/icon_back_top.gif");
 }
@@ -6648,6 +6625,37 @@ body.section-viewtopic .signature {
   font-size: 1.1em;
   border-top: solid 1px rgba(169, 184, 194, 0.5);
   line-height: 140%;
+}
+
+body.section-viewtopic .back2top {
+  display: table-cell;
+  width: 16.66667%;
+  border-top: solid 1px #a9b8c2;
+}
+
+body.section-viewtopic .back2top a.top {
+  display: block;
+  padding: 4px;
+  font-weight: bold;
+}
+
+body.section-viewtopic .profile-contact {
+  display: table-cell;
+  width: 83.33333%;
+}
+
+body.section-viewtopic .profile-contact ul {
+  list-style: none;
+}
+
+body.section-viewtopic .profile-contact ul li {
+  display: inline-block;
+}
+
+body.section-viewtopic .profile-contact .small-icon {
+  width: 16px;
+  height: 14px;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
