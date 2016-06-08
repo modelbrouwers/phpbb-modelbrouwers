@@ -1541,7 +1541,6 @@ a.lastsubject {
 
 .signature a {
   border: none;
-  text-decoration: underline;
 }
 
 .signature a:hover {
