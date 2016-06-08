@@ -204,61 +204,49 @@ ul.linklist.bulletin > li.small-icon:before {
 --------------------------------------------- */
 .post-buttons .icon-button {
     padding: 0 5px;
+
+    &:before {
+        margin-left: 0;
+    }
 }
 
-.hastouch .post-buttons .icon-button {
-    padding: 2px 8px;
-}
-
-.post-buttons .icon-button span {
-    display: block;
-    height: 0;
-    overflow: hidden;
-    position: absolute;
-    width: 1px;
-}
-
-.post-buttons .icon-button:before {
-    margin-left: 0;
-}
-
-.quote-icon:before                          {
+.quote-icon:before {
     background-position: -122px 0;
 }
-.quote-icon:hover:before                    {
+.quote-icon:hover:before {
     background-position: -122px -21px;
 }
-.edit-icon:before                           {
+.edit-icon:before {
     background-position: -137px 0;
 }
-.edit-icon:hover:before                     {
+.edit-icon:hover:before {
     background-position: -137px -21px;
 }
-.warn-icon:before                           {
+.warn-icon:before {
     background-position: -208px 0;
 }
-.warn-icon:hover:before                     {
+.warn-icon:hover:before {
     background-position: -208px -21px;
 }
-.delete-icon:before                         {
+.delete-icon:before {
     background-position: -152px 0;
 }
-.delete-icon:hover:before                   {
+.delete-icon:hover:before {
     background-position: -152px -21px;
 }
-.report-icon:before                         {
+.report-icon:before {
     background-position: -165px 0;
 }
-.report-icon:hover:before                   {
+.report-icon:hover:before {
     background-position: -165px -21px;
 }
-.info-icon:before                           {
+.info-icon:before {
     background-position: -175px 0;
 }
-.info-icon:hover:before                     {
+.info-icon:hover:before {
     background-position: -175px -21px;
 }
-.button.responsive-menu-link:before         {
+.button.responsive-menu-link:before {
     background-position: -191px 0;
 }
 .button.responsive-menu-link:hover:before   {

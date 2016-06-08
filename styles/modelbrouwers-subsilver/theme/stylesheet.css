@@ -2744,18 +2744,6 @@ ul.linklist.bulletin > li.small-icon:before {
   padding: 0 5px;
 }
 
-.hastouch .post-buttons .icon-button {
-  padding: 2px 8px;
-}
-
-.post-buttons .icon-button span {
-  display: block;
-  height: 0;
-  overflow: hidden;
-  position: absolute;
-  width: 1px;
-}
-
 .post-buttons .icon-button:before {
   margin-left: 0;
 }
@@ -6476,7 +6464,7 @@ body.section-viewtopic .action-bar .topic-tools .button {
   height: auto;
 }
 
-body.section-viewtopic .post .online-status, body.section-viewtopic .profile-contact ul li {
+body.section-viewtopic .post .online-status, body.section-viewtopic .profile-contact ul li, body.section-viewtopic .post-buttons.bottom li {
   background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
   border: solid 1px #357ea4;
   border-radius: 4px;
@@ -6494,6 +6482,7 @@ body.section-viewtopic article.post .row {
 
 body.section-viewtopic .post-buttons {
   list-style: none;
+  text-align: right;
 }
 
 body.section-viewtopic .post-buttons li {
@@ -6507,12 +6496,15 @@ body.section-viewtopic .content + .post-buttons {
   width: 48.82117%;
   margin-left: 51.17883%;
   margin-right: 0;
-  text-align: right;
   margin-bottom: 1em;
 }
 
 body.section-viewtopic .content + .post-buttons:last-child {
   margin-right: 0;
+}
+
+body.section-viewtopic .content + .post-buttons a > span {
+  display: none;
 }
 
 body.section-viewtopic .topic-header {
@@ -6632,7 +6624,7 @@ body.section-viewtopic .back2top a.top {
 
 body.section-viewtopic .profile-contact {
   display: table-cell;
-  width: 83.33333%;
+  width: 58.33333%;
   border-top: solid 1px #a9b8c2;
   padding: 4px;
 }
@@ -6668,6 +6660,41 @@ body.section-viewtopic .profile-contact .small-icon {
 
 body.section-viewtopic .profile-contact .icon-sendemail {
   top: -1px;
+}
+
+body.section-viewtopic .post-buttons.bottom {
+  display: table-cell;
+  width: 25%;
+  border-top: solid 1px #a9b8c2;
+  padding: 4px;
+}
+
+body.section-viewtopic .post-buttons.bottom li {
+  position: relative;
+  text-align: center;
+}
+
+body.section-viewtopic .post-buttons.bottom li a {
+  display: block;
+  padding-left: 14px;
+  padding-right: 4px;
+  min-width: 72px;
+}
+
+body.section-viewtopic .post-buttons.bottom li a:hover {
+  text-decoration: none;
+}
+
+body.section-viewtopic .post-buttons.bottom .icon-button {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.section-viewtopic .post-buttons.bottom .icon-button:before {
+  float: none;
+  position: absolute;
+  top: -2px;
+  left: 6px;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

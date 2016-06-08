@@ -32,6 +32,7 @@ article.post .row {
 
 .post-buttons {
   list-style: none;
+  text-align: right;
 
   li {
     display: inline-block;
@@ -43,8 +44,11 @@ article.post .row {
     @include span-columns(6);
     @include shift(6);
     @include omega;
-    text-align: right;
     margin-bottom: 1em;
+
+    a > span {
+      display: none;
+    }
   }
 }
 
@@ -172,7 +176,7 @@ article.post .row {
   }
 
   .profile-contact {
-    @include span-columns(10);
+    @include span-columns(7);
     border-top: $cell-border;
     padding: 4px;
 
@@ -190,10 +194,10 @@ article.post .row {
           padding-left: 18px; // icon width + padding
           padding-right: 4px;
           min-width: 72px;
-        }
 
-        a:hover {
-          text-decoration: none;
+          &:hover {
+            text-decoration: none;
+          }
         }
       }
     }
@@ -209,7 +213,41 @@ article.post .row {
     .icon-sendemail {
       top: -1px;
     }
+  }
 
+  .post-buttons.bottom {
+    @include span-columns(3);
+    border-top: $cell-border;
+    padding: 4px;
+
+    li {
+      @extend %button;
+      position: relative;
+      text-align: center;
+
+      a {
+        display: block;
+        padding-left: 14px;
+        padding-right: 4px;
+        min-width: 72px;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .icon-button {
+      padding-top: 0;
+      padding-bottom: 0;
+
+      &:before {
+        float: none;
+        position: absolute;
+        top: -2px;
+        left: 6px;;
+      }
+    }
   }
 }
 
