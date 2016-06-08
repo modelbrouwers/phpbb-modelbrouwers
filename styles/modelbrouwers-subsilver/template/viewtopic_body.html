@@ -500,15 +500,6 @@
 
 {% endfor %}
 
-
-<div style="margin-bottom: 50px"></div>
-
-
-
-
-
-
-
 <!-- IF S_QUICK_REPLY -->
 	<!-- INCLUDE quickreply_editor.html -->
 <!-- ENDIF -->
@@ -523,54 +514,87 @@
 		<!-- ENDIF -->
 	</fieldset>
 	</form>
-	<hr />
 <!-- ENDIF -->
+
+
 
 <!-- EVENT viewtopic_body_topic_actions_before -->
 <div class="action-bar bottom">
-	<div class="buttons">
-		<!-- EVENT viewtopic_buttons_bottom_before -->
 
-	<!-- IF not S_IS_BOT and S_DISPLAY_REPLY_INFO -->
-		<a href="{U_POST_REPLY_TOPIC}" class="button icon-button <!-- IF S_IS_LOCKED -->locked-icon<!-- ELSE -->reply-icon<!-- ENDIF -->" title="<!-- IF S_IS_LOCKED -->{L_TOPIC_LOCKED}<!-- ELSE -->{L_POST_REPLY}<!-- ENDIF -->">
-			<!-- IF S_IS_LOCKED -->{L_BUTTON_TOPIC_LOCKED}<!-- ELSE -->{L_BUTTON_POST_REPLY}<!-- ENDIF -->
-		</a>
-	<!-- ENDIF -->
+	<div class="action-buttons">
 
-		<!-- EVENT viewtopic_buttons_bottom_after -->
+		{% if not S_IS_BOT and S_DISPLAY_REPLY_INFO %}
+			<div class="buttons">
+				<!-- EVENT viewtopic_buttons_bottom_before -->
+				{#
+				<a href="{{ U_POST_NEW_TOPIC }}"
+				   class="button icon-button {{ S_IS_LOCKED ? 'locked-icon' : 'post-icon' }}"
+				   title="{{ S_IS_LOCKED ? lang('FORUM_LOCKED') : lang('POST_TOPIC') }}">
+				   	{{ S_IS_LOCKED ? lang('BUTTON_FORUM_LOCKED') : lang('BUTTON_NEW_TOPIC') }}
+			    </a>
+				#}
+
+				<a href="{{ U_POST_REPLY_TOPIC }}"
+				   class="button icon-button {{ S_IS_LOCKED ? 'locked-icon' : 'reply-icon' }}"
+				   title="{{ S_IS_LOCKED ? lang('TOPIC_LOCKED') : lang('POST_REPLY') }}"
+				>
+					{{ S_IS_LOCKED ? lang('BUTTON_TOPIC_LOCKED') : lang('BUTTON_POST_REPLY') }}
+				</a>
+				<!-- EVENT viewtopic_buttons_bottom_after -->
+			</div>
+		{% endif %}
+
+		<div class="page-info">
+			<span class="current-page">{{ PAGE_NUMBER }}</span>
+			<span class="total-topics">[ {{ TOTAL_POSTS }} ]</span>
+		</div>
+
 	</div>
 
-	<!-- INCLUDE viewtopic_topic_tools.html -->
+	<div class="pagination">
 
-	<!-- IF .quickmod -->
-		<div class="dropdown-container dropdown-container-{S_CONTENT_FLOW_BEGIN} dropdown-up dropdown-{S_CONTENT_FLOW_END} dropdown-button-control" id="quickmod">
-			<span title="{L_QUICK_MOD}" class="dropdown-trigger button icon-button modtools-icon dropdown-select">{L_QUICK_MOD}</span>
-			<div class="dropdown hidden">
-				<div class="pointer"><div class="pointer-inner"></div></div>
-				<ul class="dropdown-contents">
-				<!-- BEGIN quickmod -->
-					<!-- DEFINE $QUICKMOD_AJAX = (quickmod.VALUE in ['lock', 'unlock', 'delete_topic', 'restore_topic', 'make_normal', 'make_sticky', 'make_announce', 'make_global']) -->
-					<li><a href="{quickmod.LINK}"<!-- IF $QUICKMOD_AJAX --> data-ajax="true" data-refresh="true"<!-- ENDIF -->>{quickmod.TITLE}</a></li>
-				<!-- END quickmod -->
-				</ul>
-			</div>
-		</div>
-	<!-- ENDIF -->
+		{% if U_VIEW_UNREAD_POST and not S_IS_BOT %}
+			<a href="{{ U_VIEW_UNREAD_POST }}" class="mark">
+				{{ lang('VIEW_UNREAD_POST') }}
+			</a>{% if loops.pagination %} &bull; {% endif %}
+		{% endif %}
 
-	<!-- EVENT viewtopic_dropdown_bottom_custom -->
+		{% if loops.pagination %}
+			{% include "pagination.html" %}
+		{% endif %}
 
-	<!-- IF .pagination or TOTAL_POSTS -->
-		<div class="pagination">
-			{TOTAL_POSTS}
-			<!-- IF .pagination -->
-				<!-- INCLUDE pagination.html -->
-			<!-- ELSE -->
-				&bull; {PAGE_NUMBER}
-			<!-- ENDIF -->
-		</div>
-	<!-- ENDIF -->
-	<div class="clear"></div>
+	</div>
+	<!-- EVENT viewtopic_body_pagination_bottom_after -->
+
 </div>
+
+
+<div class="navbar" role="navigation">
+	<div class="inner">
+		<ul id="nav-breadcrumbs-bottom" class="linklist navlinks" role="menubar">
+			{% include "nav_breadcrumbs.html" %}
+		</ul>
+	</div>
+</div>
+
+
+
+
+<!-- IF .quickmod -->
+	<div class="dropdown-container dropdown-container-{S_CONTENT_FLOW_BEGIN} dropdown-up dropdown-{S_CONTENT_FLOW_END} dropdown-button-control" id="quickmod">
+		<span title="{L_QUICK_MOD}" class="dropdown-trigger button icon-button modtools-icon dropdown-select">{L_QUICK_MOD}</span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+			<!-- BEGIN quickmod -->
+				<!-- DEFINE $QUICKMOD_AJAX = (quickmod.VALUE in ['lock', 'unlock', 'delete_topic', 'restore_topic', 'make_normal', 'make_sticky', 'make_announce', 'make_global']) -->
+				<li><a href="{quickmod.LINK}"<!-- IF $QUICKMOD_AJAX --> data-ajax="true" data-refresh="true"<!-- ENDIF -->>{quickmod.TITLE}</a></li>
+			<!-- END quickmod -->
+			</ul>
+		</div>
+	</div>
+<!-- ENDIF -->
+
 
 <!-- EVENT viewtopic_body_footer_before -->
 <!-- INCLUDE jumpbox.html -->

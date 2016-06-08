@@ -6464,6 +6464,11 @@ body.section-viewtopic .action-bar .topic-tools .button {
   height: auto;
 }
 
+body.section-viewtopic .action-bar + .navbar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 body.section-viewtopic .post .online-status, body.section-viewtopic .profile-contact ul li, body.section-viewtopic .post-buttons.bottom li {
   background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
   border: solid 1px #357ea4;

@@ -10,6 +10,11 @@ body.section-viewtopic {
         height: auto;
       }
     }
+
+    & + .navbar {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
   }
 }
 
