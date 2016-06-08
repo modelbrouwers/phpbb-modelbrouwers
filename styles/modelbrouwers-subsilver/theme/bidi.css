@@ -660,25 +660,6 @@ li.breadcrumbs span:first-child > a {
   padding-right: 19px;
 }
 
-/* Post control buttons
---------------------------------------------- */
-.rtl .post-buttons {
-  float: left;
-}
-
-.rtl .has-profile .post-buttons {
-  left: 0;
-  right: auto;
-}
-
-.rtl .post-buttons li {
-  float: right;
-}
-
-.post-buttons .icon-button:before {
-  margin-right: 0;
-}
-
 /* Poster contact icons
  ----------------------------------------*/
 .rtl .contact-icons a {

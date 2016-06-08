@@ -30,6 +30,24 @@ article.post .row {
   @include row(table);
 }
 
+.post-buttons {
+  list-style: none;
+
+  li {
+    display: inline-block;
+  }
+}
+
+@include display-context() {
+  .content + .post-buttons {
+    @include span-columns(6);
+    @include shift(6);
+    @include omega;
+    text-align: right;
+    margin-bottom: 1em;
+  }
+}
+
 @include display-context(table) {
 
   .topic-header {
@@ -130,13 +148,14 @@ article.post .row {
   }
 
   .signature {
+    @include fill-parent;
     // we have rules about the maximum height of images/number of lines
     max-height: 175px;
     overflow: hidden;
-    margin: 1.5em 4px 0;
-    padding-top: 0.5em;
+    margin: 1.5em 0 0;
+    padding: 0.5em 4px 0;
     font-size: 1.1em;
-    border-top: solid 1px rgba($cell-color, 0.5);
+    border-top: solid 1px rgba($cell-color, 0.25);
     line-height: 140%;
   }
 
@@ -193,4 +212,5 @@ article.post .row {
 
   }
 }
+
 }

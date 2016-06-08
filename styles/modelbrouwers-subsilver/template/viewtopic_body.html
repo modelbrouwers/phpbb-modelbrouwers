@@ -309,50 +309,6 @@
 
 					</header>
 
-
-					{% set SHOW_POST_BUTTONS=(postrow.U_EDIT or postrow.U_DELETE or postrow.U_REPORT or postrow.U_WARN or postrow.U_INFO or postrow.U_QUOTE) %}
-
-					<!-- EVENT viewtopic_body_post_buttons_list_before -->
-					{% if not S_IS_BOT %}
-						{% if SHOW_POST_BUTTONS %}
-							<ul class="post-buttons">
-								<!-- EVENT viewtopic_body_post_buttons_before -->
-								{% if postrow.U_EDIT %}
-									<li>
-										<a href="{{ postrow.U_EDIT }}" title="{{ lang('EDIT_POST') }}" class="button icon-button edit-icon"><span>{{ lang('BUTTON_EDIT') }}</span></a>
-									</li>
-								{% endif %}
-								{% if postrow.U_DELETE %}
-									<li>
-										<a href="{{ postrow.U_DELETE }}" title="{{ lang('DELETE_POST') }}" class="button icon-button delete-icon"><span>{{ lang('DELETE_POST') }}</span></a>
-									</li>
-								{% endif %}
-								{% if postrow.U_REPORT %}
-									<li>
-										<a href="{{ postrow.U_REPORT }}" title="{{ lang('REPORT_POST') }}" class="button icon-button report-icon"><span>{{ lang('REPORT_POST') }}</span></a>
-									</li>
-								{% endif %}
-								{% if postrow.U_WARN %}
-									<li>
-										<a href="{{ postrow.U_WARN }}" title="{{ lang('WARN_USER') }}" class="button icon-button warn-icon"><span>{{ lang('WARN_USER') }}</span></a>
-									</li>
-								{% endif %}
-								{% if postrow.U_INFO %}
-									<li>
-										<a href="{{ postrow.U_INFO }}" title="{{ lang('INFORMATION') }}" class="button icon-button info-icon"><span>{{ lang('INFORMATION') }}</span></a>
-									</li>
-								{% endif %}
-								{% if postrow.U_QUOTE %}
-									<li>
-										<a href="{{ postrow.U_QUOTE }}" title="{{ lang('REPLY_WITH_QUOTE') }}" class="button icon-button quote-icon"><span>{{ lang('QUOTE') }}</span></a>
-									</li>
-								{% endif %}
-								<!-- EVENT viewtopic_body_post_buttons_after -->
-							</ul>
-						{% endif %}
-					{% endif %}
-					<!-- EVENT viewtopic_body_post_buttons_list_after -->
-
 					{% if postrow.S_POST_UNAPPROVED %}
 						<form method="post" class="mcp_approve" action="{{ postrow.U_APPROVE_ACTION }}">
 							<p class="post-notice unapproved">
@@ -427,6 +383,39 @@
 					{% endif %}
 					<!-- EVENT viewtopic_body_postrow_post_notices_after -->
 
+					{% set SHOW_POST_BUTTONS=(postrow.U_DELETE or postrow.U_REPORT or postrow.U_WARN or postrow.U_INFO) %}
+
+					<!-- EVENT viewtopic_body_post_buttons_list_before -->
+					{% if not S_IS_BOT %}
+						{% if SHOW_POST_BUTTONS %}
+							<ul class="post-buttons">
+								<!-- EVENT viewtopic_body_post_buttons_before -->
+								{% if postrow.U_REPORT %}
+									<li>
+										<a href="{{ postrow.U_REPORT }}" title="{{ lang('REPORT_POST') }}" class="button icon-button report-icon"><span>{{ lang('REPORT_POST') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_INFO %}
+									<li>
+										<a href="{{ postrow.U_INFO }}" title="{{ lang('INFORMATION') }}" class="button icon-button info-icon"><span>{{ lang('INFORMATION') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_WARN %}
+									<li>
+										<a href="{{ postrow.U_WARN }}" title="{{ lang('WARN_USER') }}" class="button icon-button warn-icon"><span>{{ lang('WARN_USER') }}</span></a>
+									</li>
+								{% endif %}
+								{% if postrow.U_DELETE %}
+									<li>
+										<a href="{{ postrow.U_DELETE }}" title="{{ lang('DELETE_POST') }}" class="button icon-button delete-icon"><span>{{ lang('DELETE_POST') }}</span></a>
+									</li>
+								{% endif %}
+								<!-- EVENT viewtopic_body_post_buttons_after -->
+							</ul>
+						{% endif %}
+					{% endif %}
+					<!-- EVENT viewtopic_body_post_buttons_list_after -->
+
 					{% if postrow.SIGNATURE %}
 						<div id="sig{{ postrow.POST_ID }}" class="signature">
 							{{ postrow.SIGNATURE }}
@@ -486,6 +475,21 @@
 				</div>
 			{% endif %}
 			<!-- EVENT viewtopic_body_contact_fields_after -->
+
+			{% if not S_IS_BOT %}
+				<ul class="post-buttons">
+					{% if postrow.U_EDIT %}
+						<li>
+							<a href="{{ postrow.U_EDIT }}" title="{{ lang('EDIT_POST') }}" class="button icon-button edit-icon"><span>{{ lang('BUTTON_EDIT') }}</span></a>
+						</li>
+					{% endif %}
+					{% if postrow.U_QUOTE %}
+						<li>
+							<a href="{{ postrow.U_QUOTE }}" title="{{ lang('REPLY_WITH_QUOTE') }}" class="button icon-button quote-icon"><span>{{ lang('QUOTE') }}</span></a>
+						</li>
+					{% endif %}
+				</ul>
+			{% endif %}
 		</footer>
 
 	</article>

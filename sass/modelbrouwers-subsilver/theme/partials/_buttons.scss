@@ -202,30 +202,6 @@ ul.linklist.bulletin > li.small-icon:before {
 
 /* Post control buttons
 --------------------------------------------- */
-.post-buttons {
-    float: right;
-    list-style: none;
-    margin-top: 2px;
-}
-
-.has-profile .post-buttons {
-    float: none;
-    position: absolute;
-    margin: 0;
-    right: 0;
-    bottom: 5px;
-}
-
-.post-buttons > li {
-    float: left;
-    margin-right: 3px;
-    opacity: 0.6;
-}
-
-.post-buttons > li:hover {
-    opacity: 1;
-}
-
 .post-buttons .icon-button {
     padding: 0 5px;
 }
@@ -287,21 +263,6 @@ ul.linklist.bulletin > li.small-icon:before {
 }
 .button.responsive-menu-link:hover:before   {
     background-position: -191px -21px;
-}
-
-/* Responsive buttons in post body */
-.post-buttons .dropdown {
-    top: 18px;
-}
-
-.post-buttons .dropdown a {
-    display: block;
-    font-size: 1.2em;
-    text-align: right;
-}
-
-.hasjs .postbody .post-buttons {
-    max-width: 40%;
 }
 
 /* Browser-specific tweaks */
