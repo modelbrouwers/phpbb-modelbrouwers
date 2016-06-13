@@ -4,20 +4,28 @@
     @include row;
   }
 
-  p.forum-desc {
+  .forum-desc {
     @include span-columns(12);
     display: none;
   }
 
-  p.forum-moderators {
+  .forum-moderators {
     margin-top: 0;
     @include span-columns(9);
   }
 
-  p.forum-mcp {
+  .forum-mcp {
     margin-top: 0;
     @include span-columns(3);
     text-align: right;
+  }
+
+  @include media($mobile) {
+    .forum-moderators,
+    .forum-mcp {
+      @include span-columns(12);
+      text-align: left;
+    }
   }
 }
 

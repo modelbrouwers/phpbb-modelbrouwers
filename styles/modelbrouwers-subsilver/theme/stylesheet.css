@@ -5933,7 +5933,7 @@ body.section-viewforum .forum-title + div::after, body.section-viewtopic .forum-
   display: table;
 }
 
-body.section-viewforum p.forum-desc, body.section-viewtopic p.forum-desc {
+body.section-viewforum .forum-desc, body.section-viewtopic .forum-desc {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -5941,11 +5941,11 @@ body.section-viewforum p.forum-desc, body.section-viewtopic p.forum-desc {
   display: none;
 }
 
-body.section-viewforum p.forum-desc:last-child, body.section-viewtopic p.forum-desc:last-child {
+body.section-viewforum .forum-desc:last-child, body.section-viewtopic .forum-desc:last-child {
   margin-right: 0;
 }
 
-body.section-viewforum p.forum-moderators, body.section-viewtopic p.forum-moderators {
+body.section-viewforum .forum-moderators, body.section-viewtopic .forum-moderators {
   margin-top: 0;
   float: left;
   display: block;
@@ -5953,11 +5953,11 @@ body.section-viewforum p.forum-moderators, body.section-viewtopic p.forum-modera
   width: 74.41059%;
 }
 
-body.section-viewforum p.forum-moderators:last-child, body.section-viewtopic p.forum-moderators:last-child {
+body.section-viewforum .forum-moderators:last-child, body.section-viewtopic .forum-moderators:last-child {
   margin-right: 0;
 }
 
-body.section-viewforum p.forum-mcp, body.section-viewtopic p.forum-mcp {
+body.section-viewforum .forum-mcp, body.section-viewtopic .forum-mcp {
   margin-top: 0;
   float: left;
   display: block;
@@ -5966,8 +5966,21 @@ body.section-viewforum p.forum-mcp, body.section-viewtopic p.forum-mcp {
   text-align: right;
 }
 
-body.section-viewforum p.forum-mcp:last-child, body.section-viewtopic p.forum-mcp:last-child {
+body.section-viewforum .forum-mcp:last-child, body.section-viewtopic .forum-mcp:last-child {
   margin-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+  body.section-viewforum .forum-moderators, body.section-viewtopic .forum-moderators, body.section-viewforum .forum-mcp, body.section-viewtopic .forum-mcp {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+    text-align: left;
+  }
+  body.section-viewforum .forum-moderators:last-child, body.section-viewtopic .forum-moderators:last-child, body.section-viewforum .forum-mcp:last-child, body.section-viewtopic .forum-mcp:last-child {
+    margin-right: 0;
+  }
 }
 
 body.section-viewforum .forumbg {

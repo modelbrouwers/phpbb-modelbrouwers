@@ -87,7 +87,6 @@ body.section-viewtopic {
     cursor: default;
   }
 
-
   article.post .row {
     @include row(table);
   }
@@ -300,6 +299,9 @@ body.section-viewtopic {
           left: 6px;;
         }
       }
+    }
+
+    @include media($mobile) {
     }
   }
 }
