@@ -16,187 +16,270 @@ body.section-viewtopic {
       margin-bottom: 20px;
     }
   }
+
+  .post-buttons {
+    list-style: none;
+    text-align: right;
+
+    li {
+      display: inline-block;
+    }
+  }
+
+  #quickmod {
+    @include span-columns(6);
+
+    + .permissions {
+      @include omega;
+      @include shift(0);
+    }
+
+    .button {
+      height: auto;
+    }
+  }
+
+  .permissions {
+    @include span-columns(6);
+    @include shift(6);
+    list-style: none;
+    text-align: right;
+  }
+
+  .jumpbox-return {
+    display: none;
+  }
+
+  .search-box {
+    @include span-columns(6);
+
+    .search-adv-icon {
+      height: auto;
+    }
+
+    & + .jumpbox-return + #jumpbox {
+      @include shift(0);
+    }
+  }
+
+  #jumpbox {
+    @include span-columns(6);
+    @include shift(6);
+    @include omega;
+    margin-top: 10px;
+    text-align: right;
+
+    .button {
+      height: auto;
+    }
+  }
 }
 
 body.section-viewtopic {
 
-%button {
-  @include background-image(linear-gradient(to bottom, #ffffff, #bcc1c3));
-  border: solid 1px #357ea4;
-  border-radius: 4px;
-  text-align: center;
-  font-weight: bolder;
-  padding: 1px;
-  cursor: default;
-}
-
-
-article.post .row {
-  @include row(table);
-}
-
-.post-buttons {
-  list-style: none;
-  text-align: right;
-
-  li {
-    display: inline-block;
+  %button {
+    @include background-image(linear-gradient(to bottom, #ffffff, #bcc1c3));
+    border: solid 1px #357ea4;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bolder;
+    padding: 1px;
+    cursor: default;
   }
-}
 
-@include display-context() {
-  .content + .post-buttons {
-    @include span-columns(6);
-    @include shift(6);
-    @include omega;
-    margin-bottom: 1em;
 
-    a > span {
-      display: none;
-    }
+  article.post .row {
+    @include row(table);
   }
-}
 
-@include display-context(table) {
+  @include display-context() {
+    .content + .post-buttons {
+      @include span-columns(6);
+      @include shift(6);
+      @include omega;
+      margin-bottom: 1em;
 
-  .topic-header {
-    @extend %table-header;
-
-    padding-top: 0;
-    padding-bottom: 0;
-    border-left: $cell-border;
-    // border-right: $cell-border;
-
-    > .author,
-    > .message {
-      padding-top: 5px;
-      padding-bottom: 5px;
-    }
-
-    > .author {
-      border-right: $cell-border;
+      a > span {
+        display: none;
+      }
     }
   }
 
-  .post {
+  @include display-context(table) {
 
-    margin-bottom: 5px;
+    .topic-header {
+      @extend %table-header;
 
-    header .details {
-      float: right;
-    }
-
-    .profile-rank,
-    .avatar-container,
-    .stat,
-    .sharing {
-      padding: 7px;
-    }
-
-    .online-status {
-      @extend %button;
-
-      max-width: 72px;
-      margin: 7px;
-    }
-
-    &.online .online-status {
-      color: #6ca964;
-    }
-
-    &.offline .online-status {
-      color: #b63232;
-    }
-
-    .stat,
-    .sharing {
-      color: #000000;
       padding-top: 0;
       padding-bottom: 0;
+      border-left: $cell-border;
+
+      > .author,
+      > .message {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      > .author {
+        border-right: $cell-border;
+      }
     }
 
-    .sharing {
-      display: block;
+    .post {
+
+      margin-bottom: 5px;
+
+      header .details {
+        float: right;
+      }
+
+      .profile-rank,
+      .avatar-container,
+      .stat,
+      .sharing {
+        padding: 7px;
+      }
+
+      .online-status {
+        @extend %button;
+
+        max-width: 72px;
+        margin: 7px;
+      }
+
+      &.online .online-status {
+        color: #6ca964;
+      }
+
+      &.offline .online-status {
+        color: #b63232;
+      }
+
+      .stat,
+      .sharing {
+        color: #000000;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .sharing {
+        display: block;
+      }
     }
-  }
 
-  .author,
-  .message {
-    header {
-      padding: 6px;
-      border-bottom: $cell-border;
-    }
-  }
-
-  .author {
-    @include span-columns(2);
-    border-right: $cell-border;
-    text-align: left;
-
-    header {
-      text-align: center;
-    }
-  }
-
-  .message {
-    @include span-columns(10);
-
-    .content {
-      font-size: 1.3em;
-      overflow-x: auto;
-      padding: 4px;
+    .author,
+    .message {
+      header {
+        padding: 6px;
+        border-bottom: $cell-border;
+      }
     }
 
-    .ignore {
+    .author {
+      @include span-columns(2);
+      border-right: $cell-border;
+      text-align: left;
+
+      header {
+        text-align: center;
+      }
+    }
+
+    .message {
+      @include span-columns(10);
+
+      .content {
+        font-size: 1.3em;
+        overflow-x: auto;
+        padding: 4px;
+      }
+
+      .ignore {
+        font-size: 1.1em;
+      }
+
+      img.postimage {
+        max-width: 100%;
+      }
+    }
+
+    .signature {
+      @include fill-parent;
+      // we have rules about the maximum height of images/number of lines
+      max-height: 175px;
+      overflow: hidden;
+      margin: 1.5em 0 0;
+      padding: 0.5em 4px 0;
       font-size: 1.1em;
+      border-top: solid 1px rgba($cell-color, 0.25);
+      line-height: 140%;
     }
 
-    img.postimage {
-      max-width: 100%;
+    .back2top {
+      @include span-columns(2);
+      border-top: $cell-border;
+      border-right: $cell-border;
+
+      a.top {
+        display: block;
+        padding: 4px;
+        font-weight: bold;
+      }
     }
-  }
 
-  .signature {
-    @include fill-parent;
-    // we have rules about the maximum height of images/number of lines
-    max-height: 175px;
-    overflow: hidden;
-    margin: 1.5em 0 0;
-    padding: 0.5em 4px 0;
-    font-size: 1.1em;
-    border-top: solid 1px rgba($cell-color, 0.25);
-    line-height: 140%;
-  }
-
-  .back2top {
-    @include span-columns(2);
-    border-top: $cell-border;
-    border-right: $cell-border;
-
-    a.top {
-      display: block;
+    .profile-contact {
+      @include span-columns(7);
+      border-top: $cell-border;
       padding: 4px;
-      font-weight: bold;
+
+      ul {
+        list-style: none;
+
+        li {
+          display: inline-block;
+          @extend %button;
+          position: relative;
+          text-align: center;
+
+          a {
+            display: block;
+            padding-left: 18px; // icon width + padding
+            padding-right: 4px;
+            min-width: 72px;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+
+      .small-icon {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: -3px;
+        left: 2px;
+      }
+
+      .icon-sendemail {
+        top: -1px;
+      }
     }
-  }
 
-  .profile-contact {
-    @include span-columns(7);
-    border-top: $cell-border;
-    padding: 4px;
-
-    ul {
-      list-style: none;
+    .post-buttons.bottom {
+      @include span-columns(3);
+      border-top: $cell-border;
+      padding: 4px;
 
       li {
-        display: inline-block;
         @extend %button;
         position: relative;
         text-align: center;
 
         a {
           display: block;
-          padding-left: 18px; // icon width + padding
+          padding-left: 14px;
           padding-right: 4px;
           min-width: 72px;
 
@@ -205,55 +288,18 @@ article.post .row {
           }
         }
       }
-    }
 
-    .small-icon {
-      width: 16px;
-      height: 16px;
-      position: absolute;
-      top: -3px;
-      left: 2px;
-    }
+      .icon-button {
+        padding-top: 0;
+        padding-bottom: 0;
 
-    .icon-sendemail {
-      top: -1px;
-    }
-  }
-
-  .post-buttons.bottom {
-    @include span-columns(3);
-    border-top: $cell-border;
-    padding: 4px;
-
-    li {
-      @extend %button;
-      position: relative;
-      text-align: center;
-
-      a {
-        display: block;
-        padding-left: 14px;
-        padding-right: 4px;
-        min-width: 72px;
-
-        &:hover {
-          text-decoration: none;
+        &:before {
+          float: none;
+          position: absolute;
+          top: -2px;
+          left: 6px;;
         }
       }
     }
-
-    .icon-button {
-      padding-top: 0;
-      padding-bottom: 0;
-
-      &:before {
-        float: none;
-        position: absolute;
-        top: -2px;
-        left: 6px;;
-      }
-    }
   }
-}
-
 }
