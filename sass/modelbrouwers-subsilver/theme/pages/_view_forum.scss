@@ -354,13 +354,19 @@ body.section-viewforum {
     line-height: 26px;
 
     li.page-jump a,
-    li.next a {
+    li.next a,
+    li.previous a {
       height: auto;
     }
 
     li.next a {
       width: 14px;
       background-position: -52px 2px;
+    }
+
+    li.previous a {
+      width: 14px;
+      background-position: -32px 2px;
     }
 
     li.page-jump a {
@@ -370,8 +376,9 @@ body.section-viewforum {
 
   @include media($mobile) {
     .action-buttons {
+      @include fill-parent;
       @include row;
-      width: 100%;
+      @include omega;
       margin-bottom: 15px;
 
       .buttons,

@@ -73,6 +73,12 @@ body.section-viewtopic {
       height: auto;
     }
   }
+
+  @include media($mobile) {
+    .pagination {
+      text-align: left;
+    }
+  }
 }
 
 body.section-viewtopic {
