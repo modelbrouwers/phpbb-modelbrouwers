@@ -1,0 +1,48 @@
+body.section-posting {
+  form {
+    h3 {
+      @extend %table-header;
+      display: block;
+      margin: -5px -10px 0;
+      width: auto;
+      max-width: none;
+
+      text-align: center;
+      color: #FFA34F;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-transform: none;
+    }
+
+    dl {
+      dt {
+        @include span-columns(2);
+      }
+
+      dd {
+        @include span-columns(10);
+        margin-left: 0;
+
+        input,
+        textarea {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  #format-buttons {
+    @include span-columns(10);
+    @include shift(2);
+    margin-top: 0;
+  }
+
+  #smiley-box {
+    @include span-columns(2);
+    max-height: none;
+  }
+
+  #message-box {
+    @include span-columns(10);
+  }
+}

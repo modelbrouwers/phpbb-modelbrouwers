@@ -308,107 +308,107 @@ body.section-viewtopic {
     }
   }
 
-  @include display-context(default) {
-    @include media($mobile) {
-      .topic-header {
+  @include reset-display;
 
-        .author {
-          display: none;
-        }
+  @include media($mobile) {
+    .topic-header {
 
-        .message {
-          @include span-columns(12);
-          @include omega;
-        }
+      .author {
+        display: none;
       }
 
-      .author,
       .message {
         @include span-columns(12);
         @include omega;
       }
+    }
 
-      .author {
+    .author,
+    .message {
+      @include span-columns(12);
+      @include omega;
+    }
 
-        header {
-          text-align: left;
-        }
+    .author {
 
-        .online-status,
-        .profile-rank,
-        .avatar-container,
-        .stat,
-        .sharing {
-          display: none;
-        }
+      header {
+        text-align: left;
       }
 
-      .message {
-
-        header .details {
-          @include fill-parent;
-          display: block;
-          float: none;
-
-          a {
-            display: none;
-          }
-        }
-
-        .signature {
-          display: none;
-        }
+      .online-status,
+      .profile-rank,
+      .avatar-container,
+      .stat,
+      .sharing {
+        display: none;
       }
+    }
 
-      footer {
+    .message {
 
-        .back2top {
-          vertical-align: middle;
-          text-align: center;
-        }
-
-        .profile-contact,
-        .post-buttons.bottom {
-
-          ul {
-            margin-top: 5px;
-          }
-
-          li {
-            margin-bottom: 5px;
-          }
-        }
-      }
-
-      fieldset.display-options {
-        text-align: right;
-
-        label {
-          display: block;
-          padding-right: 0;
-        }
-
-        select {
-          min-width: 100px;
-        }
-      }
-
-      #quickmod,
-      .permissions {
-        @include row;
+      header .details {
         @include fill-parent;
+        display: block;
+        float: none;
+
+        a {
+          display: none;
+        }
+      }
+
+      .signature {
+        display: none;
+      }
+    }
+
+    footer {
+
+      .back2top {
+        vertical-align: middle;
         text-align: center;
-        margin-bottom: 5px;
       }
 
-      #jumpbox {
-        margin-top: 0;
+      .profile-contact,
+      .post-buttons.bottom {
+
+        ul {
+          margin-top: 5px;
+        }
+
+        li {
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    fieldset.display-options {
+      text-align: right;
+
+      label {
+        display: block;
+        padding-right: 0;
       }
 
-      .search-box,
-      #jumpbox {
-        margin-bottom: 10px;
+      select {
+        min-width: 100px;
       }
+    }
+
+    #quickmod,
+    .permissions {
+      @include row;
+      @include fill-parent;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    #jumpbox {
+      margin-top: 0;
+    }
+
+    .search-box,
+    #jumpbox {
+      margin-bottom: 10px;
     }
   }
 }
