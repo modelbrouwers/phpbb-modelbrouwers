@@ -6804,4 +6804,95 @@ body.section-viewtopic .post-buttons.bottom .icon-button:before {
   left: 6px;
 }
 
+@media screen and (max-width: 600px) {
+  body.section-viewtopic .topic-header .author {
+    display: none;
+  }
+  body.section-viewtopic .topic-header .message {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+    margin-right: 0;
+  }
+  body.section-viewtopic .topic-header .message:last-child {
+    margin-right: 0;
+  }
+  body.section-viewtopic .author,
+  body.section-viewtopic .message {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+    margin-right: 0;
+  }
+  body.section-viewtopic .author:last-child,
+  body.section-viewtopic .message:last-child {
+    margin-right: 0;
+  }
+  body.section-viewtopic .author header {
+    text-align: left;
+  }
+  body.section-viewtopic .author .online-status,
+  body.section-viewtopic .author .profile-rank,
+  body.section-viewtopic .author .avatar-container,
+  body.section-viewtopic .author .stat,
+  body.section-viewtopic .author .sharing {
+    display: none;
+  }
+  body.section-viewtopic .message header .details {
+    width: 100%;
+    display: block;
+    float: none;
+  }
+  body.section-viewtopic .message header .details a {
+    display: none;
+  }
+  body.section-viewtopic .message .signature {
+    display: none;
+  }
+  body.section-viewtopic footer .back2top {
+    vertical-align: middle;
+    text-align: center;
+  }
+  body.section-viewtopic footer .profile-contact ul,
+  body.section-viewtopic footer .post-buttons.bottom ul {
+    margin-top: 5px;
+  }
+  body.section-viewtopic footer .profile-contact li,
+  body.section-viewtopic footer .post-buttons.bottom li {
+    margin-bottom: 5px;
+  }
+  body.section-viewtopic fieldset.display-options {
+    text-align: right;
+  }
+  body.section-viewtopic fieldset.display-options label {
+    display: block;
+    padding-right: 0;
+  }
+  body.section-viewtopic fieldset.display-options select {
+    min-width: 100px;
+  }
+  body.section-viewtopic #quickmod,
+  body.section-viewtopic .permissions {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  body.section-viewtopic #quickmod::after,
+  body.section-viewtopic .permissions::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  body.section-viewtopic #jumpbox {
+    margin-top: 0;
+  }
+  body.section-viewtopic .search-box,
+  body.section-viewtopic #jumpbox {
+    margin-bottom: 10px;
+  }
+}
+
 /*# sourceMappingURL=stylesheet.css.map */
