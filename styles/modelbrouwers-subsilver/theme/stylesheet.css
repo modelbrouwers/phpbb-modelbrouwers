@@ -6971,4 +6971,41 @@ body.section-posting #message-box:last-child {
   margin-right: 0;
 }
 
+body.section-posting #postingbox {
+  margin-bottom: 0;
+}
+
+body.section-posting #postingbox + .panel {
+  margin-top: -1px;
+  padding: 0 10px;
+}
+
+body.section-posting #tabs {
+  margin-left: 0;
+}
+
+body.section-posting #tabs .tab {
+  margin-right: 3px;
+}
+
+body.section-posting #tabs .tab > a {
+  opacity: 0.5;
+}
+
+body.section-posting #tabs .tab > a:hover {
+  opacity: 0.8;
+}
+
+body.section-posting #tabs .activetab > a {
+  padding-bottom: 6px;
+  background: #ececec;
+  border-bottom-color: transparent;
+  opacity: 1;
+}
+
+body.section-posting #options-panel,
+body.section-posting #poll-panel {
+  margin-top: -1px;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */
