@@ -7053,4 +7053,13 @@ body.section-posting #message-box:last-child {
   margin-left: 0;
 }
 
+body.section-posting .tab {
+  border: none;
+  background: none;
+}
+
+body.section-posting .responsive-tab > .a.responsive-tab-link {
+  width: auto;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */

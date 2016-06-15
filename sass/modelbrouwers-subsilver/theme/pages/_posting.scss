@@ -110,4 +110,15 @@ body.section-posting {
       margin-right: 0;
     }
   }
+
+  .tab {
+    border: none;
+    background: none;
+  }
+
+  .responsive-tab {
+    > .a.responsive-tab-link {
+      width: auto;
+    }
+  }
 }
