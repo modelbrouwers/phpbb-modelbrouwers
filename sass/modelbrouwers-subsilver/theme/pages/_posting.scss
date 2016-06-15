@@ -82,4 +82,32 @@ body.section-posting {
   #poll-panel {
     margin-top: -1px;
   }
+
+  @include media($mobile) {
+    form dl {
+      dt,
+      dd {
+        @include span-columns(12);
+        @include omega;
+      }
+
+      dt {
+        padding: 3px 0;
+      }
+    }
+  }
+
+  #format-buttons {
+    @include shift(0);
+    @include span-columns(12);
+  }
+
+  @include direction-context(right-to-left) {
+    #smiley-box,
+    #message-box {
+      @include span-columns(12);
+      @include omega;
+      margin-right: 0;
+    }
+  }
 }

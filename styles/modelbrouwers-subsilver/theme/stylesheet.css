@@ -7008,4 +7008,49 @@ body.section-posting #poll-panel {
   margin-top: -1px;
 }
 
+@media screen and (max-width: 600px) {
+  body.section-posting form dl dt,
+  body.section-posting form dl dd {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+    margin-right: 0;
+  }
+  body.section-posting form dl dt:last-child,
+  body.section-posting form dl dd:last-child {
+    margin-right: 0;
+  }
+  body.section-posting form dl dt {
+    padding: 3px 0;
+  }
+}
+
+body.section-posting #format-buttons {
+  margin-left: 0%;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 100%;
+}
+
+body.section-posting #format-buttons:last-child {
+  margin-right: 0;
+}
+
+body.section-posting #smiley-box,
+body.section-posting #message-box {
+  float: right;
+  display: block;
+  margin-left: 2.35765%;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+body.section-posting #smiley-box:last-child,
+body.section-posting #message-box:last-child {
+  margin-left: 0;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */
