@@ -1,0 +1,110 @@
+<h3 id="review">
+    {#
+    <span class="right-box"><a href="#review" onclick="viewableArea(getElementById('topicreview'), true); var rev_text = getElementById('review').getElementsByTagName('a').item(0).firstChild; if (rev_text.data == '{{ LA_EXPAND_VIEW }}'){rev_text.data = '{{ LA_COLLAPSE_VIEW }}'; } else if (rev_text.data == '{{ LA_COLLAPSE_VIEW }}'){rev_text.data = '{{ LA_EXPAND_VIEW }}'};">{{ lang('EXPAND_VIEW') }}</a></span>
+    #}
+    {{ lang('TOPIC_REVIEW') }}{{ lang('COLON') }} {{ TOPIC_TITLE }}
+</h3>
+
+<section id="topicreview" class="bg1">
+    <script type="text/javascript">
+    // <![CDATA[
+        bbcodeEnabled = {{ S_BBCODE_ALLOWED }};
+    // ]]>
+    </script>
+
+    <div class="topic-header">
+        <div class="author">{{ lang('AUTHOR') }}</div>
+        <div class="message">{{ lang('MESSAGE') }}</div>
+    </div>
+
+    {% for topic_review_row in loops.topic_review_row %}
+
+        <article id="pr{{ topic_review_row.POST_ID }}"
+                 class="post
+                        {% if topic_review_row.S_IGNORE_POST %}
+                            bg3 post-ignore
+                        {% else %}
+                            {{ topic_review_row.S_ROW_COUNT is odd ? 'bg1' : 'bg2' }}
+                        {% endif %}
+                        {{ topic_review_row.POST_ID == REPORTED_POST_ID ? 'reported' : '' }}
+                 ">
+
+        {% if topic_review_row.S_IGNORE_POST %}
+            {{ topic_review_row.L_IGNORE_POST }}
+        {% else %}
+            <div class="row">
+                <aside class="author">
+                    <header>
+                        <strong>{{ topic_review_row.POST_AUTHOR_FULL }}</strong>
+                    </header>
+                </aside>
+
+                <div class="message postbody">
+                    <div id="pr{{ topic_review_row.POST_ID }}">
+                        <header>
+                            <span class="subject">
+                                <strong>{{ lang('POST_SUBJECT') }}{{ lang('COLON') }}</strong>
+                                <a href="#pr{{ topic_review_row.POST_ID }}">{{ topic_review_row.POST_SUBJECT }}</a>
+                            </span>
+
+                            {% if topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE %}
+                                <div class="quote">
+                                    <a href="#postingbox"
+                                       onclick="addquote({{ topic_review_row.POST_ID }}, '{{ topic_review_row.POSTER_QUOTE }}', '{{ LA_WROTE }}');" title="{{ lang('QUOTE') }} {{ topic_review_row.POST_AUTHOR }}"
+                                       class="icon-button quote-icon">
+                                        <span>{{ lang('QUOTE') }}</span>
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                        </header>
+
+                        <div class="content">{{ topic_review_row.MESSAGE }}</div>
+
+                        <p class="post-time">
+                            {% if S_IS_BOT %}
+                                {{ topic_review_row.MINI_POST_IMG }}
+                            {% else %}
+                                <a href="{{ topic_review_row.U_MINI_POST }}">{{ topic_review_row.MINI_POST_IMG }}</a>
+                            {% endif %}
+                            <strong>{{ lang('POSTED') }}{{ lang('COLON') }}</strong> {{ topic_review_row.POST_DATE }}
+                        </p>
+
+                        {# TODO: test #}
+                        {% if topic_review_row.S_HAS_ATTACHMENTS %}
+                        <div class="attachments">
+                            <strong>{{ lang('ATTACHMENTS') }}</strong>
+                            <ul>
+                            {% for attachment in topic_review_row.attachment %}
+                                <li>{{ topic_review_row.attachment.DISPLAY_ATTACHMENT }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        {% if topic_review_row.U_MCP_DETAILS %}
+                            [ <a href="{{ topic_review_row.U_MCP_DETAILS }}" title="{{ lang('POST_DETAILS') }}">
+                                {{ lang('POST_DETAILS') }}
+                            </a> ]
+                        {% endif %}
+
+                        {% if topic_review_row.POSTER_QUOTE and topic_review_row.DECODED_MESSAGE %}
+                            <div id="message_{{ topic_review_row.POST_ID }}" style="display: none;">{{ topic_review_row.DECODED_MESSAGE }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        </article>
+
+    {% endfor %}
+
+</section>
+
+<hr />
+
+<!-- IF S_MCP_REPORT -->
+    <p><a href="#report" class="top2">{{ lang('BACK_TO_TOP') }}</a></p>
+<!-- ELSE -->
+    <p><a href="#postingbox" class="top2">{{ lang('BACK_TO_TOP') }}</a></p>
+<!-- ENDIF -->

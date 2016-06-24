@@ -276,33 +276,6 @@ dd.option {
   width: 68%
 }
 
-/* Topic review panel
-----------------------------------------*/
-#review {
-  margin-top: 2em;
-}
-
-#topicreview {
-  padding-right: 5px;
-  overflow: auto;
-  height: 300px;
-}
-
-#topicreview .postbody {
-  width: auto;
-  float: none;
-  margin: 0;
-  height: auto;
-}
-
-#topicreview .post {
-  height: auto;
-}
-
-#topicreview h2 {
-  border-bottom-width: 0;
-}
-
 .post-ignore .postbody {
   display: none;
 }

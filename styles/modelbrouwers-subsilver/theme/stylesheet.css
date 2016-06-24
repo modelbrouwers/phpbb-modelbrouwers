@@ -1920,33 +1920,6 @@ dd.option {
   width: 68%;
 }
 
-/* Topic review panel
-----------------------------------------*/
-#review {
-  margin-top: 2em;
-}
-
-#topicreview {
-  padding-right: 5px;
-  overflow: auto;
-  height: 300px;
-}
-
-#topicreview .postbody {
-  width: auto;
-  float: none;
-  margin: 0;
-  height: auto;
-}
-
-#topicreview .post {
-  height: auto;
-}
-
-#topicreview h2 {
-  border-bottom-width: 0;
-}
-
 .post-ignore .postbody {
   display: none;
 }
@@ -5707,7 +5680,8 @@ header.container-fluid .navbar-brand {
   }
 }
 
-.forums-header, .topics-header, body.section-viewtopic .topic-header, body.section-posting form h3 {
+.forums-header, .topics-header, body.section-viewtopic .topic-header,
+#topicreview .topic-header, body.section-posting form #postingbox h3, body.section-posting form h3#review {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -5721,13 +5695,15 @@ header.container-fluid .navbar-brand {
   padding-bottom: 5px;
 }
 
-.forums-header::after, .topics-header::after, body.section-viewtopic .topic-header::after, body.section-posting form h3::after {
+.forums-header::after, .topics-header::after, body.section-viewtopic .topic-header::after,
+#topicreview .topic-header::after, body.section-posting form #postingbox h3::after, body.section-posting form h3#review::after {
   clear: both;
   content: "";
   display: table;
 }
 
-.forums-header > div, .topics-header > div, body.section-viewtopic .topic-header > div, body.section-posting form h3 > div {
+.forums-header > div, .topics-header > div, body.section-viewtopic .topic-header > div,
+#topicreview .topic-header > div, body.section-posting form #postingbox h3 > div, body.section-posting form h3#review > div {
   text-align: center;
   color: #FFA34F;
   font-weight: bold;
@@ -6580,7 +6556,19 @@ body.section-viewtopic #jumpbox .button {
   }
 }
 
-body.section-viewtopic .post .online-status, body.section-viewtopic .profile-contact ul li, body.section-viewtopic .post-buttons.bottom li {
+body.section-viewtopic .post .online-status, body.section-viewtopic
+#topicreview .post .online-status,
+#topicreview .post body.section-viewtopic .online-status, body.section-viewtopic .profile-contact ul li, body.section-viewtopic
+#topicreview .profile-contact ul li,
+#topicreview .profile-contact ul body.section-viewtopic li, body.section-viewtopic .post-buttons.bottom li, body.section-viewtopic
+#topicreview .post-buttons.bottom li,
+#topicreview .post-buttons.bottom body.section-viewtopic li, body.section-viewtopic body.section-posting form #topicreview .quote, body.section-posting form #topicreview body.section-viewtopic .quote, body.section-viewtopic .post
+#topicreview .online-status,
+#topicreview .post .online-status, body.section-viewtopic .profile-contact ul
+#topicreview li,
+#topicreview .profile-contact ul li, body.section-viewtopic .post-buttons.bottom
+#topicreview li,
+#topicreview .post-buttons.bottom li, body.section-posting form #topicreview .quote {
   background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
   border: solid 1px #357ea4;
   border-radius: 4px;
@@ -6590,13 +6578,15 @@ body.section-viewtopic .post .online-status, body.section-viewtopic .profile-con
   cursor: default;
 }
 
-body.section-viewtopic article.post .row {
+body.section-viewtopic article.post .row,
+#topicreview article.post .row {
   display: table;
   width: 100%;
   table-layout: fixed;
 }
 
-body.section-viewtopic .content + .post-buttons {
+body.section-viewtopic .content + .post-buttons,
+#topicreview .content + .post-buttons {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -6606,106 +6596,133 @@ body.section-viewtopic .content + .post-buttons {
   margin-bottom: 1em;
 }
 
-body.section-viewtopic .content + .post-buttons:last-child {
+body.section-viewtopic .content + .post-buttons:last-child,
+#topicreview .content + .post-buttons:last-child {
   margin-right: 0;
 }
 
-body.section-viewtopic .content + .post-buttons a > span {
+body.section-viewtopic .content + .post-buttons a > span,
+#topicreview .content + .post-buttons a > span {
   display: none;
 }
 
-body.section-viewtopic .topic-header {
+body.section-viewtopic .topic-header,
+#topicreview .topic-header {
   padding-top: 0;
   padding-bottom: 0;
   border-left: solid 1px #a9b8c2;
 }
 
 body.section-viewtopic .topic-header > .author,
-body.section-viewtopic .topic-header > .message {
+body.section-viewtopic .topic-header > .message,
+#topicreview .topic-header > .author,
+#topicreview .topic-header > .message {
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-body.section-viewtopic .topic-header > .author {
+body.section-viewtopic .topic-header > .author,
+#topicreview .topic-header > .author {
   border-right: solid 1px #a9b8c2;
 }
 
-body.section-viewtopic .post {
+body.section-viewtopic .post,
+#topicreview .post {
   margin-bottom: 5px;
 }
 
-body.section-viewtopic .post header .details {
+body.section-viewtopic .post header .details,
+#topicreview .post header .details {
   float: right;
 }
 
 body.section-viewtopic .post .profile-rank,
 body.section-viewtopic .post .avatar-container,
 body.section-viewtopic .post .stat,
-body.section-viewtopic .post .sharing {
+body.section-viewtopic .post .sharing,
+#topicreview .post .profile-rank,
+#topicreview .post .avatar-container,
+#topicreview .post .stat,
+#topicreview .post .sharing {
   padding: 7px;
 }
 
-body.section-viewtopic .post .online-status {
+body.section-viewtopic .post .online-status,
+#topicreview .post .online-status {
   max-width: 72px;
   margin: 7px;
 }
 
-body.section-viewtopic .post.online .online-status {
+body.section-viewtopic .post.online .online-status,
+#topicreview .post.online .online-status {
   color: #6ca964;
 }
 
-body.section-viewtopic .post.offline .online-status {
+body.section-viewtopic .post.offline .online-status,
+#topicreview .post.offline .online-status {
   color: #b63232;
 }
 
 body.section-viewtopic .post .stat,
-body.section-viewtopic .post .sharing {
+body.section-viewtopic .post .sharing,
+#topicreview .post .stat,
+#topicreview .post .sharing {
   color: #000000;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-body.section-viewtopic .post .sharing {
+body.section-viewtopic .post .sharing,
+#topicreview .post .sharing {
   display: block;
 }
 
 body.section-viewtopic .author header,
-body.section-viewtopic .message header {
+body.section-viewtopic .message header,
+#topicreview .author header,
+#topicreview .message header {
   padding: 6px;
   border-bottom: solid 1px #a9b8c2;
 }
 
-body.section-viewtopic .author {
+body.section-viewtopic .author,
+#topicreview .author {
   display: table-cell;
   width: 16.66667%;
   border-right: solid 1px #a9b8c2;
   text-align: left;
 }
 
-body.section-viewtopic .author header {
+body.section-viewtopic .author header,
+#topicreview .author header {
   text-align: center;
 }
 
-body.section-viewtopic .message {
+body.section-viewtopic .message,
+#topicreview .message {
   display: table-cell;
   width: 83.33333%;
 }
 
-body.section-viewtopic .message .content {
+body.section-viewtopic .message .content,
+#topicreview .message .content {
   font-size: 1.3em;
   overflow-x: auto;
   padding: 4px;
 }
 
-body.section-viewtopic .message .ignore {
+body.section-viewtopic .message .ignore,
+#topicreview .message .ignore {
   font-size: 1.1em;
 }
 
-body.section-viewtopic .message img.postimage {
+body.section-viewtopic .message img.postimage,
+#topicreview .message img.postimage {
   max-width: 100%;
 }
 
-body.section-viewtopic .signature {
+body.section-viewtopic .signature,
+#topicreview .signature {
   width: 100%;
   max-height: 175px;
   overflow: hidden;
@@ -6716,48 +6733,56 @@ body.section-viewtopic .signature {
   line-height: 140%;
 }
 
-body.section-viewtopic .back2top {
+body.section-viewtopic .back2top,
+#topicreview .back2top {
   display: table-cell;
   width: 16.66667%;
   border-top: solid 1px #a9b8c2;
   border-right: solid 1px #a9b8c2;
 }
 
-body.section-viewtopic .back2top a.top {
+body.section-viewtopic .back2top a.top,
+#topicreview .back2top a.top {
   display: block;
   padding: 4px;
   font-weight: bold;
 }
 
-body.section-viewtopic .profile-contact {
+body.section-viewtopic .profile-contact,
+#topicreview .profile-contact {
   display: table-cell;
   width: 58.33333%;
   border-top: solid 1px #a9b8c2;
   padding: 4px;
 }
 
-body.section-viewtopic .profile-contact ul {
+body.section-viewtopic .profile-contact ul,
+#topicreview .profile-contact ul {
   list-style: none;
 }
 
-body.section-viewtopic .profile-contact ul li {
+body.section-viewtopic .profile-contact ul li,
+#topicreview .profile-contact ul li {
   display: inline-block;
   position: relative;
   text-align: center;
 }
 
-body.section-viewtopic .profile-contact ul li a {
+body.section-viewtopic .profile-contact ul li a,
+#topicreview .profile-contact ul li a {
   display: block;
   padding-left: 18px;
   padding-right: 4px;
   min-width: 72px;
 }
 
-body.section-viewtopic .profile-contact ul li a:hover {
+body.section-viewtopic .profile-contact ul li a:hover,
+#topicreview .profile-contact ul li a:hover {
   text-decoration: none;
 }
 
-body.section-viewtopic .profile-contact .small-icon {
+body.section-viewtopic .profile-contact .small-icon,
+#topicreview .profile-contact .small-icon {
   width: 16px;
   height: 16px;
   position: absolute;
@@ -6765,39 +6790,46 @@ body.section-viewtopic .profile-contact .small-icon {
   left: 2px;
 }
 
-body.section-viewtopic .profile-contact .icon-sendemail {
+body.section-viewtopic .profile-contact .icon-sendemail,
+#topicreview .profile-contact .icon-sendemail {
   top: -1px;
 }
 
-body.section-viewtopic .post-buttons.bottom {
+body.section-viewtopic .post-buttons.bottom,
+#topicreview .post-buttons.bottom {
   display: table-cell;
   width: 25%;
   border-top: solid 1px #a9b8c2;
   padding: 4px;
 }
 
-body.section-viewtopic .post-buttons.bottom li {
+body.section-viewtopic .post-buttons.bottom li,
+#topicreview .post-buttons.bottom li {
   position: relative;
   text-align: center;
 }
 
-body.section-viewtopic .post-buttons.bottom li a {
+body.section-viewtopic .post-buttons.bottom li a,
+#topicreview .post-buttons.bottom li a {
   display: block;
   padding-left: 14px;
   padding-right: 4px;
   min-width: 72px;
 }
 
-body.section-viewtopic .post-buttons.bottom li a:hover {
+body.section-viewtopic .post-buttons.bottom li a:hover,
+#topicreview .post-buttons.bottom li a:hover {
   text-decoration: none;
 }
 
-body.section-viewtopic .post-buttons.bottom .icon-button {
+body.section-viewtopic .post-buttons.bottom .icon-button,
+#topicreview .post-buttons.bottom .icon-button {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-body.section-viewtopic .post-buttons.bottom .icon-button:before {
+body.section-viewtopic .post-buttons.bottom .icon-button:before,
+#topicreview .post-buttons.bottom .icon-button:before {
   float: none;
   position: absolute;
   top: -2px;
@@ -6805,21 +6837,26 @@ body.section-viewtopic .post-buttons.bottom .icon-button:before {
 }
 
 @media screen and (max-width: 600px) {
-  body.section-viewtopic .topic-header .author {
+  body.section-viewtopic .topic-header .author,
+  #topicreview .topic-header .author {
     display: none;
   }
-  body.section-viewtopic .topic-header .message {
+  body.section-viewtopic .topic-header .message,
+  #topicreview .topic-header .message {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 100%;
     margin-right: 0;
   }
-  body.section-viewtopic .topic-header .message:last-child {
+  body.section-viewtopic .topic-header .message:last-child,
+  #topicreview .topic-header .message:last-child {
     margin-right: 0;
   }
   body.section-viewtopic .author,
-  body.section-viewtopic .message {
+  body.section-viewtopic .message,
+  #topicreview .author,
+  #topicreview .message {
     float: left;
     display: block;
     margin-right: 2.35765%;
@@ -6827,75 +6864,101 @@ body.section-viewtopic .post-buttons.bottom .icon-button:before {
     margin-right: 0;
   }
   body.section-viewtopic .author:last-child,
-  body.section-viewtopic .message:last-child {
+  body.section-viewtopic .message:last-child,
+  #topicreview .author:last-child,
+  #topicreview .message:last-child {
     margin-right: 0;
   }
-  body.section-viewtopic .author header {
+  body.section-viewtopic .author header,
+  #topicreview .author header {
     text-align: left;
   }
   body.section-viewtopic .author .online-status,
   body.section-viewtopic .author .profile-rank,
   body.section-viewtopic .author .avatar-container,
   body.section-viewtopic .author .stat,
-  body.section-viewtopic .author .sharing {
+  body.section-viewtopic .author .sharing,
+  #topicreview .author .online-status,
+  #topicreview .author .profile-rank,
+  #topicreview .author .avatar-container,
+  #topicreview .author .stat,
+  #topicreview .author .sharing {
     display: none;
   }
-  body.section-viewtopic .message header .details {
+  body.section-viewtopic .message header .details,
+  #topicreview .message header .details {
     width: 100%;
     display: block;
     float: none;
   }
-  body.section-viewtopic .message header .details a {
+  body.section-viewtopic .message header .details a,
+  #topicreview .message header .details a {
     display: none;
   }
-  body.section-viewtopic .message .signature {
+  body.section-viewtopic .message .signature,
+  #topicreview .message .signature {
     display: none;
   }
-  body.section-viewtopic footer .back2top {
+  body.section-viewtopic footer .back2top,
+  #topicreview footer .back2top {
     vertical-align: middle;
     text-align: center;
   }
   body.section-viewtopic footer .profile-contact ul,
-  body.section-viewtopic footer .post-buttons.bottom ul {
+  body.section-viewtopic footer .post-buttons.bottom ul,
+  #topicreview footer .profile-contact ul,
+  #topicreview footer .post-buttons.bottom ul {
     margin-top: 5px;
   }
   body.section-viewtopic footer .profile-contact li,
-  body.section-viewtopic footer .post-buttons.bottom li {
+  body.section-viewtopic footer .post-buttons.bottom li,
+  #topicreview footer .profile-contact li,
+  #topicreview footer .post-buttons.bottom li {
     margin-bottom: 5px;
   }
-  body.section-viewtopic fieldset.display-options {
+  body.section-viewtopic fieldset.display-options,
+  #topicreview fieldset.display-options {
     text-align: right;
   }
-  body.section-viewtopic fieldset.display-options label {
+  body.section-viewtopic fieldset.display-options label,
+  #topicreview fieldset.display-options label {
     display: block;
     padding-right: 0;
   }
-  body.section-viewtopic fieldset.display-options select {
+  body.section-viewtopic fieldset.display-options select,
+  #topicreview fieldset.display-options select {
     min-width: 100px;
   }
   body.section-viewtopic #quickmod,
-  body.section-viewtopic .permissions {
+  body.section-viewtopic .permissions,
+  #topicreview #quickmod,
+  #topicreview .permissions {
     display: block;
     width: 100%;
     text-align: center;
     margin-bottom: 5px;
   }
   body.section-viewtopic #quickmod::after,
-  body.section-viewtopic .permissions::after {
+  body.section-viewtopic .permissions::after,
+  #topicreview #quickmod::after,
+  #topicreview .permissions::after {
     clear: both;
     content: "";
     display: table;
   }
-  body.section-viewtopic #jumpbox {
+  body.section-viewtopic #jumpbox,
+  #topicreview #jumpbox {
     margin-top: 0;
   }
   body.section-viewtopic .search-box,
-  body.section-viewtopic #jumpbox {
+  body.section-viewtopic #jumpbox,
+  #topicreview .search-box,
+  #topicreview #jumpbox {
     margin-bottom: 10px;
   }
 }
 
-body.section-posting form h3 {
+body.section-posting form #postingbox h3 {
   display: block;
   margin: -5px -10px 0;
   width: auto;
@@ -6933,6 +6996,73 @@ body.section-posting form dl dd:last-child {
 body.section-posting form dl dd input,
 body.section-posting form dl dd textarea {
   margin: 0;
+}
+
+body.section-posting form h3#review {
+  text-align: center;
+  color: #FFA34F;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-transform: none;
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+body.section-posting form h3#review .right-box {
+  margin-right: 10px;
+}
+
+body.section-posting form h3#review .right-box a {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body.section-posting form h3#review .right-box a:hover, body.section-posting form h3#review .right-box a:active, body.section-posting form h3#review .right-box a:focus {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+body.section-posting form #topicreview {
+  border: solid 1px #a9b8c2;
+  border-top: none;
+  padding: 5px;
+}
+
+body.section-posting form #topicreview .quote,
+body.section-posting form #topicreview .post-time {
+  float: right;
+  margin: 0;
+}
+
+body.section-posting form #topicreview .postbody {
+  padding-bottom: 4px;
+}
+
+body.section-posting form #topicreview .quote {
+  position: relative;
+  text-align: center;
+  top: -2px;
+}
+
+body.section-posting form #topicreview .quote a {
+  display: block;
+  padding-left: 14px;
+  padding-right: 4px;
+  min-width: 72px;
+}
+
+body.section-posting form #topicreview .quote a:hover {
+  text-decoration: none;
+}
+
+body.section-posting form #topicreview .quote .icon-button {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+body.section-posting form #topicreview .quote .icon-button:before {
+  float: none;
+  position: absolute;
+  top: -2px;
+  left: 6px;
 }
 
 body.section-posting #format-buttons {

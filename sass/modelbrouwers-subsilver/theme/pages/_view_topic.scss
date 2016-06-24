@@ -81,7 +81,8 @@ body.section-viewtopic {
   }
 }
 
-body.section-viewtopic {
+body.section-viewtopic,
+#topicreview {
 
   %button {
     @include background-image(linear-gradient(to bottom, #ffffff, #bcc1c3));

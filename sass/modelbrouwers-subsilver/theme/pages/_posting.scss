@@ -1,6 +1,6 @@
 body.section-posting {
   form {
-    h3 {
+    #postingbox h3 {
       @extend %table-header;
       display: block;
       margin: -5px -10px 0;
@@ -26,6 +26,78 @@ body.section-posting {
         input,
         textarea {
           margin: 0;
+        }
+      }
+    }
+
+    h3#review {
+      @extend %table-header;
+      text-align: center;
+      color: #FFA34F;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-transform: none;
+
+      margin-top: 2em;
+      margin-bottom: 0;
+
+      .right-box {
+        margin-right: 10px;
+        a {
+          color: rgba(white, 0.5);
+
+          &:hover,
+          &:active,
+          &:focus {
+            color: rgba(white, 0.75);
+          }
+        }
+      }
+    }
+
+    #topicreview {
+      border: $cell-border;
+      border-top: none;
+      padding: 5px;
+
+      .quote,
+      .post-time {
+        float: right;
+        margin: 0;
+      }
+
+      .postbody {
+        padding-bottom: 4px;
+      }
+
+      .quote {
+        @extend %button;
+
+        position: relative;
+        text-align: center;
+        top: -2px;
+
+        a {
+          display: block;
+          padding-left: 14px;
+          padding-right: 4px;
+          min-width: 72px;
+
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        .icon-button {
+          padding-top: 0;
+          padding-bottom: 0;
+
+          &:before {
+            float: none;
+            position: absolute;
+            top: -2px;
+            left: 6px;;
+          }
         }
       }
     }
