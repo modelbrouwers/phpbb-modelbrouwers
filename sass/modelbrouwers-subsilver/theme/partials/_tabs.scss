@@ -1,0 +1,39 @@
+#tabs {
+  margin-left: 0;
+
+  .tab {
+    margin-right: 3px;
+
+    > a {
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .activetab > a {
+    padding-bottom: 6px;
+    background: #ececec;
+    border-bottom-color: transparent;
+    opacity: 1;
+  }
+
+  & + .panel {
+    margin-top: -1px;
+  }
+}
+
+@include media($mobile) {
+  .tab {
+    border: none;
+    background: none;
+  }
+
+  .responsive-tab {
+    > .a.responsive-tab-link {
+      width: auto;
+    }
+  }
+}

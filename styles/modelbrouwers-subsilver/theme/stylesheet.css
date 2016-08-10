@@ -5527,6 +5527,43 @@ div.time > div:last-child {
   text-align: right;
 }
 
+#tabs {
+  margin-left: 0;
+}
+
+#tabs .tab {
+  margin-right: 3px;
+}
+
+#tabs .tab > a {
+  opacity: 0.5;
+}
+
+#tabs .tab > a:hover {
+  opacity: 0.8;
+}
+
+#tabs .activetab > a {
+  padding-bottom: 6px;
+  background: #ececec;
+  border-bottom-color: transparent;
+  opacity: 1;
+}
+
+#tabs + .panel {
+  margin-top: -1px;
+}
+
+@media screen and (max-width: 600px) {
+  .tab {
+    border: none;
+    background: none;
+  }
+  .responsive-tab > .a.responsive-tab-link {
+    width: auto;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -7104,31 +7141,7 @@ body.section-posting #postingbox {
 }
 
 body.section-posting #postingbox + .panel {
-  margin-top: -1px;
   padding: 0 10px;
-}
-
-body.section-posting #tabs {
-  margin-left: 0;
-}
-
-body.section-posting #tabs .tab {
-  margin-right: 3px;
-}
-
-body.section-posting #tabs .tab > a {
-  opacity: 0.5;
-}
-
-body.section-posting #tabs .tab > a:hover {
-  opacity: 0.8;
-}
-
-body.section-posting #tabs .activetab > a {
-  padding-bottom: 6px;
-  background: #ececec;
-  border-bottom-color: transparent;
-  opacity: 1;
 }
 
 body.section-posting #options-panel,
@@ -7175,15 +7188,6 @@ body.section-posting #poll-panel {
   body.section-posting #message-box:last-child {
     margin-left: 0;
   }
-}
-
-body.section-posting .tab {
-  border: none;
-  background: none;
-}
-
-body.section-posting .responsive-tab > .a.responsive-tab-link {
-  width: auto;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
