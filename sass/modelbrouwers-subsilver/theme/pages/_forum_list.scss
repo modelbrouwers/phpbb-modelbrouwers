@@ -123,13 +123,13 @@
       @include omega;
       text-align: center;
 
-      p {
-        max-width: 64px;
+      // p {
+      //   max-width: 64px;
 
-        &:first-child {
-          display: none;
-        }
-      }
+      //   &:first-child {
+      //     display: none;
+      //   }
+      // }
     }
 
     @include media($mobile) {

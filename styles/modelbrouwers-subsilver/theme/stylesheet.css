@@ -552,7 +552,6 @@ ul.linklist.bulletin > li.no-bulletin:before {
   border-bottom: 10px solid transparent;
   border-left: 10px dashed transparent;
   border-right: 10px dashed transparent;
-  -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
   /* better anti-aliasing in webkit */
   display: block;
@@ -5510,7 +5509,7 @@ div.time {
 div.time::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 div.time > div {
@@ -5566,7 +5565,7 @@ header.container-fluid .navbar-header {
 header.container-fluid .navbar-header::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 header.container-fluid .navbar-toggle {
@@ -5699,7 +5698,7 @@ header.container-fluid .navbar-brand {
 #topicreview .topic-header::after, body.section-posting form #postingbox h3::after, body.section-posting form h3#review::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 .forums-header > div, .topics-header > div, body.section-viewtopic .topic-header > div,
@@ -5734,7 +5733,7 @@ header.container-fluid .navbar-brand {
 .forabg > .forums::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 .forabg > .forums h4 {
@@ -5809,7 +5808,7 @@ header.container-fluid .navbar-brand {
 .topiclist.forums .row::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 .topiclist.forums .row > div {
@@ -5851,14 +5850,6 @@ header.container-fluid .navbar-brand {
   width: 16.66667%;
   margin-right: 0;
   text-align: center;
-}
-
-.topiclist.forums .lastpost p {
-  max-width: 64px;
-}
-
-.topiclist.forums .lastpost p:first-child {
-  display: none;
 }
 
 @media screen and (max-width: 600px) {
@@ -5906,7 +5897,7 @@ body.section-viewforum .forum-title + div, body.section-viewtopic .forum-title +
 body.section-viewforum .forum-title + div::after, body.section-viewtopic .forum-title + div::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 body.section-viewforum .forum-desc, body.section-viewtopic .forum-desc {
@@ -5988,7 +5979,7 @@ body.section-viewforum .forumbg + form {
 body.section-viewforum .forumbg + form::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 body.section-viewforum .forumbg + form fieldset {
@@ -6028,13 +6019,10 @@ body.section-viewforum .icons-legend .legend-icon {
   display: block;
   margin-right: 4.82916%;
   width: 30.11389%;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
   justify-content: flex-start;
   margin-bottom: 3px;
@@ -6064,7 +6052,7 @@ body.section-viewforum .post-info {
 body.section-viewforum .post-info::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 body.section-viewforum .permissions {
@@ -6087,7 +6075,7 @@ body.section-viewforum .jumpbox-row {
 body.section-viewforum .jumpbox-row::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 body.section-viewforum .search-box {
@@ -6217,7 +6205,7 @@ body.section-viewforum #jumpbox .button {
 .topiclist.topics .row::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 .topiclist.topics .row > div {
@@ -6343,7 +6331,7 @@ body.section-viewforum #jumpbox .button {
 .action-bar::after {
   clear: both;
   content: "";
-  display: table;
+  display: block;
 }
 
 .action-bar .action-buttons {
@@ -6420,7 +6408,7 @@ body.section-viewforum #jumpbox .button {
   .action-bar .action-buttons::after {
     clear: both;
     content: "";
-    display: table;
+    display: block;
   }
   .action-bar .action-buttons .buttons,
   .action-bar .action-buttons .page-info {
@@ -6445,7 +6433,7 @@ body.section-viewforum #jumpbox .button {
   .action-bar .pagination::after {
     clear: both;
     content: "";
-    display: table;
+    display: block;
   }
   .action-bar .pagination > ul {
     margin: 0 !important;
@@ -6563,12 +6551,9 @@ body.section-viewtopic .post .online-status, body.section-viewtopic
 #topicreview .profile-contact ul body.section-viewtopic li, body.section-viewtopic .post-buttons.bottom li, body.section-viewtopic
 #topicreview .post-buttons.bottom li,
 #topicreview .post-buttons.bottom body.section-viewtopic li, body.section-viewtopic body.section-posting form #topicreview .quote, body.section-posting form #topicreview body.section-viewtopic .quote, body.section-viewtopic .post
-#topicreview .online-status,
-#topicreview .post .online-status, body.section-viewtopic .profile-contact ul
-#topicreview li,
-#topicreview .profile-contact ul li, body.section-viewtopic .post-buttons.bottom
-#topicreview li,
-#topicreview .post-buttons.bottom li, body.section-posting form #topicreview .quote {
+#topicreview .online-status, #topicreview .post .online-status, body.section-viewtopic .profile-contact ul
+#topicreview li, #topicreview .profile-contact ul li, body.section-viewtopic .post-buttons.bottom
+#topicreview li, #topicreview .post-buttons.bottom li, body.section-posting form #topicreview .quote {
   background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
   border: solid 1px #357ea4;
   border-radius: 4px;
@@ -6944,7 +6929,7 @@ body.section-viewtopic .post-buttons.bottom .icon-button:before,
   #topicreview .permissions::after {
     clear: both;
     content: "";
-    display: table;
+    display: block;
   }
   body.section-viewtopic #jumpbox,
   #topicreview #jumpbox {
@@ -7065,6 +7050,19 @@ body.section-posting form #topicreview .quote .icon-button:before {
   left: 6px;
 }
 
+body.section-posting form #topicreview .post {
+  margin-bottom: 1px;
+}
+
+body.section-posting form #topicreview .author header {
+  border-bottom-color: transparent;
+}
+
+body.section-posting form #topicreview .content {
+  padding: 0;
+  min-height: initial;
+}
+
 body.section-posting #format-buttons {
   float: left;
   display: block;
@@ -7154,33 +7152,29 @@ body.section-posting #poll-panel {
   body.section-posting form dl dt {
     padding: 3px 0;
   }
-}
-
-body.section-posting #format-buttons {
-  margin-left: 0%;
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 100%;
-}
-
-body.section-posting #format-buttons:last-child {
-  margin-right: 0;
-}
-
-body.section-posting #smiley-box,
-body.section-posting #message-box {
-  float: right;
-  display: block;
-  margin-left: 2.35765%;
-  width: 100%;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-body.section-posting #smiley-box:last-child,
-body.section-posting #message-box:last-child {
-  margin-left: 0;
+  body.section-posting #format-buttons {
+    margin-left: 0%;
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 100%;
+  }
+  body.section-posting #format-buttons:last-child {
+    margin-right: 0;
+  }
+  body.section-posting #smiley-box,
+  body.section-posting #message-box {
+    float: right;
+    display: block;
+    margin-left: 2.35765%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  body.section-posting #smiley-box:last-child,
+  body.section-posting #message-box:last-child {
+    margin-left: 0;
+  }
 }
 
 body.section-posting .tab {

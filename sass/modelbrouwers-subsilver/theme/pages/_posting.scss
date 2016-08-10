@@ -100,6 +100,19 @@ body.section-posting {
           }
         }
       }
+
+      .post {
+        margin-bottom: 1px;
+      }
+
+      .author header {
+        border-bottom-color: transparent;
+      }
+
+      .content {
+        padding: 0;
+        min-height: initial;
+      }
     }
   }
 
@@ -167,21 +180,22 @@ body.section-posting {
         padding: 3px 0;
       }
     }
-  }
 
-  #format-buttons {
-    @include shift(0);
-    @include span-columns(12);
-  }
-
-  @include direction-context(right-to-left) {
-    #smiley-box,
-    #message-box {
+    #format-buttons {
+      @include shift(0);
       @include span-columns(12);
-      @include omega;
-      margin-right: 0;
+    }
+
+    @include direction-context(right-to-left) {
+      #smiley-box,
+      #message-box {
+        @include span-columns(12);
+        @include omega;
+        margin-right: 0;
+      }
     }
   }
+
 
   .tab {
     border: none;
