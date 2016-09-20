@@ -5717,7 +5717,7 @@ header.container-fluid .navbar-brand {
 }
 
 .forums-header, .topics-header, body.section-viewtopic .topic-header,
-#topicreview .topic-header, body.section-posting form #postingbox h3, body.section-posting form h3#review {
+#topicreview .topic-header, body.section-posting form #postingbox h3, body.section-posting form h3#review, body.section-ucp .ucp-main h3 {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -5732,14 +5732,14 @@ header.container-fluid .navbar-brand {
 }
 
 .forums-header::after, .topics-header::after, body.section-viewtopic .topic-header::after,
-#topicreview .topic-header::after, body.section-posting form #postingbox h3::after, body.section-posting form h3#review::after {
+#topicreview .topic-header::after, body.section-posting form #postingbox h3::after, body.section-posting form h3#review::after, body.section-ucp .ucp-main h3::after {
   clear: both;
   content: "";
   display: block;
 }
 
 .forums-header > div, .topics-header > div, body.section-viewtopic .topic-header > div,
-#topicreview .topic-header > div, body.section-posting form #postingbox h3 > div, body.section-posting form h3#review > div {
+#topicreview .topic-header > div, body.section-posting form #postingbox h3 > div, body.section-posting form h3#review > div, body.section-ucp .ucp-main h3 > div {
   text-align: center;
   color: #FFA34F;
   font-weight: bold;
@@ -7188,6 +7188,49 @@ body.section-posting #poll-panel {
   body.section-posting #message-box:last-child {
     margin-left: 0;
   }
+}
+
+body.section-ucp .cp-panel {
+  padding: 5px 10px;
+  background-color: #F9F9F9;
+  border: 1px solid #a9b8c2;
+  color: #28313F;
+}
+
+body.section-ucp .ucp-main h3 {
+  display: block;
+  margin: 0 -10px;
+  width: auto;
+  max-width: none;
+  text-align: center;
+  color: #FFA34F;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-transform: none;
+}
+
+body.section-ucp .ucp-main .forumbg {
+  margin: -1px -10px 0;
+  border: none;
+}
+
+body.section-ucp p.details {
+  font-size: 1.1em;
+}
+
+body.section-ucp .topiclist.topics .icon {
+  display: table-cell;
+  width: 5.55556%;
+}
+
+body.section-ucp .topiclist.topics .description {
+  display: table-cell;
+  width: 72.22222%;
+}
+
+body.section-ucp .topiclist.topics .lastpost {
+  display: table-cell;
+  width: 22.22222%;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */

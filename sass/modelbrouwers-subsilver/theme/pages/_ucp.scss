@@ -1,0 +1,53 @@
+body.section-ucp {
+
+  .cp-panel {
+    padding: 5px 10px;
+    background-color: #F9F9F9;
+    border: 1px solid #a9b8c2;
+    color: #28313F;
+  }
+
+  .ucp-main {
+
+    h3 {
+      @extend %table-header;
+      display: block;
+      margin: 0 -10px;
+      width: auto;
+      max-width: none;
+
+      text-align: center;
+      color: #FFA34F;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-transform: none;
+    }
+
+    .forumbg {
+      margin: -1px -10px 0;
+      border: none;
+    }
+  }
+
+  p.details {
+    font-size: 1.1em;
+  }
+
+  @include display-context(table) {
+    .topiclist.topics {
+
+      .icon {
+        @include span-columns(2 of 36);
+      }
+
+      .description {
+        @include span-columns(26 of 36);
+      }
+
+      .lastpost {
+        @include span-columns(8 of 36);
+      }
+    }
+  }
+
+}

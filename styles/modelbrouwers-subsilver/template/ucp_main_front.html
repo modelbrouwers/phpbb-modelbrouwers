@@ -2,84 +2,82 @@
 
 
 <h2>{{ lang('TITLE') }}</h2>
+<section class="cp-panel">
 
-<div class="panel">
-	<div class="inner">
+    <p>{{ lang('UCP_WELCOME') }}</p>
 
-	<p>{{ lang('UCP_WELCOME') }}</p>
+    {% if loops.topicrow %}
+    	<h3>{{ lang('IMPORTANT_NEWS') }}</h3>
 
-	{% if loops.topicrow %}
-		<h3>{{ lang('IMPORTANT_NEWS') }}</h3>
+    	<div class="forumbg announcement">
+    		<div class="topiclist topics">
+    			{% for topicrow in loops.topicrow %}
+    				<div class="row
+    							{{- topicrow.S_ROW_COUNT is even ? ' bg1' : ' bg2' -}}
+    							{{- topicrow.S_POST_GLOBAL ? ' global-announce' : '' -}}
+    							{{- topicrow.S_POST_ANNOUNCE ? ' announce' : '' -}}
+    							{{- topicrow.S_POST_STICKY ? ' sticky' : '' -}}
+    							{{- topicrow.S_TOPIC_REPORTED ? ' reported' : '' -}}"
+    					 data-id="{{ topicrow.TOPIC_ID }}"
+    					 title="{{ topicrow.TOPIC_FOLDER_IMG_ALT }}">
 
-		<div class="forumbg announcement">
-			<div class="topiclist topics">
-				{% for topicrow in loops.topicrow %}
-					<div class="row
-								{{- topicrow.S_ROW_COUNT is even ? ' bg1' : ' bg2' -}}
-								{{- topicrow.S_POST_GLOBAL ? ' global-announce' : '' -}}
-								{{- topicrow.S_POST_ANNOUNCE ? ' announce' : '' -}}
-								{{- topicrow.S_POST_STICKY ? ' sticky' : '' -}}
-								{{- topicrow.S_TOPIC_REPORTED ? ' reported' : '' -}}"
-						 data-id="{{ topicrow.TOPIC_ID }}"
-						 title="{{ topicrow.TOPIC_FOLDER_IMG_ALT }}">
+    					<div class="icon read-status {{ topicrow.TOPIC_IMG_STYLE }}">
+    						&nbsp;
+    					</div>
 
-						<div class="icon read-status {{ topicrow.TOPIC_IMG_STYLE }}">
-							&nbsp;
-						</div>
+    					<div class="description">
+    						<!-- EVENT topiclist_row_prepend -->
+    						{% if topicrow.S_UNREAD_TOPIC and not S_IS_BOT %}<a href="{{ topicrow.U_NEWEST_POST }}" class="icon-link">{{ NEWEST_POST_IMG }}</a>{% endif %}
+    						<a href="{{ topicrow.U_VIEW_TOPIC }}" class="topictitle">{{ topicrow.TOPIC_TITLE }}</a>
+    						{% if topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED %}
+    							<a href="{{ topicrow.U_MCP_QUEUE }}">{{ topicrow.UNAPPROVED_IMG }}</a>&nbsp;
+    						{% endif %}
+    						{% if topicrow.S_TOPIC_DELETED %}
+    							<a href="{{ topicrow.U_MCP_QUEUE }}">{{ DELETED_IMG }}</a> &nbsp;
+    						{% endif %}
+    						{% if topicrow.S_TOPIC_REPORTED %}
+    							<a href="{{ topicrow.U_MCP_REPORT }}">{{ REPORTED_IMG }}</a>&nbsp;
+    						{% endif %}
+    						{% if topicrow.pagination %}
+    							<div class="pagination">
+    								[
+    									{{ GOTO_PAGE_IMG }}{{ lang('GOTO_PAGE') }}:
+    									<ul>
+    									{% for page in topicrow.pagination %}
+    										{% if page.S_IS_PREV %}
+    											{# NOTHING #}
+    										{% elseif page.S_IS_CURRENT %}
+    											<li class="active">{{ page.PAGE_NUMBER }}</li>
+    										{% elseif page.S_IS_ELLIPSIS %}
+    											<li class="ellipsis">{{ lang('ELLIPSIS') }}</li>
+    										{% elseif page.S_IS_NEXT %}
+    											{# NOTHING #}
+    										{% else %}
+    											<li><a href="{{ page.PAGE_URL }}">{{ page.PAGE_NUMBER }}</a></li>
+    										{% endif %}
+    									{% endfor %}
+    									</ul>
+    								]
+    							</div>
+    						{% endif %}
+    					</div>
 
-						<div class="description">
-							<!-- EVENT topiclist_row_prepend -->
-							{% if topicrow.S_UNREAD_TOPIC and not S_IS_BOT %}<a href="{{ topicrow.U_NEWEST_POST }}" class="icon-link">{{ NEWEST_POST_IMG }}</a>{% endif %}
-							<a href="{{ topicrow.U_VIEW_TOPIC }}" class="topictitle">{{ topicrow.TOPIC_TITLE }}</a>
-							{% if topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED %}
-								<a href="{{ topicrow.U_MCP_QUEUE }}">{{ topicrow.UNAPPROVED_IMG }}</a>&nbsp;
-							{% endif %}
-							{% if topicrow.S_TOPIC_DELETED %}
-								<a href="{{ topicrow.U_MCP_QUEUE }}">{{ DELETED_IMG }}</a> &nbsp;
-							{% endif %}
-							{% if topicrow.S_TOPIC_REPORTED %}
-								<a href="{{ topicrow.U_MCP_REPORT }}">{{ REPORTED_IMG }}</a>&nbsp;
-							{% endif %}
-							{% if topicrow.pagination %}
-								<div class="pagination">
-									[
-										{{ GOTO_PAGE_IMG }}{{ lang('GOTO_PAGE') }}:
-										<ul>
-										{% for page in topicrow.pagination %}
-											{% if page.S_IS_PREV %}
-												{# NOTHING #}
-											{% elseif page.S_IS_CURRENT %}
-												<li class="active">{{ page.PAGE_NUMBER }}</li>
-											{% elseif page.S_IS_ELLIPSIS %}
-												<li class="ellipsis">{{ lang('ELLIPSIS') }}</li>
-											{% elseif page.S_IS_NEXT %}
-												{# NOTHING #}
-											{% else %}
-												<li><a href="{{ page.PAGE_URL }}">{{ page.PAGE_NUMBER }}</a></li>
-											{% endif %}
-										{% endfor %}
-										</ul>
-									]
-								</div>
-							{% endif %}
-						</div>
+    					<div class="lastpost">
+    						<p class="details">{{ topicrow.LAST_POST_TIME }}</p>
+    						<p class="details">
+    							{{ topicrow.LAST_POST_AUTHOR_FULL }}
+    							{% if not S_IS_BOT %}
+    								<a href="{{ topicrow.U_LAST_POST }}">{{ LAST_POST_IMG }}</a>
+    							{% endif %}
+    						</p>
+    					</div>
 
-						<div class="lastpost">
-							<p class="details">{{ topicrow.LAST_POST_TIME }}</p>
-							<p class="details">
-								{{ topicrow.LAST_POST_AUTHOR_FULL }}
-								{% if not S_IS_BOT %}
-									<a href="{{ topicrow.U_LAST_POST }}">{{ LAST_POST_IMG }}</a>
-								{% endif %}
-							</p>
-						</div>
+    				</div>
+    			{% endfor %}
+    		</div>
+    	</div>
 
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-
-	{% endif %}
+    {% endif %}
 
 
 
@@ -92,20 +90,18 @@
 
 
 
-	<h3>{{ lang('YOUR_DETAILS') }}</h3>
+    <h3>{{ lang('YOUR_DETAILS') }}</h3>
 
-<!-- EVENT ucp_main_front_user_activity_before -->
-	<dl class="details">
-		<dt>{{ lang('JOINED') }}{L_COLON}</dt> <dd>{JOINED}</dd>
-		<dt>{{ lang('LAST_ACTIVE') }}{L_COLON}</dt> <dd>{LAST_VISIT_YOU}</dd>
-		<dt>{{ lang('TOTAL_POSTS') }}{L_COLON}</dt> <dd><!-- IF POSTS_PCT -->{POSTS}<!-- IF S_DISPLAY_SEARCH --> | <strong><a href="{U_SEARCH_USER}">{L_SEARCH_YOUR_POSTS}</a></strong><!-- ENDIF --><br />({POSTS_DAY} / {POSTS_PCT})<!-- ELSE -->{POSTS}<!-- ENDIF --></dd>
-		<!-- IF ACTIVE_FORUM != '' --><dt>{{ lang('ACTIVE_IN_FORUM') }}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})</dd><!-- ENDIF -->
-		<!-- IF ACTIVE_TOPIC != '' --><dt>{{ lang('ACTIVE_IN_TOPIC') }}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})</dd><!-- ENDIF -->
-		<!-- IF WARNINGS --><dt>{{ lang('YOUR_WARNINGS') }}{L_COLON}</dt> <dd class="error">{WARNING_IMG} [{WARNINGS}]</dd><!-- ENDIF -->
-	</dl>
-<!-- EVENT ucp_main_front_user_activity_after -->
+    <!-- EVENT ucp_main_front_user_activity_before -->
+    <dl class="details">
+    	<dt>{{ lang('JOINED') }}{L_COLON}</dt> <dd>{JOINED}</dd>
+    	<dt>{{ lang('LAST_ACTIVE') }}{L_COLON}</dt> <dd>{LAST_VISIT_YOU}</dd>
+    	<dt>{{ lang('TOTAL_POSTS') }}{L_COLON}</dt> <dd><!-- IF POSTS_PCT -->{POSTS}<!-- IF S_DISPLAY_SEARCH --> | <strong><a href="{U_SEARCH_USER}">{L_SEARCH_YOUR_POSTS}</a></strong><!-- ENDIF --><br />({POSTS_DAY} / {POSTS_PCT})<!-- ELSE -->{POSTS}<!-- ENDIF --></dd>
+    	<!-- IF ACTIVE_FORUM != '' --><dt>{{ lang('ACTIVE_IN_FORUM') }}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})</dd><!-- ENDIF -->
+    	<!-- IF ACTIVE_TOPIC != '' --><dt>{{ lang('ACTIVE_IN_TOPIC') }}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})</dd><!-- ENDIF -->
+    	<!-- IF WARNINGS --><dt>{{ lang('YOUR_WARNINGS') }}{L_COLON}</dt> <dd class="error">{WARNING_IMG} [{WARNINGS}]</dd><!-- ENDIF -->
+    </dl>
+    <!-- EVENT ucp_main_front_user_activity_after -->
 
-	</div>
-</div>
-
+</section>
 <!-- INCLUDE ucp_footer.html -->
