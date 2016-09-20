@@ -7233,4 +7233,42 @@ body.section-ucp .topiclist.topics .lastpost {
   width: 22.22222%;
 }
 
+body.section-ucp .profile-details {
+  display: block;
+  list-style-type: none;
+  font-size: 1.1em;
+  padding: 10px 0;
+}
+
+body.section-ucp .profile-details::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+body.section-ucp .profile-details .profile-details__label {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 14.70196%;
+  margin-left: 8.5298%;
+  font-weight: 600;
+  text-align: right;
+}
+
+body.section-ucp .profile-details .profile-details__label:last-child {
+  margin-right: 0;
+}
+
+body.section-ucp .profile-details .profile-details__content {
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%;
+}
+
+body.section-ucp .profile-details .profile-details__content:last-child {
+  margin-right: 0;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */

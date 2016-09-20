@@ -79,28 +79,76 @@
 
     {% endif %}
 
-
-
-
-
-
-
-
-
-
-
-
     <h3>{{ lang('YOUR_DETAILS') }}</h3>
 
     <!-- EVENT ucp_main_front_user_activity_before -->
-    <dl class="details">
-    	<dt>{{ lang('JOINED') }}{L_COLON}</dt> <dd>{JOINED}</dd>
-    	<dt>{{ lang('LAST_ACTIVE') }}{L_COLON}</dt> <dd>{LAST_VISIT_YOU}</dd>
-    	<dt>{{ lang('TOTAL_POSTS') }}{L_COLON}</dt> <dd><!-- IF POSTS_PCT -->{POSTS}<!-- IF S_DISPLAY_SEARCH --> | <strong><a href="{U_SEARCH_USER}">{L_SEARCH_YOUR_POSTS}</a></strong><!-- ENDIF --><br />({POSTS_DAY} / {POSTS_PCT})<!-- ELSE -->{POSTS}<!-- ENDIF --></dd>
-    	<!-- IF ACTIVE_FORUM != '' --><dt>{{ lang('ACTIVE_IN_FORUM') }}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_FORUM}">{ACTIVE_FORUM}</a></strong><br />({ACTIVE_FORUM_POSTS} / {ACTIVE_FORUM_PCT})</dd><!-- ENDIF -->
-    	<!-- IF ACTIVE_TOPIC != '' --><dt>{{ lang('ACTIVE_IN_TOPIC') }}{L_COLON}</dt> <dd><strong><a href="{U_ACTIVE_TOPIC}">{ACTIVE_TOPIC}</a></strong><br />({ACTIVE_TOPIC_POSTS} / {ACTIVE_TOPIC_PCT})</dd><!-- ENDIF -->
-    	<!-- IF WARNINGS --><dt>{{ lang('YOUR_WARNINGS') }}{L_COLON}</dt> <dd class="error">{WARNING_IMG} [{WARNINGS}]</dd><!-- ENDIF -->
-    </dl>
+
+    <ul class="profile-details">
+
+        <li class="profile-details__list-item">
+            <span class="profile-details__label">{{ lang('JOINED') }}{{ lang('COLON') }}</span>
+            <span class="profile-details__content">{{ JOINED }}</span>
+        </li>
+
+        <li class="profile-details__list-item">
+            <span class="profile-details__label">{{ lang('LAST_ACTIVE') }}{{ lang('COLON') }}</span>
+            <span class="profile-details__content">{{ LAST_VISIT_YOU }}</span>
+        </li>
+
+        <li class="profile-details__list-item">
+            <span class="profile-details__label">
+                {{ lang('TOTAL_POSTS') }}{{ lang('COLON') }}
+            </span>
+            <span class="profile-details__content">
+                {{ POSTS }}
+                {% if POSTS_PCT %}
+                    {% if S_DISPLAY_SEARCH %}
+                        | <strong><a href="{{ U_SEARCH_USER }}">{{ lang('SEARCH_YOUR_POSTS') }}</a></strong>
+                    {% endif %}
+                    <br />
+                    ({{ POSTS_DAY }} / {{ POSTS_PCT }})
+                {% else %}
+                {% endif %}
+            </span>
+        </li>
+
+        {% if ACTIVE_FORUM %}
+        <li class="profile-details__list-item">
+            <span class="profile-details__label">{{ lang('ACTIVE_IN_FORUM') }}{{ lang('COLON') }}</span>
+            <span class="profile-details__content">
+                <strong>
+                    <a href="{{ U_ACTIVE_FORUM }}">{{ ACTIVE_FORUM }}</a>
+                </strong>
+                <br />
+                ({{ ACTIVE_FORUM_POSTS }} / {{ ACTIVE_FORUM_PCT }})
+            </span>
+        </li>
+        {% endif %}
+
+        {% if ACTIVE_TOPIC %}
+        <li class="profile-details__list-item">
+            <span class="profile-details__label">{{ lang('ACTIVE_IN_TOPIC') }}{{ lang('COLON') }}</span>
+            <span class="profile-details__content">
+                <strong>
+                    <a href="{{ U_ACTIVE_TOPIC }}">{{ ACTIVE_TOPIC }}</a>
+                </strong>
+                <br />
+                ({{ ACTIVE_TOPIC_POSTS }} / {{ ACTIVE_TOPIC_PCT }})
+            </span>
+        </li>
+        {% endif %}
+
+        {% if WARNINGS %}
+        <li class="profile-details__list-item profile-details__list-item--error">
+            <span class="profile-details__label">{{ lang('YOUR_WARNINGS') }}{{ lang('COLON') }}</span>
+            <span class="profile-details__content">
+                {{ WARNING_IMG }} [{{ WARNINGS }}]
+            </span>
+        </li>
+        {% endif %}
+
+    </ul>
+
     <!-- EVENT ucp_main_front_user_activity_after -->
 
 </section>
