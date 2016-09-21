@@ -1,0 +1,158 @@
+{% include "ucp_header.html" %}
+
+<form id="ucp" method="post" action="{{ S_UCP_ACTION }}"{{ S_FORM_ENCTYPE }}>
+
+    <h2>{{ lang('TITLE') }}</h2>
+    <section class="ucp-panel">
+        <p>{{ lang('WATCHED_EXPLAIN') }}</p>
+
+        <h3>{{ lang('WATCHED_FORUMS') }}</h3>
+        {% if loops.forumrow %}
+            <div class="forumbg">
+                <div class="topiclist forums">
+                    {% for forumrow in loops.forumrow %}
+                        <div class="row {{- topicrow.S_ROW_COUNT is even ? ' bg1' : ' bg2' -}}"
+                             data-id="{{ topicrow.TOPIC_ID }}" title="{{ topicrow.TOPIC_FOLDER_IMG_ALT }}">
+
+                            <div class="icon read-status {{ forumrow.FORUM_IMG_STYLE }}">
+                                &nbsp;
+                            </div>
+
+                            <div class="description">
+                                {% if forumrow.S_UNREAD_FORUM %}
+                                    <a href="{{ forumrow.U_VIEWFORUM }}" class="icon-link"></a>
+                                {% endif %}
+                                <a href="{{ forumrow.U_VIEWFORUM }}" class="forumtitle">{{ forumrow.FORUM_NAME }}</a>
+                                {% if forumrow.FORUM_DESC %}
+                                    <p class="forum-description">{{ forumrow.FORUM_DESC }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="lastpost">
+                                {% if forumrow.LAST_POST_TIME %}
+                                    <p class="details">{{ forumrow.LAST_POST_TIME }}</p>
+                                    <p class="details">
+                                        {{ forumrow.LAST_POST_AUTHOR_FULL }}
+                                        <a href="{{ forumrow.U_LAST_POST }}">{{ LAST_POST_IMG }}</a>
+                                    </p>
+                                {% else %}
+                                    <p class="details">{{ lang('NO_POSTS') }}</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="checkbox">
+                                <input type="checkbox" name="f[{{ forumrow.FORUM_ID }}]" id="f{{ forumrow.FORUM_ID }}" />
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% elseif S_FORUM_NOTIFY %}
+            <p><strong>{{ lang('NO_WATCHED_FORUMS') }}</strong></p>
+        {% endif %}
+
+        <h3>{{ lang('WATCHED_TOPICS') }}</h3>
+        {% if loops.topicrow %}
+            <div class="forumbg">
+                <div class="topiclist topics">
+                    {% for topicrow in loops.topicrow %}
+                        <div class="row
+                                    {{- topicrow.S_ROW_COUNT is even ? ' bg1' : ' bg2' -}}
+                                    {{- topicrow.S_POST_GLOBAL ? ' global-announce' : '' -}}
+                                    {{- topicrow.S_POST_ANNOUNCE ? ' announce' : '' -}}
+                                    {{- topicrow.S_POST_STICKY ? ' sticky' : '' -}}
+                                    {{- topicrow.S_TOPIC_REPORTED ? ' reported' : '' -}}"
+                             data-id="{{ topicrow.TOPIC_ID }}"
+                             title="{{ topicrow.TOPIC_FOLDER_IMG_ALT }}">
+
+                            <div class="icon read-status {{ topicrow.TOPIC_IMG_STYLE }}">
+                                &nbsp;
+                            </div>
+
+                            <div class="description">
+                                <!-- EVENT topiclist_row_prepend -->
+                                {% if topicrow.S_UNREAD_TOPIC %}<a href="{{ topicrow.U_NEWEST_POST }}" class="icon-link">{{ NEWEST_POST_IMG }}</a>{% endif %}
+                                <a href="{{ topicrow.U_VIEW_TOPIC }}" class="topictitle">{{ topicrow.TOPIC_TITLE }}</a>
+                                {% if topicrow.S_TOPIC_UNAPPROVED or topicrow.S_POSTS_UNAPPROVED %}
+                                    <a href="{{ topicrow.U_MCP_QUEUE }}">{{ topicrow.UNAPPROVED_IMG }}</a>&nbsp;
+                                {% endif %}
+                                {% if topicrow.S_TOPIC_DELETED %}
+                                    <a href="{{ topicrow.U_MCP_QUEUE }}">{{ DELETED_IMG }}</a> &nbsp;
+                                {% endif %}
+                                {% if topicrow.S_TOPIC_REPORTED %}
+                                    <a href="{{ topicrow.U_MCP_REPORT }}">{{ REPORTED_IMG }}</a>&nbsp;
+                                {% endif %}
+                                {% if topicrow.pagination %}
+                                    <div class="pagination">
+                                        [
+                                            {{ GOTO_PAGE_IMG }}{{ lang('GOTO_PAGE') }}:
+                                            <ul>
+                                            {% for page in topicrow.pagination %}
+                                                {% if page.S_IS_PREV %}
+                                                    {# NOTHING #}
+                                                {% elseif page.S_IS_CURRENT %}
+                                                    <li class="active">{{ page.PAGE_NUMBER }}</li>
+                                                {% elseif page.S_IS_ELLIPSIS %}
+                                                    <li class="ellipsis">{{ lang('ELLIPSIS') }}</li>
+                                                {% elseif page.S_IS_NEXT %}
+                                                    {# NOTHING #}
+                                                {% else %}
+                                                    <li><a href="{{ page.PAGE_URL }}">{{ page.PAGE_NUMBER }}</a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            </ul>
+                                        ]
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="lastpost">
+                                <p class="details">{{ topicrow.LAST_POST_TIME }}</p>
+                                <p class="details">
+                                    {{ topicrow.LAST_POST_AUTHOR_FULL }}
+                                    {% if not S_IS_BOT %}
+                                        <a href="{{ topicrow.U_LAST_POST }}">{{ LAST_POST_IMG }}</a>
+                                    {% endif %}
+                                </p>
+                            </div>
+
+                            <div class="checkbox">
+                                <input type="checkbox" name="t[{{ topicrow.TOPIC_ID }}]" id="t{{ topicrow.TOPIC_ID }}" />
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="action-bar bottom">
+                <div class="pagination">
+                    {{ TOTAL_TOPICS }}
+                    {% if loops.pagination %}
+                        {% include "pagination.html" %}
+                    {% else %}
+                        &bull; {{ PAGE_NUMBER }}
+                    {% endif %}
+                </div>
+            </div>
+
+        {% elseif S_TOPIC_NOTIFY %}
+            <p><strong>{{ lang('NO_WATCHED_TOPICS') }}</strong></p>
+        {% endif %}
+
+
+        {% if loops.topicrow or loops.forumrow %}
+            <fieldset class="display-actions">
+                <input type="submit" name="unwatch" value="{{ lang('UNWATCH_MARKED') }}" class="button2" />
+                <div><a href="#" onclick="marklist('ucp', 't', true); marklist('ucp', 'f', true); return false;">{{ lang('MARK_ALL') }}</a> &bull; <a href="#" onclick="marklist('ucp', 't', false); marklist('ucp', 'f', false); return false;">{{ lang('UNMARK_ALL') }}</a></div>
+                {{ S_FORM_TOKEN }}
+            </fieldset>
+        {% endif %}
+
+    </section>
+
+</form>
+
+
+{% include "ucp_footer.html" %}
