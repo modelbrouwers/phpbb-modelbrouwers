@@ -7271,4 +7271,44 @@ body.section-ucp .profile-details .profile-details__content:last-child {
   margin-right: 0;
 }
 
+body.section-ucp .ucp-main .ucp-main-subscribed .trigger {
+  display: none;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .forumbg {
+  border-bottom: 1px solid #a9b8c2;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .action-bar .pagination {
+  margin-left: 0%;
+  display: block;
+  text-align: left;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .action-bar .pagination::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .icon {
+  display: table-cell;
+  width: 5.55556%;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .description {
+  display: table-cell;
+  width: 69.44444%;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .lastpost {
+  display: table-cell;
+  width: 22.22222%;
+}
+
+body.section-ucp .ucp-main .ucp-main-subscribed .checkbox {
+  display: table-cell;
+  width: 2.77778%;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */
