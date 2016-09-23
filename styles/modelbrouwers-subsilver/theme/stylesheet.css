@@ -7311,4 +7311,45 @@ body.section-ucp .ucp-main .ucp-main-subscribed .checkbox {
   width: 2.77778%;
 }
 
+body.section-ucp .ucp-main .ucp-main-bookmarks .forumbg {
+  border-bottom: 1px solid #a9b8c2;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .action-bar .pagination {
+  margin-left: 0%;
+  display: block;
+  text-align: left;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .action-bar .pagination::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .deleted-topic {
+  display: table-cell;
+  width: 75%;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .icon {
+  display: table-cell;
+  width: 5.55556%;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .description {
+  display: table-cell;
+  width: 69.44444%;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .lastpost {
+  display: table-cell;
+  width: 22.22222%;
+}
+
+body.section-ucp .ucp-main .ucp-main-bookmarks .checkbox {
+  display: table-cell;
+  width: 2.77778%;
+}
+
 /*# sourceMappingURL=stylesheet.css.map */

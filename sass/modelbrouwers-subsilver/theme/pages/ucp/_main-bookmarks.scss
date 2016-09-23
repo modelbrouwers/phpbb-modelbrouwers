@@ -1,0 +1,36 @@
+body.section-ucp .ucp-main .ucp-main-bookmarks {
+
+  .forumbg {
+    border-bottom: 1px solid #a9b8c2;
+  }
+
+  .action-bar {
+    .pagination {
+      @include shift(0);
+      @include row;
+      text-align: left;
+    }
+  }
+
+  @include display-context(table) {
+    .deleted-topic {
+      @include span-columns(27 of 36);
+    }
+
+    .icon {
+      @include span-columns(2 of 36);
+    }
+
+    .description {
+      @include span-columns(25 of 36);
+    }
+
+    .lastpost {
+      @include span-columns(8 of 36);
+    }
+
+    .checkbox {
+      @include span-columns(1 of 36);
+    }
+  }
+}
