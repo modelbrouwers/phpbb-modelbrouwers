@@ -1,0 +1,36 @@
+body.section-ucp .ucp-main .ucp-main-drafts {
+
+  .forumbg {
+    border-bottom: 1px solid #a9b8c2;
+  }
+
+  .topics-header {
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+    max-width: calc(100% + 20px);
+  }
+
+  .action-bar {
+    .pagination {
+      @include shift(0);
+      @include row;
+      text-align: left;
+    }
+  }
+
+  @include display-context(table) {
+    .save-date {
+      @include span-columns(4 of 12);
+    }
+
+    .draft-title {
+      @include span-columns(7 of 12);
+    }
+
+    .checkbox {
+      @include span-columns(1 of 12);
+      text-align: center;
+    }
+  }
+}
