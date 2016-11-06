@@ -2,6 +2,11 @@ body.section-ucp .ucp-main .ucp-main-drafts {
 
   .forumbg {
     border-bottom: 1px solid #a9b8c2;
+    margin-bottom: 1em;
+
+    .trigger {
+      display: none;
+    }
   }
 
   .topics-header {

@@ -5717,7 +5717,9 @@ header.container-fluid .navbar-brand {
 }
 
 .forums-header, .topics-header, body.section-viewtopic .topic-header,
-#topicreview .topic-header, body.section-posting form #postingbox h3, body.section-posting form h3#review, body.section-ucp .ucp-main h3 {
+#topicreview .topic-header, body.section-posting form #postingbox h3,
+body.section-ucp form #postingbox h3, body.section-posting form h3#review,
+body.section-ucp form h3#review, body.section-ucp .ucp-main h3 {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -5732,14 +5734,18 @@ header.container-fluid .navbar-brand {
 }
 
 .forums-header::after, .topics-header::after, body.section-viewtopic .topic-header::after,
-#topicreview .topic-header::after, body.section-posting form #postingbox h3::after, body.section-posting form h3#review::after, body.section-ucp .ucp-main h3::after {
+#topicreview .topic-header::after, body.section-posting form #postingbox h3::after,
+body.section-ucp form #postingbox h3::after, body.section-posting form h3#review::after,
+body.section-ucp form h3#review::after, body.section-ucp .ucp-main h3::after {
   clear: both;
   content: "";
   display: block;
 }
 
 .forums-header > div, .topics-header > div, body.section-viewtopic .topic-header > div,
-#topicreview .topic-header > div, body.section-posting form #postingbox h3 > div, body.section-posting form h3#review > div, body.section-ucp .ucp-main h3 > div {
+#topicreview .topic-header > div, body.section-posting form #postingbox h3 > div,
+body.section-ucp form #postingbox h3 > div, body.section-posting form h3#review > div,
+body.section-ucp form h3#review > div, body.section-ucp .ucp-main h3 > div {
   text-align: center;
   color: #FFA34F;
   font-weight: bold;
@@ -6587,10 +6593,13 @@ body.section-viewtopic .post .online-status, body.section-viewtopic
 #topicreview .profile-contact ul li,
 #topicreview .profile-contact ul body.section-viewtopic li, body.section-viewtopic .post-buttons.bottom li, body.section-viewtopic
 #topicreview .post-buttons.bottom li,
-#topicreview .post-buttons.bottom body.section-viewtopic li, body.section-viewtopic body.section-posting form #topicreview .quote, body.section-posting form #topicreview body.section-viewtopic .quote, body.section-viewtopic .post
+#topicreview .post-buttons.bottom body.section-viewtopic li, body.section-viewtopic body.section-posting form #topicreview .quote, body.section-posting form #topicreview body.section-viewtopic .quote, body.section-viewtopic
+body.section-ucp form #topicreview .quote,
+body.section-ucp form #topicreview body.section-viewtopic .quote, body.section-viewtopic .post
 #topicreview .online-status, #topicreview .post .online-status, body.section-viewtopic .profile-contact ul
 #topicreview li, #topicreview .profile-contact ul li, body.section-viewtopic .post-buttons.bottom
-#topicreview li, #topicreview .post-buttons.bottom li, body.section-posting form #topicreview .quote {
+#topicreview li, #topicreview .post-buttons.bottom li, body.section-posting form #topicreview .quote,
+body.section-ucp form #topicreview .quote {
   background-image: linear-gradient(to bottom, #ffffff, #bcc1c3);
   border: solid 1px #357ea4;
   border-radius: 4px;
@@ -6980,7 +6989,8 @@ body.section-viewtopic .post-buttons.bottom .icon-button:before,
   }
 }
 
-body.section-posting form #postingbox h3 {
+body.section-posting form #postingbox h3,
+body.section-ucp form #postingbox h3 {
   display: block;
   margin: -5px -10px 0;
   width: auto;
@@ -6992,18 +7002,21 @@ body.section-posting form #postingbox h3 {
   text-transform: none;
 }
 
-body.section-posting form dl dt {
+body.section-posting form dl dt,
+body.section-ucp form dl dt {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 14.70196%;
 }
 
-body.section-posting form dl dt:last-child {
+body.section-posting form dl dt:last-child,
+body.section-ucp form dl dt:last-child {
   margin-right: 0;
 }
 
-body.section-posting form dl dd {
+body.section-posting form dl dd,
+body.section-ucp form dl dd {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -7011,16 +7024,20 @@ body.section-posting form dl dd {
   margin-left: 0;
 }
 
-body.section-posting form dl dd:last-child {
+body.section-posting form dl dd:last-child,
+body.section-ucp form dl dd:last-child {
   margin-right: 0;
 }
 
 body.section-posting form dl dd input,
-body.section-posting form dl dd textarea {
+body.section-posting form dl dd textarea,
+body.section-ucp form dl dd input,
+body.section-ucp form dl dd textarea {
   margin: 0;
 }
 
-body.section-posting form h3#review {
+body.section-posting form h3#review,
+body.section-ucp form h3#review {
   text-align: center;
   color: #FFA34F;
   font-weight: bold;
@@ -7030,77 +7047,95 @@ body.section-posting form h3#review {
   margin-bottom: 0;
 }
 
-body.section-posting form h3#review .right-box {
+body.section-posting form h3#review .right-box,
+body.section-ucp form h3#review .right-box {
   margin-right: 10px;
 }
 
-body.section-posting form h3#review .right-box a {
+body.section-posting form h3#review .right-box a,
+body.section-ucp form h3#review .right-box a {
   color: rgba(255, 255, 255, 0.5);
 }
 
-body.section-posting form h3#review .right-box a:hover, body.section-posting form h3#review .right-box a:active, body.section-posting form h3#review .right-box a:focus {
+body.section-posting form h3#review .right-box a:hover, body.section-posting form h3#review .right-box a:active, body.section-posting form h3#review .right-box a:focus,
+body.section-ucp form h3#review .right-box a:hover,
+body.section-ucp form h3#review .right-box a:active,
+body.section-ucp form h3#review .right-box a:focus {
   color: rgba(255, 255, 255, 0.75);
 }
 
-body.section-posting form #topicreview {
+body.section-posting form #topicreview,
+body.section-ucp form #topicreview {
   border: solid 1px #a9b8c2;
   border-top: none;
   padding: 5px;
 }
 
 body.section-posting form #topicreview .quote,
-body.section-posting form #topicreview .post-time {
+body.section-posting form #topicreview .post-time,
+body.section-ucp form #topicreview .quote,
+body.section-ucp form #topicreview .post-time {
   float: right;
   margin: 0;
 }
 
-body.section-posting form #topicreview .postbody {
+body.section-posting form #topicreview .postbody,
+body.section-ucp form #topicreview .postbody {
   padding-bottom: 4px;
 }
 
-body.section-posting form #topicreview .quote {
+body.section-posting form #topicreview .quote,
+body.section-ucp form #topicreview .quote {
   position: relative;
   text-align: center;
   top: -2px;
 }
 
-body.section-posting form #topicreview .quote a {
+body.section-posting form #topicreview .quote a,
+body.section-ucp form #topicreview .quote a {
   display: block;
   padding-left: 14px;
   padding-right: 4px;
   min-width: 72px;
 }
 
-body.section-posting form #topicreview .quote a:hover {
+body.section-posting form #topicreview .quote a:hover,
+body.section-ucp form #topicreview .quote a:hover {
   text-decoration: none;
 }
 
-body.section-posting form #topicreview .quote .icon-button {
+body.section-posting form #topicreview .quote .icon-button,
+body.section-ucp form #topicreview .quote .icon-button {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-body.section-posting form #topicreview .quote .icon-button:before {
+body.section-posting form #topicreview .quote .icon-button:before,
+body.section-ucp form #topicreview .quote .icon-button:before {
   float: none;
   position: absolute;
   top: -2px;
   left: 6px;
 }
 
-body.section-posting form #topicreview .post {
+body.section-posting form #topicreview .post,
+body.section-ucp form #topicreview .post {
   margin-bottom: 1px;
 }
 
-body.section-posting form #topicreview .author header {
+body.section-posting form #topicreview .author header,
+body.section-ucp form #topicreview .author header {
   border-bottom-color: transparent;
 }
 
-body.section-posting form #topicreview .content {
+body.section-posting form #topicreview .content,
+body.section-ucp form #topicreview .content {
   padding: 0;
   min-height: initial;
 }
 
-body.section-posting #format-buttons {
+body.section-posting #format-buttons,
+body.section-ucp #format-buttons {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -7109,11 +7144,13 @@ body.section-posting #format-buttons {
   margin-top: 0;
 }
 
-body.section-posting #format-buttons:last-child {
+body.section-posting #format-buttons:last-child,
+body.section-ucp #format-buttons:last-child {
   margin-right: 0;
 }
 
-body.section-posting #smiley-box {
+body.section-posting #smiley-box,
+body.section-ucp #smiley-box {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -7121,37 +7158,46 @@ body.section-posting #smiley-box {
   max-height: none;
 }
 
-body.section-posting #smiley-box:last-child {
+body.section-posting #smiley-box:last-child,
+body.section-ucp #smiley-box:last-child {
   margin-right: 0;
 }
 
-body.section-posting #message-box {
+body.section-posting #message-box,
+body.section-ucp #message-box {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 82.94039%;
 }
 
-body.section-posting #message-box:last-child {
+body.section-posting #message-box:last-child,
+body.section-ucp #message-box:last-child {
   margin-right: 0;
 }
 
-body.section-posting #postingbox {
+body.section-posting #postingbox,
+body.section-ucp #postingbox {
   margin-bottom: 0;
 }
 
-body.section-posting #postingbox + .panel {
+body.section-posting #postingbox + .panel,
+body.section-ucp #postingbox + .panel {
   padding: 0 10px;
 }
 
 body.section-posting #options-panel,
-body.section-posting #poll-panel {
+body.section-posting #poll-panel,
+body.section-ucp #options-panel,
+body.section-ucp #poll-panel {
   margin-top: -1px;
 }
 
 @media screen and (max-width: 600px) {
   body.section-posting form dl dt,
-  body.section-posting form dl dd {
+  body.section-posting form dl dd,
+  body.section-ucp form dl dt,
+  body.section-ucp form dl dd {
     float: left;
     display: block;
     margin-right: 2.35765%;
@@ -7159,24 +7205,31 @@ body.section-posting #poll-panel {
     margin-right: 0;
   }
   body.section-posting form dl dt:last-child,
-  body.section-posting form dl dd:last-child {
+  body.section-posting form dl dd:last-child,
+  body.section-ucp form dl dt:last-child,
+  body.section-ucp form dl dd:last-child {
     margin-right: 0;
   }
-  body.section-posting form dl dt {
+  body.section-posting form dl dt,
+  body.section-ucp form dl dt {
     padding: 3px 0;
   }
-  body.section-posting #format-buttons {
+  body.section-posting #format-buttons,
+  body.section-ucp #format-buttons {
     margin-left: 0%;
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 100%;
   }
-  body.section-posting #format-buttons:last-child {
+  body.section-posting #format-buttons:last-child,
+  body.section-ucp #format-buttons:last-child {
     margin-right: 0;
   }
   body.section-posting #smiley-box,
-  body.section-posting #message-box {
+  body.section-posting #message-box,
+  body.section-ucp #smiley-box,
+  body.section-ucp #message-box {
     float: right;
     display: block;
     margin-left: 2.35765%;
@@ -7185,7 +7238,9 @@ body.section-posting #poll-panel {
     margin-right: 0;
   }
   body.section-posting #smiley-box:last-child,
-  body.section-posting #message-box:last-child {
+  body.section-posting #message-box:last-child,
+  body.section-ucp #smiley-box:last-child,
+  body.section-ucp #message-box:last-child {
     margin-left: 0;
   }
 }
@@ -7354,6 +7409,11 @@ body.section-ucp .ucp-main .ucp-main-bookmarks .checkbox {
 
 body.section-ucp .ucp-main .ucp-main-drafts .forumbg {
   border-bottom: 1px solid #a9b8c2;
+  margin-bottom: 1em;
+}
+
+body.section-ucp .ucp-main .ucp-main-drafts .forumbg .trigger {
+  display: none;
 }
 
 body.section-ucp .ucp-main .ucp-main-drafts .topics-header {

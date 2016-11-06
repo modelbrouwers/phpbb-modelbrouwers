@@ -1,4 +1,5 @@
-body.section-posting {
+body.section-posting,
+body.section-ucp {
   form {
     #postingbox h3 {
       @extend %table-header;
