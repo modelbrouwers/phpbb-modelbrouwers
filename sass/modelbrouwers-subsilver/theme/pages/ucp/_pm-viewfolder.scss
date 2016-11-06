@@ -1,0 +1,76 @@
+body.section-ucp .ucp-pm {
+
+  .forumbg {
+    border-bottom: 1px solid #a9b8c2;
+    margin-bottom: 1em;
+
+    .trigger {
+      display: none;
+    }
+  }
+
+  .topics-header {
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+    max-width: calc(100% + 20px);
+  }
+
+  .action-bar {
+    .pagination {
+      @include shift(0);
+      @include row;
+      text-align: left;
+    }
+  }
+
+  @include display-context(table) {
+
+    .topiclist.pmlist {
+      .row {
+        @include outer-container(100%);
+        @include fill-parent;
+        display: table;
+        min-height: 40px;
+        border-top: $cell-border;
+
+        > div {
+          padding: 4px;
+          vertical-align: middle;
+          border-right: $cell-border;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          p {
+            margin-top: 0;
+            margin-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    .icon {
+      @include span-columns(2 of 36);
+    }
+
+    .message {
+      @include span-columns(20 of 36);
+    }
+
+    .author {
+      @include span-columns(6 of 36);
+    }
+
+    .sent-at {
+      @include span-columns(4 of 36);
+      text-align: center;
+    }
+
+    .checkbox {
+      @include span-columns(2 of 36);
+      text-align: center;
+    }
+  }
+}
