@@ -20,7 +20,8 @@
     opacity: 1;
   }
 
-  & + .panel {
+  & + .panel,
+  & + form .panel {
     margin-top: -1px;
   }
 }

@@ -5553,7 +5553,8 @@ div.time > div:last-child {
   opacity: 1;
 }
 
-#tabs + .panel {
+#tabs + .panel,
+#tabs + form .panel {
   margin-top: -1px;
 }
 
@@ -7565,6 +7566,10 @@ body.section-ucp .ucp-pm .checkbox {
   display: table-cell;
   width: 5.55556%;
   text-align: center;
+}
+
+#ucp .fields2 dt + dd {
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
