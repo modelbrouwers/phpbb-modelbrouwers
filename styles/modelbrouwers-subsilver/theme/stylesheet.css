@@ -2462,15 +2462,17 @@ table.fixed-width-table {
 /* Button Styles
 ---------------------------------------- */
 .button {
+  height: 18px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+#phpbb .button {
   cursor: pointer;
   display: inline-block;
-  height: 18px;
   line-height: 18px;
   font-size: 13px;
   white-space: nowrap;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  background: transparent none 0 0 repeat-x;
   padding: 2px 8px;
   font-family: "Open Sans", "Droid Sans", Verdana, Arial, Helvetica;
   position: relative;
@@ -2478,6 +2480,7 @@ table.fixed-width-table {
   outline-style: none !important;
   vertical-align: bottom;
   text-shadow: none;
+  background: transparent none 0 0 repeat-x;
 }
 
 .dropdown-select {
@@ -7467,16 +7470,38 @@ body.section-ucp .ucp-pm .topics-header {
   max-width: calc(100% + 20px);
 }
 
-body.section-ucp .ucp-pm .action-bar .pagination {
-  margin-left: 0%;
+body.section-ucp .ucp-pm .action-bar .buttons {
+  float: left;
   display: block;
-  text-align: left;
+  margin-right: 2.35765%;
+  width: 48.82117%;
 }
 
-body.section-ucp .ucp-pm .action-bar .pagination::after {
-  clear: both;
-  content: "";
+body.section-ucp .ucp-pm .action-bar .buttons:last-child {
+  margin-right: 0;
+}
+
+body.section-ucp .ucp-pm .action-bar .buttons .button {
+  border: solid 2px #006597;
+  border-radius: 13px;
+  height: 26px;
+}
+
+body.section-ucp .ucp-pm .action-bar .pagination {
+  float: left;
   display: block;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+  margin-left: 0%;
+  text-align: right;
+}
+
+body.section-ucp .ucp-pm .action-bar .pagination:last-child {
+  margin-right: 0;
+}
+
+body.section-ucp .ucp-pm .action-bar.bottom .pagination {
+  margin-left: 51.17883%;
 }
 
 body.section-ucp .ucp-pm .topiclist.pmlist .row {
@@ -7508,6 +7533,11 @@ body.section-ucp .ucp-pm .topiclist.pmlist .row > div:last-child {
 body.section-ucp .ucp-pm .topiclist.pmlist .row > div p {
   margin-top: 0;
   margin-bottom: 4px;
+}
+
+body.section-ucp .ucp-pm .topics-header .message {
+  display: table-cell;
+  width: 66.66667%;
 }
 
 body.section-ucp .ucp-pm .icon {

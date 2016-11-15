@@ -17,10 +17,27 @@ body.section-ucp .ucp-pm {
   }
 
   .action-bar {
+
+    .buttons {
+      @include span-columns(6);
+
+      .button {
+        border: solid 2px #006597;
+        border-radius: 13px;
+        height: 26px;
+      }
+    }
+
     .pagination {
+      @include span-columns(6);
       @include shift(0);
-      @include row;
-      text-align: left;
+      text-align: right;
+    }
+
+    &.bottom {
+      .pagination {
+        @include shift(6);
+      }
     }
   }
 
@@ -48,6 +65,12 @@ body.section-ucp .ucp-pm {
             margin-bottom: 4px;
           }
         }
+      }
+    }
+
+    .topics-header {
+      .message {
+        @include span-columns(24 of 36);
       }
     }
 
