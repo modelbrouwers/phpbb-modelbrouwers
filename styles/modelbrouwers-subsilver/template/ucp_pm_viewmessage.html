@@ -1,0 +1,174 @@
+{% include "ucp_header.html" %}
+
+{% include "ucp_pm_message_header.html" %}
+
+{% if S_DISPLAY_HISTORY and (U_VIEW_PREVIOUS_HISTORY or U_VIEW_NEXT_HISTORY) %}
+    <fieldset class="display-options clearfix">
+        {% if U_VIEW_PREVIOUS_HISTORY %}
+            <a href="{{ U_VIEW_PREVIOUS_HISTORY }}" class="left-box arrow-{{ S_CONTENT_FLOW_BEGIN }}">
+                {{ lang('VIEW_PREVIOUS_HISTORY') }}</a>
+        {% endif %}
+        {% if U_VIEW_NEXT_HISTORY %}
+            <a href="{{ U_VIEW_NEXT_HISTORY }}" class="right-box arrow-{{ S_CONTENT_FLOW_END }}">
+                {{ lang('VIEW_NEXT_HISTORY') }}</a>
+        {% endif %}
+    </fieldset>
+{% endif %}
+
+
+<article id="post-{{ MESSAGE_ID }}"
+         class="post pm has-profile {% if S_POST_UNAPPROVED or S_POST_REPORTED %}reported{% endif %}{{ S_ONLINE ? 'online' : '' }}">
+
+    <section class="postbody">
+
+        <h3 class="first">{{ SUBJECT }}</h3>
+
+        {% set SHOW_PM_POST_BUTTONS = (U_EDIT or U_DELETE or U_REPORT or U_QUOTE) %}
+        <!-- EVENT ucp_pm_viewmessage_post_buttons_list_before -->
+        {% if SHOW_PM_POST_BUTTONS %}
+            <ul class="post-buttons">
+                <!-- EVENT ucp_pm_viewmessage_post_buttons_before -->
+                {% if U_EDIT %}
+                    <li>
+                        <a href="{{ U_EDIT }}" title="{{ lang('POST_EDIT_PM') }}" class="button icon-button edit-icon"><span>{{ lang('POST_EDIT_PM') }}</span></a>
+                    </li>
+                {% endif %}
+                {% if U_DELETE %}
+                    <li>
+                        <a href="{{ U_DELETE }}" title="{{ lang('DELETE_MESSAGE') }}" class="button icon-button delete-icon"><span>{{ lang('DELETE_MESSAGE') }}</span></a>
+                    </li>
+                {% endif %}
+                {% if U_REPORT %}
+                    <li>
+                        <a href="{{ U_REPORT }}" title="{{ lang('REPORT_PM') }}" class="button icon-button report-icon"><span>{{ lang('REPORT_PM') }}</span></a>
+                    </li>
+                {% endif %}
+                {% if U_QUOTE %}
+                    <li>
+                        <a href="{{ U_QUOTE }}" title="{{ lang('POST_QUOTE_PM') }}" class="button icon-button quote-icon"><span>{{ lang('POST_QUOTE_PM') }}</span></a>
+                    </li>
+                {% endif %}
+                <!-- EVENT ucp_pm_viewmessage_post_buttons_after -->
+            </ul>
+            <!-- EVENT ucp_pm_viewmessage_post_buttons_list_after -->
+        {% endif %}
+
+        <p class="author">
+            <strong>{{ lang('SENT_AT') }}{{ lang('COLON') }}</strong> {{ SENT_DATE }}
+            <br />
+            <strong>{{ lang('PM_FROM') }}{{ lang('COLON') }}</strong> {{ MESSAGE_AUTHOR_FULL }}
+            {% if S_TO_RECIPIENT %}
+                <br />
+                <strong>{{ lang('TO') }}{{ lang('COLON') }}</strong>
+                {% for to_recipient in loops.to_recipient %}
+                    {% if to_recipient.NAME_FULL %}
+                        {{ to_recipient.NAME_FULL }}
+                    {% else %}
+                        <a href="{{ to_recipient.U_VIEW }}"
+                           style="color:{%- if to_recipient.COLOUR -%}{{ to_recipient.colour }}{%- elseif to_recipient.IS_GROUP -%}#0000FF{%- endif -%};">
+                           {{ to_recipient.NAME }}</a>
+                    {% endif %}
+                    &nbsp;
+                {% endfor %}
+            {% endif %}
+            {% if S_BCC_RECIPIENT %}
+                <br />
+                <strong>{{ lang('BCC') }}{{ lang('COLON') }}</strong>
+                {% for bcc_recipient in loops.bcc_recipient %}
+                    {% if bcc_recipient.NAME_FULL %}
+                        {{ bcc_recipient.NAME_FULL }}
+                    {% else %}
+                        <a href="{{ bcc_recipient.U_VIEW }}"
+                           style="color:{%- if bcc_recipient.COLOUR -%}{{ bcc_recipient.colour }}{%- elseif bcc_recipient.IS_GROUP -%}#0000FF{%- endif -%};">
+                           {{ bcc_recipient.NAME }}</a>
+                    {% endif %}
+                    &nbsp;
+                {% endfor %}
+            {% endif %}
+        </p>
+
+        <div class="content">{{ MESSAGE }}</div>
+
+        {# TODO: test #}
+        {% if S_HAS_ATTACHMENTS %}
+        <div class="attachments">
+            <strong>{{ lang('ATTACHMENTS') }}</strong>
+            <ul>
+            {% for attachment in loops.attachment %}
+                <li>{{ attachment.DISPLAY_ATTACHMENT }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if S_DISPLAY_NOTICE %}
+            <div class="post-notice error">{{ lang('DOWNLOAD_NOTICE') }}</div>
+        {% endif %}
+
+        {% if EDITED_MESSAGE or EDIT_REASON %}
+            <div class="notice">
+                {{ EDITED_MESSAGE }}
+                {% if EDIT_REASON %}
+                    <br />
+                    <strong>{{ lang('REASON') }}{{ lang('COLON') }}</strong> <em>{{ EDIT_REASON }}</em>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if SIGNATURE %}
+            <div id="sig{{ MESSAGE_ID }}" class="signature">{{ SIGNATURE }}</div>
+        {% endif %}
+
+    </section>
+
+    <div class="back2top">
+        <a href="#top" class="top" title="{{ lang('BACK_TO_TOP') }}">{{ lang('BACK_TO_TOP') }}</a>
+    </div>
+
+</article>
+
+
+{% if S_VIEW_MESSAGE %}
+    <fieldset class="display-options">
+        {% if U_PREVIOUS_PM %}
+            <a href="{{ U_PREVIOUS_PM }}" class="left-box arrow-{{ S_CONTENT_FLOW_BEGIN }}">{{ lang('VIEW_PREVIOUS_PM') }}</a>
+        {% endif %}
+        {% if U_NEXT_PM %}
+            <a href="{{ U_NEXT_PM }}" class="left-box arrow-{{ S_CONTENT_FLOW_BEGIN }}">{{ lang('VIEW_NEXT_PM') }}</a>
+        {% endif %}
+
+        {% if S_MARK_OPTIONS %}
+            <label for="mark_option">
+                <select name="mark_option" id="mark_option">
+                    {{ S_MARK_OPTIONS }}
+                </select>
+            </label>
+            &nbsp;
+            <input class="button2" type="submit" name="submit_mark" value="{{ lang('GO') }}" />
+        {% endif %}
+
+        {% if not S_UNREAD and not S_SPECIAL_FOLDER %}
+            <label for="dest_folder">
+                {% if S_VIEW_MESSAGE %}
+                    {{ lang('MOVE_TO_FOLDER') }}{{ lang('COLON') }}
+                {% else %}
+                    {{ lang('MOVE_MARKED_TO_FOLDER') }}
+                {% endif %}
+                <select name="dest_folder" id="dest_folder">
+                    {{ S_TO_FOLDER_OPTIONS }}
+                </select>
+            </label>
+            <input class="button2" type="submit" name="move_pm" value="{{ lang('GO') }}" />
+        {% endif %}
+        <input type="hidden" name="marked_msg_id[]" value="{{ MSG_ID }}" />
+        <input type="hidden" name="cur_folder_id" value="{{ CUR_FOLDER_ID }}" />
+        <input type="hidden" name="p" value="{{ MSG_ID }}" />
+    </fieldset>
+{% endif %}
+
+{% include "ucp_pm_message_footer.html" %}
+
+{% if S_DISPLAY_HISTORY %}
+    {% include "ucp_pm_history.html" %}
+{% endif %}
+
+{% include "ucp_footer.html" %}
